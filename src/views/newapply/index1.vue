@@ -3,10 +3,16 @@
   <el-form :model="applyForm" :inline="true" :rules="rules" ref="applyForm" label-width="200px" class="applyForm">
     <br>
 
-    <el-divider content-position="center">
+    <!-- <el-divider content-position="center">
       <span style='font-size:20.0pt;font-family:黑体;color:black'><i class="el-icon-document"></i>授权审批单</span>
-    </el-divider>
+    </el-divider> -->
     <br>
+    <div style="text-align: center;">
+      <span style='font-size:20.0pt;font-family:黑体;color:black'><i class="el-icon-document"></i>授权审批单</span>
+      <el-divider content-position="center"></el-divider>
+    </div>
+    <br>
+
 
     <el-form-item label="项目名称/标识" prop="project">
       <el-input v-model="applyForm.project" style="width: 90%;border-color: #394956;}" placeholder="项目名称/标识">

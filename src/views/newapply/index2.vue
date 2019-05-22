@@ -7,11 +7,11 @@
       <span style='font-size:20.0pt;font-family:黑体;color:black'><i class="el-icon-document"></i>授权审批单</span>
     </el-divider> -->
     <br>
-		<div style="text-align: center;">
-			<span style='font-size:20.0pt;font-family:黑体;color:black'><i class="el-icon-document"></i>授权审批单</span>
-		</div>
-<br>
-    
+    <div style="text-align: center;">
+      <span style='font-size:20.0pt;font-family:黑体;color:black'><i class="el-icon-document"></i>授权审批单</span>
+    </div>
+    <br>
+
 
     <el-divider content-position="center">基本信息</el-divider>
     <br>
