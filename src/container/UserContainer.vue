@@ -73,7 +73,7 @@
                     <el-menu default-active="/" router class="el-menu-demo tab-page" mode="horizontal"
                         @select="handleSelect" active-text-color="#409EFF">
 
-                        <h2 style=" font-size: large;">授权申请中心</h2>
+                        <h1 style=" font-size: large;">授权申请中心</h1>
                     </el-menu>
 
                     <div class="app-header-userinfo">
