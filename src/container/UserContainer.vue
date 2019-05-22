@@ -1,7 +1,6 @@
 <template>
 
     <div class="app">
-
         <el-container>
             <el-aside class="app-side app-side-left" background-color="#545c64"
                 :class="isCollapse ? 'app-side-collapsed' : 'app-side-expanded'">
@@ -137,8 +136,9 @@
 
 <script>
     import Untreated from '@/views/untreated/index1.vue'
-    import NewApply1 from '@/views/newapply/index1.vue'
-    import NewApply from '@/views/newapply/index2.vue'
+    import NewApply from '@/views/newapply/index1.vue'
+    import NewApply1 from '@/views/newapply/index2.vue'
+
     import Audited from '@/views/audited/index1.vue'
     import Overdue from '@/views/overdue/index1.vue'
     import Logout from '@/views/logout/index1.vue'

@@ -124,7 +124,7 @@
     <el-form-item label="授权起始时间" required>
       <el-col :span="11">
         <el-form-item prop="grantbegindate">
-          <el-date-picker type="date" placeholder="选择授权起始时间" v-model="applyForm.grantbegindate" style="width: 200%;">
+          <el-date-picker type="date" placeholder="选择授权起始时间" v-model="applyForm.grantbegindate" style="width: 180%;">
           </el-date-picker>
         </el-form-item>
       </el-col>
@@ -136,7 +136,7 @@
     <el-form-item label="授权到期时间" required>
       <el-col :span="11">
         <el-form-item prop="grantenddate">
-          <el-date-picker type="date" placeholder="选择授权起始时间" v-model="applyForm.grantenddate" style="width: 200%;">
+          <el-date-picker type="date" placeholder="选择授权起始时间" v-model="applyForm.grantenddate" style="width: 180%;">
           </el-date-picker>
         </el-form-item>
       </el-col>

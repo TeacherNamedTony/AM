@@ -3,12 +3,18 @@
   <el-form :model="applyForm" :inline="true" :rules="rules" ref="applyForm" label-width="200px" class="applyForm">
     <br>
 
-    <el-divider content-position="center">
+    <!-- <el-divider content-position="center">
       <span style='font-size:20.0pt;font-family:黑体;color:black'><i class="el-icon-document"></i>授权审批单</span>
-    </el-divider>
+    </el-divider> -->
     <br>
+		<div style="text-align: center;">
+			<span style='font-size:20.0pt;font-family:黑体;color:black'><i class="el-icon-document"></i>授权审批单</span>
+		</div>
+<br>
+    
 
-
+    <el-divider content-position="center">基本信息</el-divider>
+    <br>
     <el-form-item label="项目名称/标识" prop="project">
       <el-input v-model="applyForm.project" style="width: 100%;border-color: #394956;}" placeholder="项目名称/标识">
       </el-input>
@@ -28,10 +34,11 @@
         </el-form-item>
       </el-col>
     </el-form-item>
-    <el-divider></el-divider>
+
+
+
+    <el-divider content-position="center">申请及用户信息</el-divider>
     <br>
-
-
     <el-form-item label="授权申请人" prop="applyername">
       <el-input v-model="applyForm.applyername" style="width: 100%;" placeholder="授权申请人"></el-input>
     </el-form-item>
@@ -39,6 +46,7 @@
       <el-input v-model="applyForm.applyertel" style="width: 100%;" placeholder="授权申请人联系方式"></el-input>
     </el-form-item>
     <br>
+
     <el-form-item label="授权用户" prop="grantuser">
       <el-input v-model="applyForm.grantuser" style="width: 100%;" placeholder="授权用户"></el-input>
     </el-form-item>
@@ -48,10 +56,11 @@
     <el-form-item label="授权用户联系方式" prop="grantuserpersontel">
       <el-input v-model="applyForm.grantuserpersontel" style="width: 100%;" placeholder="授权用户联系方式"></el-input>
     </el-form-item>
-    <el-divider></el-divider>
+
+
+
+    <el-divider content-position="center">设备信息</el-divider>
     <br>
-
-
     <el-form-item label="部署类型" prop="deploymenttype">
       <!-- <el-select v-model="applyForm.deploymenttype" placeholder="物理机">
         <el-option label="物理机" value="1"></el-option>
@@ -77,21 +86,22 @@
     <el-form-item label="授权服务器IP" prop="serverip">
       <el-input v-model="applyForm.serverip" style="width: 100%;" placeholder="授权服务器IP"></el-input>
     </el-form-item>
-    <el-divider></el-divider>
+
+
+
+    <el-divider content-position="center">版本信息</el-divider>
     <br>
-
-
-
     <el-form-item label="平台产品版本" prop="productversion">
       <el-input v-model="applyForm.productversion" style="width: 100%;" placeholder="平台产品版本"></el-input>
     </el-form-item>
     <el-form-item label="授权文件版本" prop="grantfiletype">
       <el-input v-model="applyForm.grantfiletype" style="width: 100%;" placeholder="授权文件版本"></el-input>
     </el-form-item>
-    <el-divider></el-divider>
+
+
+
+    <el-divider content-position="center">授权信息</el-divider>
     <br>
-
-
     <el-form-item label="微服务-服务用户量" prop="usernum">
       <el-input v-model="applyForm.usernum" style="width: 100%;" placeholder="微服务-服务用户量"></el-input>
     </el-form-item>
@@ -101,7 +111,7 @@
     <el-form-item label="容器云-计算节点数量" prop="computenum">
       <el-input v-model="applyForm.computenum" style="width: 100%;" placeholder="容器云-计算节点数量"></el-input>
     </el-form-item>
-    <el-divider></el-divider>
+
     <br>
 
 
@@ -163,8 +173,6 @@
       </el-col>
     </el-form-item> -->
 
-
-    <br>
 
     <el-form-item label="授权申请说明" prop="applynote">
       <el-input type="textarea" v-model="applyForm.applynote" style="" cols="140%" rows=' 5%' placeholder="请输入授权申请说明">
