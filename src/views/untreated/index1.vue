@@ -29,7 +29,7 @@
           </el-table-column>
         </el-table>
       </el-main>
-      <el-pagination class="fenye" background layout="prev, pager, next" :total="100">
+      <el-pagination class="fenye" background layout="prev, pager, next" :total="1">
       </el-pagination>
       <el-dialog title="#" :visible.sync="dialogTableVisible">
         <div class=WordSection1 style='layout-grid:15.6pt'>
@@ -529,13 +529,6 @@
       },
 
       data() {
-        // const item = {
-        //   date: '2019-05-06',
-        //   name: '托尼老师',
-        //   stopdate: '2019-05-01' + '~' + '2019-06-31',
-        //   projectname: '厂商授权系统-测试显示适配情况',
-        //   address: '中软信息系统工程有限公司',
-        // };
         return {
           dialogTableVisible: false,
           tableData: [],

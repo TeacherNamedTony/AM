@@ -1,13 +1,11 @@
 <template>
-
     <div class="app">
         <el-container>
-            <el-aside class="app-side app-side-left" background-color="#545c64"
+            <el-aside class="app-side app-side-left" background-color="#545c64"  
                 :class="isCollapse ? 'app-side-collapsed' : 'app-side-expanded'">
                 <div class="app-side-logo">
                     <img src="@/assets/timg.png" :width="isCollapse ? '60' : '60'" height="60" />
                 </div>
-
                 <div style="margin-top: 10%;">
                     <i class="paper-plane"></i>
                     <el-menu class="el-menu-vertical-demo" @open="handleOpen" :collapse="isCollapse">
@@ -30,7 +28,6 @@
                             <li style="list-style-type:none;">
                                 <i class="el-icon-warning"></i>即将到期：0
                             </li>
-
                         </el-menu-item>
                         <el-menu-item>
                             <li style="list-style-type:none;">
@@ -40,22 +37,17 @@
 
                     </el-menu>
                 </div>
-
             </el-aside>
-
             <el-container>
                 <el-header class="app-header">
                     <div style="width: 60px; cursor: pointer;" @click.prevent="toggleSideBar">
-
                         <!-- <i v-show="!isCollapse" class="el-icon-s-fold"></i>
                         <i v-show="isCollapse" class="el-icon-s-unfold"></i> -->
                     </div>
                     <el-menu default-active="/" router class="el-menu-demo tab-page" mode="horizontal"
                         @select="handleSelect" active-text-color="#409EFF">
-
                         <h1 style=" font-size: large;">授权申请中心</h1>
                     </el-menu>
-
                     <div class="app-header-userinfo">
                         <el-dropdown trigger="hover" :hide-on-click="false">
                             <span class="el-dropdown-link">
@@ -72,13 +64,12 @@
                         </el-dropdown>
                     </div>
                 </el-header>
-
                 <el-main class="app-body">
                     <template>
                         <div class="line"></div>
                         <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal"
                             @select="handleSelect" background-color="#545c64" text-color="#fff"
-                            active-text-color="#ffd04b">
+                            active-text-color="#ffd04b" >
                             <el-menu-item @click='alertFunc(1)' index="1"><i class="el-icon-s-promotion"></i>待授权
                             </el-menu-item>
                             <el-menu-item @click='alertFunc(2)' index="2"><i class="el-icon-s-order"></i><a>新建申请</a>
@@ -91,12 +82,11 @@
                             </el-menu-item>
                             <el-menu-item @click='alertFunc(5)' index="5"><i class="el-icon-s-release"></i>授权异常
                             </el-menu-item>
-                            <el-menu-item @click='alertFunc(6)' index="6" disabled><i class="el-icon-s-home"></i>个人中心
-                            </el-menu-item>
-                            <el-menu-item @click='alertFunc(7)' index="7" disabled><i
+                            <!-- <el-menu-item @click='alertFunc(6)' index="6" disabled><i class="el-icon-s-home"></i>个人中心
+                            </el-menu-item> -->
+                            <!-- <el-menu-item @click='alertFunc(7)' index="7" disabled><i
                                     class="el-icon-message-solid"></i>消息中心
-                            </el-menu-item>
-
+                            </el-menu-item> -->
                         </el-menu>
                         <div class="ajaxpage">
                             <Untreated v-if="itemIndex==1"></Untreated>
@@ -112,7 +102,6 @@
         </el-container>
     </div>
 </template>
-
 
 <script>
     import Untreated from '@/views/untreated/index1.vue'
@@ -179,7 +168,6 @@
     a:link {
         text-decoration: none;
     }
-
     /* .app-header{
     background-color: rgb(37,42,47)
 }
@@ -190,30 +178,27 @@
         margin-top: 20%;
         text-align: center
     }
-
     .text {
         font-size: 14px;
     }
-
     .item {
         margin-bottom: 18px;
     }
-
     .clearfix:before,
     .clearfix:after {
         display: table;
         content: "";
     }
-
     .clearfix:after {
         clear: both
     }
-
     .box-card {
         width: 480px;
     }
-
     .app-side-left {
         background-color: #fff;
+    }
+    .app-side-expanded{
+        width: 12% !important;
     }
 </style>
