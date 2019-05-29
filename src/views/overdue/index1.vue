@@ -14,28 +14,71 @@
       <el-table :data="tableData">
         <el-table-column prop="date" label="申请日期" width="100">
         </el-table-column>
-        <el-table-column prop="applyername" label="申请人员" width="100">
+        <el-table-column prop="applyername" label="申请人员" width="120">
         </el-table-column>
-        <el-table-column prop="projectname" label="项目名称" width="230">
+        <el-table-column prop="projectname" label="项目名称" width="150">
         </el-table-column>
         <el-table-column prop="stopdate" label="剩余授权时长" width="120" >
         </el-table-column>
+        <el-table-column prop="passername" label="审核人" width="150">
+        </el-table-column>
         <el-table-column prop="address" label="所属单位" width="">
         </el-table-column>
-        <el-table-column prop="passername" label="审核人" width="200">
-        </el-table-column>
-        <el-table-column prop="look" label=" " width="180">
+        <el-table-column prop="look" label=" " width="200">
           <el-button type="warning" @click="repass">申请重新重新授权</el-button>
         </el-table-column>
-
-      </el-table>
-  
+      </el-table> 
     </el-main>
     <el-pagination class="fenye" background layout="prev, pager, next" :total="100">
     </el-pagination>
   </el-container>
   </el-container>
 </template>
+
+
+<script>
+  import axios from 'axios';
+  export default {
+    data() {
+
+      return {
+                  dialogTableVisible: false,
+          tableData: [],
+
+      }
+    },
+    methods: {
+      repass() {
+        this.$confirm('申请授权三个月', '', {})
+      },
+
+    },
+        methods: {
+      passnow() {
+        this.$confirm('确认下载授权文件。此文件请妥善保管', '提示', {})
+      },
+      toggleSelection() {
+          this.$refs.multipleTable.clearSelection();
+        },
+        handleSelectionChange(val) {
+          this.multipleSelection = val;
+        },
+        loadAll(){
+          axios.get('http://192.168.17.73:8088/get', {
+            "pagenum": "ddfdf"
+          }).then((data) => {
+            this.tableData = data.data.data;
+          })
+        }
+    },
+      mounted() {
+        this.loadAll();
+
+      },
+  };
+</script>
+
+
 <style scoped>
   .fenye {
     text-align: center
@@ -51,64 +94,3 @@
     color: #333;
   }
 </style>
-
-<script>
-  export default {
-    data() {
-      const item = {
-        date: '2019-05-06',
-        applyername: '托尼老师',
-        stopdate: '15天',
-        projectname: '厂商授权系统-测试显示适配情况',
-        address: '中软信息系统工程有限公司',
-        passername:'斯达克',
-      };
-      return {
-        tableData: Array(6).fill(item),
-        restaurants: [],
-        state: '',
-        timeout: null
-      }
-    },
-    methods: {
-      repass() {
-        this.$confirm('申请授权三个月', '', {})
-      },
-      loadAll() {
-        return [{
-            "value": "用户1",
-            "address": "中软公司"
-          },
-          {
-            "value": "用户2",
-            "address": "中软公司"
-          },
-          {
-            "value": "用户3",
-            "address": "中软公司"
-          },
-        ];
-      },
-      querySearchAsync(queryString, cb) {
-        var restaurants = this.restaurants;
-        var results = queryString ? restaurants.filter(this.createStateFilter(queryString)) : restaurants;
-
-        clearTimeout(this.timeout);
-        this.timeout = setTimeout(() => {
-          cb(results);
-        }, 3000 * Math.random());
-      },
-      createStateFilter(queryString) {
-        return (state) => {
-          return (state.value.toLowerCase().indexOf(queryString.toLowerCase()) === 0);
-        };
-      },
-      handleSelect(item) {
-        window.console.log(item);
-      }
-    },
-    mounted() {
-      this.restaurants = this.loadAll();
-    },
-  };
-</script>

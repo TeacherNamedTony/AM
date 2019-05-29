@@ -2,36 +2,517 @@
     <el-container>
       <el-header style="height:0px">
       </el-header>
-
       <el-main>
         <el-table ref="multipleTable" :data="tableData" tooltip-effect="dark" style="width: 100%"
           @selection-change="handleSelectionChange">
-          <el-table-column prop="date" label="申请日期" width="100">
+          <el-table-column prop="applyDetail.applydate" label="申请日期" width="120">
           </el-table-column>
-          <el-table-column prop="name" label="申请人员" width="100">
+          <el-table-column prop="applyDetail.applyername" label="申请人员" width="120">
           </el-table-column>
-          <el-table-column prop="projectname" label="项目名称" width="180">
+          <el-table-column prop="applyDetail.project" label="项目名称" width="120">
           </el-table-column>
-          <el-table-column prop="stopdate" label="申请时长" width="180">
+          <el-table-column prop="applyDetail.grantbegindate" label="开始时间" width="120">
           </el-table-column>
-          <el-table-column prop="passername" label="审核人" width="100">
+          <el-table-column prop="applyDetail.grantenddate" label="结束时间" width="150">
           </el-table-column>
-          <el-table-column prop="address" label="所属单位" width="">
+          <el-table-column prop="" label="审核人" width="">
+            <el-tag type="info">您的申请尚未通过审核，请您耐心等待</el-tag>
+
           </el-table-column>
           <el-table-column prop="look" label=" " width="180">
-            <el-button type="primary" @click="dialogTableVisible = true">查看申请</el-button>
-            <el-dialog title="#" :visible.sync="dialogTableVisible">
-              <ApplyPage></ApplyPage>
+            <template slot-scope="scope">
+              <div>
+                <el-button type="primary" @click="changeDialog(scope.row)">查看申请</el-button>
 
-            </el-dialog>
+              </div>
+            </template>
           </el-table-column>
-
         </el-table>
       </el-main>
       <el-pagination class="fenye" background layout="prev, pager, next" :total="100">
       </el-pagination>
+      <el-dialog title="#" :visible.sync="dialogTableVisible">
+        <div class=WordSection1 style='layout-grid:15.6pt'>
+
+          <div align=center>
+
+            <table class=MsoNormalTable border=0 cellspacing=0 cellpadding=0 style='border-collapse:collapse'>
+              <tr style='height:31.2pt'>
+                <td width=612 colspan=5 rowspan=2 style='width:459.3pt;border:none;
+  border-bottom:solid #305496 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;height:31.2pt'>
+                  <p class=MsoNormal align=center style='text-align:center'><span
+                      style='font-size:20.0pt;font-family:黑体;color:black'>授权审批单</span></p>
+                </td>
+                <td style='height:31.2pt;border:none' width=0 height=42></td>
+              </tr>
+              <tr style='height:15.6pt'>
+                <td style='height:15.6pt;border:none' width=0 height=21></td>
+              </tr>
+              <tr style='height:20.1pt'>
+                <td width=142 nowrap colspan=2 style='width:106.35pt;border:solid #305496 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt;height:20.1pt'>
+                  <p class=MsoNormal align=center style='text-align:center'><span
+                      style='font-size:11.0pt;font-family:宋体;color:black'>项目名称<span lang=EN-US>/</span>标识</span></p>
+                </td>
+                <td width=170 nowrap style='width:127.55pt;border-top:none;border-left:none;
+  border-bottom:solid #305496 1.0pt;border-right:solid #305496 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:20.1pt'>
+                  <p class=MsoNormal align=center style='text-align:center'><span
+                      style='font-size:11.0pt;font-family:宋体;color:black'>{{dialogData.project}}</span></p>
+                </td>
+                <td width=123 nowrap style='width:92.15pt;border-top:none;border-left:none;
+  border-bottom:solid #305496 1.0pt;border-right:solid #305496 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:20.1pt'>
+                  <p class=MsoNormal align=center style='text-align:center'><span
+                      style='font-size:11.0pt;font-family:宋体;color:black'>申请人</span></p>
+                </td>
+                <td width=178 nowrap style='width:133.25pt;border-top:none;border-left:none;
+  border-bottom:solid #305496 1.0pt;border-right:solid #305496 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:20.1pt'>
+                  <p class=MsoNormal align=center style='text-align:center'><span
+                      style='font-size:11.0pt;font-family:宋体;color:black'>{{dialogData.applyername}}</span></p>
+                </td>
+                <td style='height:20.1pt;border:none' width=0 height=27></td>
+              </tr>
+              <tr style='height:20.1pt'>
+                <td width=142 nowrap colspan=2 style='width:106.35pt;border:solid #305496 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt;height:20.1pt'>
+                  <p class=MsoNormal align=center style='text-align:center'><span
+                      style='font-size:11.0pt;font-family:宋体;color:black'>授权软件名称</span></p>
+                </td>
+                <td width=170 nowrap style='width:127.55pt;border-top:none;border-left:none;
+  border-bottom:solid #305496 1.0pt;border-right:solid #305496 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:20.1pt'>
+                  <p class=MsoNormal align=center style='text-align:center'><span
+                      style='font-size:11.0pt;font-family:宋体;color:black'>{{dialogData.softwarename}}</span></p>
+                </td>
+                <td width=123 nowrap style='width:92.15pt;border-top:none;border-left:none;
+  border-bottom:solid #305496 1.0pt;border-right:solid #305496 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:20.1pt'>
+                  <p class=MsoNormal align=center style='text-align:center'><span
+                      style='font-size:11.0pt;font-family:宋体;color:black'>申请时间</span></p>
+                </td>
+                <td width=178 nowrap style='width:133.25pt;border-top:none;border-left:none;
+  border-bottom:solid #305496 1.0pt;border-right:solid #305496 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:20.1pt'>
+                  <p class=MsoNormal align=center style='text-align:center'><span
+                      style='font-size:11.0pt;font-family:宋体;color:black'>{{dialogData.applydate}}</span></p>
+                </td>
+                <td style='height:20.1pt;border:none' width=0 height=27></td>
+              </tr>
+              <tr style='height:20.1pt'>
+                <td width=612 nowrap colspan=5 rowspan=4 valign=top style='width:459.3pt;
+  border:solid #305496 1.0pt;border-top:none;padding:0cm 5.4pt 0cm 5.4pt;
+  height:20.1pt'>
+                  <p class=MsoNormal align=left style='text-align:left'><span style='font-size:
+  11.0pt;font-family:宋体;color:black'>授权申请说明：{{dialogData.applynote}}</span>
+                  </p>
+                </td>
+                <td style='height:20.1pt;border:none' width=0 height=27></td>
+              </tr>
+              <tr style='height:20.1pt'>
+                <td style='height:20.1pt;border:none' width=0 height=27></td>
+              </tr>
+              <tr style='height:20.1pt'>
+                <td style='height:20.1pt;border:none' width=0 height=27></td>
+              </tr>
+              <tr style='height:15.6pt'>
+                <td style='height:15.6pt;border:none' width=0 height=21></td>
+              </tr>
+              <tr style='height:20.1pt'>
+                <td width=56 nowrap style='width:42.3pt;border:solid #305496 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt;height:20.1pt'>
+                  <p class=MsoNormal align=left style='text-align:left'><span style='font-size:
+  11.0pt;font-family:宋体;color:black'>　</span></p>
+                </td>
+                <td width=85 nowrap style='width:64.05pt;border-top:none;border-left:none;
+  border-bottom:solid #305496 1.0pt;border-right:solid #305496 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:20.1pt'>
+                  <p class=MsoNormal align=center style='text-align:center'><span
+                      style='font-size:12.0pt;font-family:宋体;color:black'>分类</span></p>
+                </td>
+                <td width=170 nowrap style='width:127.55pt;border-top:none;border-left:none;
+  border-bottom:solid #305496 1.0pt;border-right:solid #305496 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:20.1pt'>
+                  <p class=MsoNormal align=left style='text-align:left'><span style='font-size:
+  12.0pt;font-family:宋体;color:black'>项目</span></p>
+                </td>
+                <td width=301 nowrap colspan=2 style='width:225.4pt;border-top:none;
+  border-left:none;border-bottom:solid #305496 1.0pt;border-right:solid #305496 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:20.1pt'>
+                  <p class=MsoNormal align=center style='text-align:center'><span
+                      style='font-size:12.0pt;font-family:宋体;color:black'>授权信息</span></p>
+                </td>
+                <td style='height:20.1pt;border:none' width=0 height=27></td>
+              </tr>
+              <tr style='height:20.1pt'>
+                <td width=56 nowrap rowspan=21 style='width:42.3pt;border:solid #305496 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt;layout-flow:vertical-ideographic;
+  height:20.1pt'>
+                  <p class=MsoNormal align=center style='text-align:center'><span
+                      style='font-size:12.0pt;font-family:宋体;color:black'>授权信息</span></p>
+                </td>
+                <td width=85 nowrap rowspan=2 style='width:64.05pt;border-top:none;
+  border-left:none;border-bottom:solid #305496 1.0pt;border-right:solid #305496 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:20.1pt'>
+                  <p class=MsoNormal align=center style='text-align:center'><span
+                      style='font-size:12.0pt;font-family:宋体;color:black'>申请信息</span></p>
+                </td>
+                <td width=170 nowrap style='width:127.55pt;border-top:none;border-left:none;
+  border-bottom:solid #305496 1.0pt;border-right:solid #305496 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:20.1pt'>
+                  <p class=MsoNormal align=left style='text-align:left'><span style='font-size:
+  12.0pt;font-family:宋体;color:black'>授权申请人</span></p>
+                </td>
+                <td width=301 nowrap colspan=2 style='width:225.4pt;border-top:none;
+  border-left:none;border-bottom:solid #305496 1.0pt;border-right:solid #305496 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:20.1pt'>
+                  <p class=MsoNormal align=center style='text-align:center'><span
+                      style='font-size:12.0pt;font-family:宋体;color:black'>{{dialogData.applyername}}</span></p>
+                </td>
+                <td style='height:20.1pt;border:none' width=0 height=27></td>
+              </tr>
+              <tr style='height:20.1pt'>
+                <td width=170 nowrap style='width:127.55pt;border-top:none;border-left:none;
+  border-bottom:solid #305496 1.0pt;border-right:solid #305496 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:20.1pt'>
+                  <p class=MsoNormal align=left style='text-align:left'><span style='font-size:
+  12.0pt;font-family:宋体;color:black'>授权申请人联系方式</span></p>
+                </td>
+                <td width=301 nowrap colspan=2 style='width:225.4pt;border-top:none;
+  border-left:none;border-bottom:solid #305496 1.0pt;border-right:solid #305496 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:20.1pt'>
+                  <p class=MsoNormal align=center style='text-align:center'><span
+                      style='font-size:12.0pt;font-family:宋体;color:black'>{{dialogData.applyertel}}</span></p>
+                </td>
+                <td style='height:20.1pt;border:none' width=0 height=27></td>
+              </tr>
+              <tr style='height:20.1pt'>
+                <td width=85 nowrap rowspan=3 style='width:64.05pt;border-top:none;
+  border-left:none;border-bottom:solid #305496 1.0pt;border-right:solid #305496 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:20.1pt'>
+                  <p class=MsoNormal align=center style='text-align:center'><span
+                      style='font-size:12.0pt;font-family:宋体;color:black'>用户信息</span></p>
+                </td>
+                <td width=170 nowrap style='width:127.55pt;border-top:none;border-left:none;
+  border-bottom:solid #305496 1.0pt;border-right:solid #305496 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:20.1pt'>
+                  <p class=MsoNormal align=left style='text-align:left'><span style='font-size:
+  12.0pt;font-family:宋体;color:black'>授权用户</span></p>
+                </td>
+                <td width=301 nowrap colspan=2 style='width:225.4pt;border-top:none;
+  border-left:none;border-bottom:solid #305496 1.0pt;border-right:solid #305496 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:20.1pt'>
+                  <p class=MsoNormal align=center style='text-align:center'><span
+                      style='font-size:12.0pt;font-family:宋体;color:black'>{{dialogData.grantuser}}</span></p>
+                </td>
+                <td style='height:20.1pt;border:none' width=0 height=27></td>
+              </tr>
+              <tr style='height:20.1pt'>
+                <td width=170 nowrap style='width:127.55pt;border-top:none;border-left:none;
+  border-bottom:solid #305496 1.0pt;border-right:solid #305496 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:20.1pt'>
+                  <p class=MsoNormal align=left style='text-align:left'><span style='font-size:
+  12.0pt;font-family:宋体;color:black'>授权用户联系人</span></p>
+                </td>
+                <td width=301 nowrap colspan=2 style='width:225.4pt;border-top:none;
+  border-left:none;border-bottom:solid #305496 1.0pt;border-right:solid #305496 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:20.1pt'>
+                  <p class=MsoNormal align=center style='text-align:center'><span
+                      style='font-size:12.0pt;font-family:宋体;color:black'>{{dialogData.grantuserperson}}</span></p>
+                </td>
+                <td style='height:20.1pt;border:none' width=0 height=27></td>
+              </tr>
+              <tr style='height:20.1pt'>
+                <td width=170 nowrap style='width:127.55pt;border-top:none;border-left:none;
+  border-bottom:solid #305496 1.0pt;border-right:solid #305496 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:20.1pt'>
+                  <p class=MsoNormal align=left style='text-align:left'><span style='font-size:
+  12.0pt;font-family:宋体;color:black'>授权用户联系方式</span></p>
+                </td>
+                <td width=301 nowrap colspan=2 style='width:225.4pt;border-top:none;
+  border-left:none;border-bottom:solid #305496 1.0pt;border-right:solid #305496 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:20.1pt'>
+                  <p class=MsoNormal align=center style='text-align:center'><span
+                      style='font-size:12.0pt;font-family:宋体;color:black'>{{dialogData.grantuserpersontel}}</span></p>
+                </td>
+                <td style='height:20.1pt;border:none' width=0 height=27></td>
+              </tr>
+              <tr style='height:20.1pt'>
+                <td width=85 nowrap rowspan=2 style='width:64.05pt;border-top:none;
+  border-left:none;border-bottom:solid #305496 1.0pt;border-right:solid #305496 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:20.1pt'>
+                  <p class=MsoNormal align=center style='text-align:center'><span
+                      style='font-size:12.0pt;font-family:宋体;color:black'>时间信息</span></p>
+                </td>
+                <td width=170 nowrap style='width:127.55pt;border-top:none;border-left:none;
+  border-bottom:solid #305496 1.0pt;border-right:solid #305496 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:20.1pt'>
+                  <p class=MsoNormal align=left style='text-align:left'><span style='font-size:
+  12.0pt;font-family:宋体;color:black'>授权起始时间</span></p>
+                </td>
+                <td width=301 nowrap colspan=2 style='width:225.4pt;border-top:none;
+  border-left:none;border-bottom:solid #305496 1.0pt;border-right:solid #305496 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:20.1pt'>
+                  <p class=MsoNormal align=center style='text-align:center'><span
+                      style='font-size:12.0pt;font-family:宋体;color:black'>{{dialogData.grantbegindate}}</span></p>
+                </td>
+                <td style='height:20.1pt;border:none' width=0 height=27></td>
+              </tr>
+              <tr style='height:20.1pt'>
+                <td width=170 nowrap style='width:127.55pt;border-top:none;border-left:none;
+  border-bottom:solid #305496 1.0pt;border-right:solid #305496 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:20.1pt'>
+                  <p class=MsoNormal align=left style='text-align:left'><span style='font-size:
+  12.0pt;font-family:宋体;color:black'>授权到期时间</span></p>
+                </td>
+                <td width=301 nowrap colspan=2 style='width:225.4pt;border-top:none;
+  border-left:none;border-bottom:solid #305496 1.0pt;border-right:solid #305496 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:20.1pt'>
+                  <p class=MsoNormal align=center style='text-align:center'><span
+                      style='font-size:12.0pt;font-family:宋体;color:black'>{{dialogData.grantenddate}}</span></p>
+                </td>
+                <td style='height:20.1pt;border:none' width=0 height=27></td>
+              </tr>
+              <tr style='height:20.1pt'>
+                <td width=85 nowrap rowspan=5 style='width:64.05pt;border-top:none;
+  border-left:none;border-bottom:solid #305496 1.0pt;border-right:solid #305496 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:20.1pt'>
+                  <p class=MsoNormal align=center style='text-align:center'><span
+                      style='font-size:12.0pt;font-family:宋体;color:black'>设备信息</span></p>
+                </td>
+                <td width=170 nowrap style='width:127.55pt;border-top:none;border-left:none;
+  border-bottom:solid #305496 1.0pt;border-right:solid #305496 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:20.1pt'>
+                  <p class=MsoNormal align=left style='text-align:left'><span style='font-size:
+  12.0pt;font-family:宋体;color:black'>授权服务器型号</span></p>
+                </td>
+                <td width=301 nowrap colspan=2 style='width:225.4pt;border-top:none;
+  border-left:none;border-bottom:solid #305496 1.0pt;border-right:solid #305496 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:20.1pt'>
+                  <p class=MsoNormal align=center style='text-align:center'><span
+                      style='font-size:12.0pt;font-family:宋体;color:black'>{{dialogData.servertype}}</span></p>
+                </td>
+                <td style='height:20.1pt;border:none' width=0 height=27></td>
+              </tr>
+              <tr style='height:20.1pt'>
+                <td width=170 nowrap style='width:127.55pt;border-top:none;border-left:none;
+  border-bottom:solid #305496 1.0pt;border-right:solid #305496 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:20.1pt'>
+                  <p class=MsoNormal align=left style='text-align:left'><span style='font-size:
+  12.0pt;font-family:宋体;color:black'>授权服务器<span lang=EN-US>OS</span></span></p>
+                </td>
+                <td width=301 nowrap colspan=2 style='width:225.4pt;border-top:none;
+  border-left:none;border-bottom:solid #305496 1.0pt;border-right:solid #305496 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:20.1pt'>
+                  <p class=MsoNormal align=center style='text-align:center'><span
+                      style='font-size:12.0pt;font-family:宋体;color:black'>{{dialogData.serveros}}</span></p>
+                </td>
+                <td style='height:20.1pt;border:none' width=0 height=27></td>
+              </tr>
+              <tr style='height:20.1pt'>
+                <td width=170 nowrap style='width:127.55pt;border-top:none;border-left:none;
+  border-bottom:solid #305496 1.0pt;border-right:solid #305496 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:20.1pt'>
+                  <p class=MsoNormal align=left style='text-align:left'><span style='font-size:
+  12.0pt;font-family:宋体;color:black'>授权服务器<span lang=EN-US>IP</span></span></p>
+                </td>
+                <td width=301 nowrap colspan=2 style='width:225.4pt;border-top:none;
+  border-left:none;border-bottom:solid #305496 1.0pt;border-right:solid #305496 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:20.1pt'>
+                  <p class=MsoNormal align=center style='text-align:center'><span
+                      style='font-size:12.0pt;font-family:宋体;color:black'>{{dialogData.serverip}}</span></p>
+                </td>
+                <td style='height:20.1pt;border:none' width=0 height=27></td>
+              </tr>
+              <tr style='height:20.1pt'>
+                <td width=170 nowrap style='width:127.55pt;border-top:none;border-left:none;
+  border-bottom:solid #305496 1.0pt;border-right:solid #305496 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:20.1pt'>
+                  <p class=MsoNormal align=left style='text-align:left'><span style='font-size:
+  12.0pt;font-family:宋体;color:black'>部署类型</span></p>
+                </td>
+                <td width=301 nowrap colspan=2 style='width:225.4pt;border-top:none;
+  border-left:none;border-bottom:solid #305496 1.0pt;border-right:solid #305496 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:20.1pt'>
+                  <p class=MsoNormal align=center style='text-align:center'><span
+                      style='font-size:12.0pt;font-family:宋体;color:black'>{{dialogData.deploymenttype}}</span></p>
+                </td>
+                <td style='height:20.1pt;border:none' width=0 height=27></td>
+              </tr>
+              <tr style='height:20.1pt'>
+                <td width=170 nowrap style='width:127.55pt;border-top:none;border-left:none;
+  border-bottom:solid #305496 1.0pt;border-right:solid #305496 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:20.1pt'>
+                  <p class=MsoNormal align=left style='text-align:left'><span style='font-size:
+  12.0pt;font-family:宋体;color:black'>授权类型</span></p>
+                </td>
+                <td width=301 nowrap colspan=2 style='width:225.4pt;border-top:none;
+  border-left:none;border-bottom:solid #305496 1.0pt;border-right:solid #305496 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:20.1pt'>
+                  <p class=MsoNormal align=center style='text-align:center'><span
+                      style='font-size:12.0pt;font-family:宋体;color:black'>{{dialogData.granttype}}</span></p>
+                </td>
+                <td style='height:20.1pt;border:none' width=0 height=27></td>
+              </tr>
+              <tr style='height:20.1pt'>
+                <td width=85 nowrap rowspan=2 style='width:64.05pt;border-top:none;
+  border-left:none;border-bottom:solid #305496 1.0pt;border-right:solid #305496 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:20.1pt'>
+                  <p class=MsoNormal align=center style='text-align:center'><span
+                      style='font-size:12.0pt;font-family:宋体;color:black'>版本信息</span></p>
+                </td>
+                <td width=170 nowrap style='width:127.55pt;border-top:none;border-left:none;
+  border-bottom:solid #305496 1.0pt;border-right:solid #305496 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:20.1pt'>
+                  <p class=MsoNormal align=left style='text-align:left'><span style='font-size:
+  12.0pt;font-family:宋体;color:black'>平台产品版本</span></p>
+                </td>
+                <td width=301 nowrap colspan=2 style='width:225.4pt;border-top:none;
+  border-left:none;border-bottom:solid #305496 1.0pt;border-right:solid #305496 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:20.1pt'>
+                  <p class=MsoNormal align=center style='text-align:center'><span
+                      style='font-size:12.0pt;font-family:宋体;color:black'>{{dialogData.productversion}}　</span></p>
+                </td>
+                <td style='height:20.1pt;border:none' width=0 height=27></td>
+              </tr>
+              <tr style='height:20.1pt'>
+                <td width=170 nowrap style='width:127.55pt;border-top:none;border-left:none;
+  border-bottom:solid #305496 1.0pt;border-right:solid #305496 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:20.1pt'>
+                  <p class=MsoNormal align=left style='text-align:left'><span style='font-size:
+  12.0pt;font-family:宋体;color:black'>授权文件版本</span></p>
+                </td>
+                <td width=301 nowrap colspan=2 style='width:225.4pt;border-top:none;
+  border-left:none;border-bottom:solid #305496 1.0pt;border-right:solid #305496 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:20.1pt'>
+                  <p class=MsoNormal align=center style='text-align:center'><span
+                      style='font-size:12.0pt;font-family:宋体;color:black'>{{dialogData.grantfiletype}}</span></p>
+                </td>
+                <td style='height:20.1pt;border:none' width=0 height=27></td>
+              </tr>
+              <tr style='height:20.1pt'>
+                <td width=85 nowrap rowspan=7 style='width:64.05pt;border-top:none;
+  border-left:none;border-bottom:solid #305496 1.0pt;border-right:solid #305496 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:20.1pt'>
+                  <p class=MsoNormal align=center style='text-align:center'><span
+                      style='font-size:12.0pt;font-family:宋体;color:black'>授权信息</span></p>
+                </td>
+                <td width=170 nowrap style='width:127.55pt;border-top:none;border-left:none;
+  border-bottom:solid #305496 1.0pt;border-right:solid #305496 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:20.1pt'>
+                  <p class=MsoNormal align=left style='text-align:left'><span style='font-size:
+  12.0pt;font-family:宋体;color:black'>微服务<span lang=EN-US>-</span>服务用户量</span></p>
+                </td>
+                <td width=301 nowrap colspan=2 style='width:225.4pt;border-top:none;
+  border-left:none;border-bottom:solid #305496 1.0pt;border-right:solid #305496 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:20.1pt'>
+                  <p class=MsoNormal align=center style='text-align:center'><span
+                      style='font-size:12.0pt;font-family:宋体;color:black'>{{dialogData.usernum}}</span></p>
+                </td>
+                <td style='height:20.1pt;border:none' width=0 height=27></td>
+              </tr>
+              <tr style='height:20.1pt'>
+                <td width=170 nowrap style='width:127.55pt;border-top:none;border-left:none;
+  border-bottom:solid #305496 1.0pt;border-right:solid #305496 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:20.1pt'>
+                  <p class=MsoNormal align=left style='text-align:left'><span style='font-size:
+  12.0pt;font-family:宋体;color:black'>容器云<span lang=EN-US>-</span>控制节点数量</span></p>
+                </td>
+                <td width=301 nowrap colspan=2 style='width:225.4pt;border-top:none;
+  border-left:none;border-bottom:solid #305496 1.0pt;border-right:solid #305496 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:20.1pt'>
+                  <p class=MsoNormal align=center style='text-align:center'><span
+                      style='font-size:12.0pt;font-family:宋体;color:black'>{{dialogData.controlnum}}</span></p>
+                </td>
+                <td style='height:20.1pt;border:none' width=0 height=27></td>
+              </tr>
+              <tr style='height:20.1pt'>
+                <td width=170 nowrap style='width:127.55pt;border-top:none;border-left:none;
+  border-bottom:solid #305496 1.0pt;border-right:solid #305496 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:20.1pt'>
+                  <p class=MsoNormal align=left style='text-align:left'><span style='font-size:
+  12.0pt;font-family:宋体;color:black'>容器云<span lang=EN-US>-</span>计算节点数量</span></p>
+                </td>
+                <td width=301 nowrap colspan=2 style='width:225.4pt;border-top:none;
+  border-left:none;border-bottom:solid #305496 1.0pt;border-right:solid #305496 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:20.1pt'>
+                  <p class=MsoNormal align=center style='text-align:center'><span
+                      style='font-size:12.0pt;font-family:宋体;color:black'>{{dialogData.computenum}}</span></p>
+                </td>
+                <td style='height:20.1pt;border:none' width=0 height=27></td>
+              </tr>
+              <tr style='height:20.1pt'>
+                <td width=170 nowrap style='width:127.55pt;border-top:none;border-left:none;
+  border-bottom:solid #305496 1.0pt;border-right:solid #305496 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:20.1pt'>
+                  <p class=MsoNormal align=left style='text-align:left'><span style='font-size:
+  12.0pt;font-family:宋体;color:black'>应用商店<span lang=EN-US>-</span>实例数</span></p>
+                </td>
+                <td width=301 nowrap colspan=2 style='width:225.4pt;border-top:none;
+  border-left:none;border-bottom:solid #305496 1.0pt;border-right:solid #305496 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:20.1pt'>
+                  <p class=MsoNormal align=center style='text-align:center'><span
+                      style='font-size:12.0pt;font-family:宋体;color:black'>{{dialogData.shopinstancenum}}</span></p>
+                </td>
+                <td style='height:20.1pt;border:none' width=0 height=27></td>
+              </tr>
+              <tr style='height:20.1pt'>
+                <td width=170 nowrap style='width:127.55pt;border-top:none;border-left:none;
+  border-bottom:solid #305496 1.0pt;border-right:solid #305496 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:20.1pt'>
+                  <p class=MsoNormal align=left style='text-align:left'><span style='font-size:
+  12.0pt;font-family:宋体;color:black'>应用商店<span lang=EN-US>-</span>托管应用数</span></p>
+                </td>
+                <td width=301 nowrap colspan=2 style='width:225.4pt;border-top:none;
+  border-left:none;border-bottom:solid #305496 1.0pt;border-right:solid #305496 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:20.1pt'>
+                  <p class=MsoNormal align=center style='text-align:center'><span
+                      style='font-size:12.0pt;font-family:宋体;color:black'>{{dialogData.shopappnum}}</span></p>
+                </td>
+                <td style='height:20.1pt;border:none' width=0 height=27></td>
+              </tr>
+              <tr style='height:20.1pt'>
+                <td width=170 nowrap style='width:127.55pt;border-top:none;border-left:none;
+  border-bottom:solid #305496 1.0pt;border-right:solid #305496 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:20.1pt'>
+                  <p class=MsoNormal align=left style='text-align:left'><span style='font-size:
+  12.0pt;font-family:宋体;color:black'>桌面<span lang=EN-US>-</span>服务端实例数</span></p>
+                </td>
+                <td width=301 nowrap colspan=2 style='width:225.4pt;border-top:none;
+  border-left:none;border-bottom:solid #305496 1.0pt;border-right:solid #305496 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:20.1pt'>
+                  <p class=MsoNormal align=center style='text-align:center'><span
+                      style='font-size:12.0pt;font-family:宋体;color:black'>{{dialogData.desktopinstancenum}}</span></p>
+                </td>
+                <td style='height:20.1pt;border:none' width=0 height=27></td>
+              </tr>
+              <tr style='height:20.1pt'>
+                <td width=170 nowrap style='width:127.55pt;border-top:none;border-left:none;
+  border-bottom:solid #305496 1.0pt;border-right:solid #305496 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:20.1pt'>
+                  <p class=MsoNormal align=left style='text-align:left'><span style='font-size:
+  12.0pt;font-family:宋体;color:black'>桌面<span lang=EN-US>-</span>客户端连接数</span></p>
+                </td>
+                <td width=301 nowrap colspan=2 style='width:225.4pt;border-top:none;
+  border-left:none;border-bottom:solid #305496 1.0pt;border-right:solid #305496 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:20.1pt'>
+                  <p class=MsoNormal align=center style='text-align:center'><span
+                      style='font-size:12.0pt;font-family:宋体;color:black'>{{dialogData.desktopcon}}</span></p>
+                </td>
+                <td style='height:20.1pt;border:none' width=0 height=27></td>
+              </tr>
+            </table>
+
+          </div>
+
+          <p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+        </div>
+      </el-dialog>
     </el-container>
   </template>
+
   <style scoped>
     .fenye {
       text-align: center
@@ -48,81 +529,98 @@
       },
 
       data() {
-        const item = {
-          date: '2019-05-06',
-          name: '托尼老师',
-          stopdate: '2019-05-01' + '~' + '2019-06-31',
-          projectname: '厂商授权系统-测试显示适配情况',
-          address: '中软信息系统工程有限公司',
-          passername:'尚未审核'
-        };
+        // const item = {
+        //   date: '2019-05-06',
+        //   name: '托尼老师',
+        //   stopdate: '2019-05-01' + '~' + '2019-06-31',
+        //   projectname: '厂商授权系统-测试显示适配情况',
+        //   address: '中软信息系统工程有限公司',
+        // };
         return {
           dialogTableVisible: false,
-          tableData: Array(6).fill(item),
-          restaurants: [],
-          state: '',
-          timeout: null
+          tableData: [],
+          dialogData: {
+            project: '',
+            applyername: '',
+            softwarename: '',
+            applydate: '',
+            applynote: '',
+            applyertel: '',
+            grantuser: '',
+            grantuserperson: '',
+            grantuserpersontel: '',
+            grantbegindate: '',
+            grantenddate: '',
+            servertype: '',
+            serveros: '',
+            serverip: '',
+            deploymenttype: '',
+            granttype: '',
+            productversion: '',
+            grantfiletype: '',
+            usernum: '',
+            controlnum: '',
+            computenum: '',
+            shopinstancenum: '',
+            shopappnum: '',
+            desktopinstancenum: '',
+            desktopcon: '',
 
-
+          }
         }
       },
+
       methods: {
-        lookapply() {
-
-        },
         toggleSelection() {
-
           this.$refs.multipleTable.clearSelection();
-
         },
         handleSelectionChange(val) {
           this.multipleSelection = val;
         },
-        passnow() {
-          this.$confirm('授权成功', '提示', {})
-        },
-
         loadAll() {
-          return [{
-              "value": "用户1",
-              "address": "中软公司"
-            },
-            {
-              "value": "用户2",
-              "address": "中软公司"
-            },
-            {
-              "value": "用户3",
-              "address": "中软公司"
-            },
-          ];
+          axios.get('http://192.168.17.73:8088/getUntreatedState?id=3', {
+            "pagenum": "ddfdf"
+          }).then((data) => {
+            this.tableData = data.data.data;
+          })
         },
-        querySearchAsync(queryString, cb) {
-          var restaurants = this.restaurants;
-          var results = queryString ? restaurants.filter(this.createStateFilter(queryString)) : restaurants;
+        changeDialog(params) {
+          console.log(params);
+          this.dialogData.project = params.applyDetail.project;
+          this.dialogData.applyername = params.applyDetail.applyername;
+          this.dialogData.softwarename = params.applyDetail.softwarename;
+          this.dialogData.applydate = params.applyDetail.applydate;
+          this.dialogData.applynote = params.applyDetail.applynote;
+          this.dialogData.applyertel = params.applyDetail.applyertel;
+          this.dialogData.grantuser = params.applyDetail.grantuser;
+          this.dialogData.grantuserperson = params.applyDetail.grantuserperson;
+          this.dialogData.grantuserpersontel = params.applyDetail.grantuserpersontel;
+          this.dialogData.grantbegindate = params.applyDetail.grantbegindate;
+          this.dialogData.grantenddate = params.applyDetail.grantenddate;
+          this.dialogData.servertype = params.applyDetail.servertype;
+          this.dialogData.serveros = params.applyDetail.serveros;
+          this.dialogData.serverip = params.applyDetail.serverip;
+          this.dialogData.deploymenttype = params.applyDetail.deploymenttype;
+          this.dialogData.granttype = params.applyDetail.granttype;
+          this.dialogData.productversion = params.applyDetail.productversion;
+          this.dialogData.grantfiletype = params.applyDetail.grantfiletype;
+          this.dialogData.usernum = params.applyDetail.usernum;
+          this.dialogData.controlnum = params.applyDetail.controlnum;
+          this.dialogData.computenum = params.applyDetail.computenum;
+          this.dialogData.shopinstancenum = params.applyDetail.shopinstancenum;
+          this.dialogData.shopappnum = params.applyDetail.shopappnum;
+          this.dialogData.desktopinstancenum = params.applyDetail.desktopinstancenum;
+          this.dialogData.desktopcon = params.applyDetail.desktopcon;
 
-          clearTimeout(this.timeout);
-          this.timeout = setTimeout(() => {
-            cb(results);
-          }, 3000 * Math.random());
-        },
-        createStateFilter(queryString) {
-          return (state) => {
-            return (state.value.toLowerCase().indexOf(queryString.toLowerCase()) === 0);
-          };
-        },
-        handleSelect(item) {
-          window.console.log(item);
+
+          this.dialogTableVisible = true;
         }
+
       },
       mounted() {
-        this.restaurants = this.loadAll();
-        axios.get('/ssss', {
-          "name": "ddfdf"
-        }).then((data) => {
-          alert(1111);
-          this.tableData = data.tableData;
-        })
+        this.loadAll();
+
       },
+
     };
   </script>

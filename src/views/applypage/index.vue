@@ -29,7 +29,7 @@
   border-bottom:solid #305496 1.0pt;border-right:solid #305496 1.0pt;
   padding:0cm 5.4pt 0cm 5.4pt;height:20.1pt'>
   <p class=MsoNormal align=center style='text-align:center'><span
-  style='font-size:11.0pt;font-family:宋体;color:black'>测试数据</span></p>
+  style='font-size:11.0pt;font-family:宋体;color:black' >测试数据</span></p>
   </td>
   <td width=123 nowrap style='width:92.15pt;border-top:none;border-left:none;
   border-bottom:solid #305496 1.0pt;border-right:solid #305496 1.0pt;
@@ -489,13 +489,15 @@
 <script>
 //这里可以导入其他文件（比如：组件，工具js，第三方插件js，json文件，图片文件等等）
 //例如：import 《组件名称》 from '《组件路径》';
-
+    import axios from 'axios';
 export default {
 //import引入的组件需要注入到对象中才能使用
 components: {},
 data() {
 //这里存放数据
 return {
+              dialogTableVisible: false,
+          tableData: [],
 
 };
 },
@@ -507,6 +509,26 @@ watch: {},
 methods: {
 
 },
+      methods: {
+        toggleSelection() {
+          this.$refs.multipleTable.clearSelection();
+        },
+        handleSelectionChange(val) {
+          this.multipleSelection = val;
+        },
+        loadAll(){
+          axios.get('http://127.0.0.1:8088/getUntreatedState?id=2', {
+            "pagenum": "ddfdf"
+          }).then((data) => {
+            this.tableData = data.data.data;
+          })
+        }
+        
+      },
+      mounted() {
+        this.loadAll();
+
+      },
 //生命周期 - 创建完成（可以访问当前this实例）
 created() {
 

@@ -36,7 +36,6 @@
     </el-form-item>
 
 
-
     <el-divider content-position="center">申请及用户信息</el-divider>
     <br>
     <el-form-item label="授权申请人" prop="applyername">
@@ -62,18 +61,9 @@
     <el-divider content-position="center">设备信息</el-divider>
     <br>
     <el-form-item label="部署类型" prop="deploymenttype">
-      <!-- <el-select v-model="applyForm.deploymenttype" placeholder="物理机">
-        <el-option label="物理机" value="1"></el-option>
-        <el-option label="单控云" value="2"></el-option>
-        <el-option label="三控云" value="3"></el-option>
-      </el-select>  -->
       <el-input v-model="applyForm.deploymenttype" style="width: 100%;" placeholder="物理机/单控云/三控云"></el-input>
     </el-form-item>
     <el-form-item label="授权类型" prop="granttype">
-      <!-- <el-select v-model="applyForm.granttype" placeholder="开发测试授权">
-        <el-option label="开发测试授权" value="1"></el-option>
-        <el-option label="正式运行授权" value="2"></el-option>
-      </el-select> -->
       <el-input v-model="applyForm.granttype" style="width: 100%;" placeholder="开发测试授权/正式运行授权"></el-input>
     </el-form-item>
     <br>
@@ -88,7 +78,6 @@
     </el-form-item>
 
 
-
     <el-divider content-position="center">版本信息</el-divider>
     <br>
     <el-form-item label="平台产品版本" prop="productversion">
@@ -97,7 +86,6 @@
     <el-form-item label="授权文件版本" prop="grantfiletype">
       <el-input v-model="applyForm.grantfiletype" style="width: 100%;" placeholder="授权文件版本"></el-input>
     </el-form-item>
-
 
 
     <el-divider content-position="center">授权信息</el-divider>
@@ -111,7 +99,6 @@
     <el-form-item label="容器云-计算节点数量" prop="computenum">
       <el-input v-model="applyForm.computenum" style="width: 100%;" placeholder="容器云-计算节点数量"></el-input>
     </el-form-item>
-
     <br>
 
 
@@ -139,8 +126,6 @@
     </el-form-item>
 
 
-
-
     <el-form-item label="授权到期时间" required>
       <el-col :span="11">
         <el-form-item prop="grantenddate">
@@ -149,29 +134,8 @@
         </el-form-item>
       </el-col>
     </el-form-item>
-
-
-
-
-
-
-
-
-
-
-
-
     <br>
 
-
-    <!-- <el-form-item label="申请时间" required>
-      <el-col :span="11">
-        <el-form-item prop="applydate">
-          <el-date-picker type="date" placeholder="选择申请时间" v-model="applyForm.applydate" style="width: 200%;">
-          </el-date-picker>
-        </el-form-item>
-      </el-col>
-    </el-form-item> -->
 
 
     <el-form-item label="授权申请说明" prop="applynote">
@@ -185,7 +149,6 @@
         <el-button @click="resetForm('applyForm')">重置</el-button>
       </el-form-item>
     </div>
-
   </el-form>
 
 </template>
@@ -196,7 +159,7 @@
         applyForm: {
           project: '',
           applyername: '',
-          softwwarename: '',
+          softwarename: '',
           applydate: '',
           applynote: '',
           applyertel: '',
@@ -273,8 +236,6 @@
             trigger: 'blur'
           }, ],
 
-
-
           grantuser: [{
             required: true,
             message: '请输入授权用户',
@@ -290,8 +251,6 @@
             message: '请输入授权用户联系方式',
             trigger: 'blur'
           }, ],
-
-
 
 
 

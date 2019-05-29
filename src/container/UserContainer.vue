@@ -13,53 +13,33 @@
                     <el-menu class="el-menu-vertical-demo" @open="handleOpen" :collapse="isCollapse">
                         <el-menu-item>
                             <li style="list-style-type:none;">
-                                <i class="el-icon-s-custom"></i>&nbsp姓&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp名：张三
+                                <i class="el-icon-s-custom"></i>姓名：张三
                             </li>
                         </el-menu-item>
                         <el-menu-item>
                             <li style="list-style-type:none;">
-                                <i class="el-icon-info"></i>&nbsp单&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp位：中软信息
+                                <i class="el-icon-info"></i>单位：中软信息
                             </li>
                         </el-menu-item>
                         <el-menu-item>
                             <li style="list-style-type:none;">
-                                <i class="el-icon-s-data"></i>&nbsp授权个数：8
+                                <i class="el-icon-s-data"></i>授权个数：4
                             </li>
                         </el-menu-item>
                         <el-menu-item>
                             <li style="list-style-type:none;">
-                                <i class="el-icon-warning"></i>&nbsp即将到期：3
+                                <i class="el-icon-warning"></i>即将到期：0
                             </li>
 
                         </el-menu-item>
                         <el-menu-item>
                             <li style="list-style-type:none;">
-                                <i class="el-icon-error"></i>&nbsp注销个数：1
+                                <i class="el-icon-error"></i>注销个数：0
                             </li>
                         </el-menu-item>
 
                     </el-menu>
                 </div>
-
-                <!-- <div style="margin-top: 10%;">                   
-                    <ul>
-                        <li style="list-style-type:none;">
-                            <i class="el-icon-user"></i>&nbsp姓&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp名：张三
-                        </li>
-                        <li style="list-style-type:none;">
-                            <i class="el-icon-office-building"></i>&nbsp单&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp位：中软信息
-                        </li>
-                        <li style="list-style-type:none;">
-                            <i class="el-icon-key"></i>&nbsp授权个数：8
-                        </li>
-                        <li style="list-style-type:none;">
-                            <i class="el-icon-close"></i>&nbsp注销个数：1
-                        </li>
-                        <li style="list-style-type:none;">
-                            <i class="el-icon-remove-outline"></i>&nbsp即将到期：3
-                        </li>
-                    </ul>
-                </div> -->
 
             </el-aside>
 
@@ -104,12 +84,12 @@
                             <el-menu-item @click='alertFunc(2)' index="2"><i class="el-icon-s-order"></i><a>新建申请</a>
                             </el-menu-item>
                             <el-menu-item @click='alertFunc(8)' index="8"><i class="el-icon-s-order"></i><a>新建申请</a>
-                            </el-menu-item>                            
+                            </el-menu-item>
                             <el-menu-item @click='alertFunc(3)' index="3"><i class="el-icon-s-claim"></i>已授权
                             </el-menu-item>
-                            <el-menu-item @click='alertFunc(4)' index="4"><i class="el-icon-warning"></i>授权到期
+                            <el-menu-item @click='alertFunc(4)' index="4"><i class="el-icon-warning"></i>授权即将过期
                             </el-menu-item>
-                            <el-menu-item @click='alertFunc(5)' index="5"><i class="el-icon-s-release"></i>异常注销
+                            <el-menu-item @click='alertFunc(5)' index="5"><i class="el-icon-s-release"></i>授权异常
                             </el-menu-item>
                             <el-menu-item @click='alertFunc(6)' index="6" disabled><i class="el-icon-s-home"></i>个人中心
                             </el-menu-item>
@@ -147,7 +127,7 @@
         components: {
             'Untreated': Untreated,
             'NewApply': NewApply,
-            'NewApply1': NewApply1,           
+            'NewApply1': NewApply1,
             'Audited': Audited,
             'Overdue': Overdue,
             'Logout': Logout,
