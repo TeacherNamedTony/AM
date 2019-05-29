@@ -199,6 +199,6 @@
         background-color: #fff;
     }
     .app-side-expanded{
-        width: 12% !important;
+        /* width: 12% !important; */
     }
 </style>
