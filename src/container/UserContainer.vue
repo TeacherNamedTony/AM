@@ -72,8 +72,8 @@
                             active-text-color="#ffd04b" >
                             <el-menu-item @click='alertFunc(1)' index="1"><i class="el-icon-s-promotion"></i>待授权
                             </el-menu-item>
-                            <el-menu-item @click='alertFunc(2)' index="2"><i class="el-icon-s-order"></i><a>新建申请</a>
-                            </el-menu-item>
+                            <!-- <el-menu-item @click='alertFunc(2)' index="2"><i class="el-icon-s-order"></i><a>新建申请</a>
+                            </el-menu-item> -->
                             <el-menu-item @click='alertFunc(8)' index="8"><i class="el-icon-s-order"></i><a>新建申请</a>
                             </el-menu-item>
                             <el-menu-item @click='alertFunc(3)' index="3"><i class="el-icon-s-claim"></i>已授权

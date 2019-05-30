@@ -32,7 +32,6 @@
     <el-pagination class="fenye" background layout="prev, pager, next" :total="100">
     </el-pagination>
   </el-container>
-  </el-container>
 </template>
 
 
@@ -47,13 +46,11 @@
 
       }
     },
-    methods: {
-      repass() {
+
+        methods: {
+                repass() {
         this.$confirm('申请授权三个月', '', {})
       },
-
-    },
-        methods: {
       passnow() {
         this.$confirm('确认下载授权文件。此文件请妥善保管', '提示', {})
       },
@@ -80,6 +77,7 @@
 
 
 <style scoped>
+
   .fenye {
     text-align: center
   }

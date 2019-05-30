@@ -9,7 +9,7 @@
             </el-form-item>
             <el-form-item prop="password">
                 <el-input type="password" v-model="ruleForm2.password" auto-complete="off" placeholder="密码"><template
-                        slot="prepend"><span class="fa fa-lock fa-lg" style="width: 13px"></span></template></el-input>
+                        slot="prepend"><span class="fa fa-lock fa-lg" style="width: 13px" ></span></template></el-input>
             </el-form-item>
             <el-checkbox v-model="checked" class="rememberme">记住密码</el-checkbox>
             <el-form-item style="width:100%;">
@@ -17,7 +17,6 @@
             </el-form-item>
         </el-form>
     </div>
-
 </template>
 
 <script>
@@ -81,12 +80,23 @@
 </script>
 
 <style scoped>
+/* .login {
+  width: 100%;
+  padding-bottom: 62.5%;
+  height: 0;
+  background: url('../../images/login.jpg') no-repeat center center fixed;
+  background-size: cover;
+  background-color: #0C1424;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+} */
+
     .login-container {
         width: 100%;
         height: 100%;
         background: url("../assets/bg.jpg");
     }
-
     .login-page {
         width: 350px;
         float: right;

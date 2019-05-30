@@ -16,14 +16,12 @@
           <el-table-column prop="applyDetail.grantenddate" label="结束时间" width="150">
           </el-table-column>
           <el-table-column prop="" label="审核人" width="">
-            <el-tag type="info">您的申请尚未通过审核，请您耐心等待</el-tag>
-
+            <el-tag type="info">尚未通过审核，请您耐心等待</el-tag>
           </el-table-column>
           <el-table-column prop="look" label=" " width="180">
             <template slot-scope="scope">
               <div>
                 <el-button type="primary" @click="changeDialog(scope.row)">查看申请</el-button>
-
               </div>
             </template>
           </el-table-column>
@@ -31,11 +29,12 @@
       </el-main>
       <el-pagination class="fenye" background layout="prev, pager, next" :total="1">
       </el-pagination>
+
+      <!-- dialog开始，授权申请单弹窗 -->
       <el-dialog title="#" :visible.sync="dialogTableVisible">
         <div class=WordSection1 style='layout-grid:15.6pt'>
 
           <div align=center>
-
             <table class=MsoNormalTable border=0 cellspacing=0 cellpadding=0 style='border-collapse:collapse'>
               <tr style='height:31.2pt'>
                 <td width=612 colspan=5 rowspan=2 style='width:459.3pt;border:none;
@@ -123,7 +122,7 @@
                 <td width=56 nowrap style='width:42.3pt;border:solid #305496 1.0pt;
   border-top:none;padding:0cm 5.4pt 0cm 5.4pt;height:20.1pt'>
                   <p class=MsoNormal align=left style='text-align:left'><span style='font-size:
-  11.0pt;font-family:宋体;color:black'>　</span></p>
+  11.0pt;font-family:宋体;color:black'></span></p>
                 </td>
                 <td width=85 nowrap style='width:64.05pt;border-top:none;border-left:none;
   border-bottom:solid #305496 1.0pt;border-right:solid #305496 1.0pt;
@@ -372,7 +371,7 @@
   border-left:none;border-bottom:solid #305496 1.0pt;border-right:solid #305496 1.0pt;
   padding:0cm 5.4pt 0cm 5.4pt;height:20.1pt'>
                   <p class=MsoNormal align=center style='text-align:center'><span
-                      style='font-size:12.0pt;font-family:宋体;color:black'>{{dialogData.productversion}}　</span></p>
+                      style='font-size:12.0pt;font-family:宋体;color:black'>{{dialogData.productversion}}</span></p>
                 </td>
                 <td style='height:20.1pt;border:none' width=0 height=27></td>
               </tr>
@@ -503,29 +502,22 @@
                 <td style='height:20.1pt;border:none' width=0 height=27></td>
               </tr>
             </table>
-
           </div>
-
           <p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
-
         </div>
+
       </el-dialog>
+
     </el-container>
   </template>
 
-  <style scoped>
-    .fenye {
-      text-align: center
-    }
-  </style>
+
 
   <script>
     import axios from 'axios';
-    import ApplyPage from '@/views/applypage/index.vue'
 
     export default {
       components: {
-        'ApplyPage': ApplyPage,
       },
 
       data() {
@@ -578,7 +570,7 @@
           })
         },
         changeDialog(params) {
-          console.log(params);
+          window.console.log(params);
           this.dialogData.project = params.applyDetail.project;
           this.dialogData.applyername = params.applyDetail.applyername;
           this.dialogData.softwarename = params.applyDetail.softwarename;
@@ -617,3 +609,107 @@
 
     };
   </script>
+
+  <style scoped>
+    /* Font Definitions */
+    @font-face {
+      font-family: 宋体;
+      panose-1: 2 1 6 0 3 1 1 1 1 1;
+    }
+
+    @font-face {
+      font-family: 黑体;
+      panose-1: 2 1 6 0 3 1 1 1 1 1;
+    }
+
+    @font-face {
+      font-family: "Cambria Math";
+      panose-1: 0 0 0 0 0 0 0 0 0 0;
+    }
+
+    @font-face {
+      font-family: 等线;
+      panose-1: 2 1 6 0 3 1 1 1 1 1;
+    }
+
+    @font-face {
+      font-family: "\@宋体";
+      panose-1: 2 1 6 0 3 1 1 1 1 1;
+    }
+
+    @font-face {
+      font-family: "\@黑体";
+      panose-1: 2 1 6 0 3 1 1 1 1 1;
+    }
+
+    @font-face {
+      font-family: "\@等线";
+      panose-1: 2 1 6 0 3 1 1 1 1 1;
+    }
+
+    /* Style Definitions */
+    p.MsoNormal,
+    li.MsoNormal,
+    div.MsoNormal {
+      margin: 0cm;
+      margin-bottom: .0001pt;
+      text-align: justify;
+      text-justify: inter-ideograph;
+      font-size: 10.5pt;
+      font-family: 等线;
+    }
+
+    p.MsoHeader,
+    li.MsoHeader,
+    div.MsoHeader {
+      mso-style-link: "页眉 字符";
+      margin: 0cm;
+      margin-bottom: .0001pt;
+      text-align: center;
+      layout-grid-mode: char;
+      border: none;
+      padding: 0cm;
+      font-size: 9.0pt;
+      font-family: 等线;
+    }
+
+    p.MsoFooter,
+    li.MsoFooter,
+    div.MsoFooter {
+      mso-style-link: "页脚 字符";
+      margin: 0cm;
+      margin-bottom: .0001pt;
+      layout-grid-mode: char;
+      font-size: 9.0pt;
+      font-family: 等线;
+    }
+
+    span.a {
+      mso-style-name: "页眉 字符";
+      mso-style-link: 页眉;
+    }
+
+    span.a0 {
+      mso-style-name: "页脚 字符";
+      mso-style-link: 页脚;
+    }
+
+    .MsoChpDefault {
+      font-family: 等线;
+    }
+
+    /* Page Definitions */
+    @page WordSection1 {
+      size: 595.3pt 841.9pt;
+      margin: 72.0pt 90.0pt 72.0pt 90.0pt;
+      layout-grid: 15.6pt;
+    }
+
+    div.WordSection1 {
+      page: WordSection1;
+    }
+
+    .fenye {
+      text-align: center
+    }
+  </style>

@@ -596,6 +596,100 @@
   };
 </script>
 <style scoped>
+    /* Font Definitions */
+    @font-face {
+      font-family: 宋体;
+      panose-1: 2 1 6 0 3 1 1 1 1 1;
+    }
+
+    @font-face {
+      font-family: 黑体;
+      panose-1: 2 1 6 0 3 1 1 1 1 1;
+    }
+
+    @font-face {
+      font-family: "Cambria Math";
+      panose-1: 0 0 0 0 0 0 0 0 0 0;
+    }
+
+    @font-face {
+      font-family: 等线;
+      panose-1: 2 1 6 0 3 1 1 1 1 1;
+    }
+
+    @font-face {
+      font-family: "\@宋体";
+      panose-1: 2 1 6 0 3 1 1 1 1 1;
+    }
+
+    @font-face {
+      font-family: "\@黑体";
+      panose-1: 2 1 6 0 3 1 1 1 1 1;
+    }
+
+    @font-face {
+      font-family: "\@等线";
+      panose-1: 2 1 6 0 3 1 1 1 1 1;
+    }
+
+    /* Style Definitions */
+    p.MsoNormal,
+    li.MsoNormal,
+    div.MsoNormal {
+      margin: 0cm;
+      margin-bottom: .0001pt;
+      text-align: justify;
+      text-justify: inter-ideograph;
+      font-size: 10.5pt;
+      font-family: 等线;
+    }
+
+    p.MsoHeader,
+    li.MsoHeader,
+    div.MsoHeader {
+      mso-style-link: "页眉 字符";
+      margin: 0cm;
+      margin-bottom: .0001pt;
+      text-align: center;
+      layout-grid-mode: char;
+      border: none;
+      padding: 0cm;
+      font-size: 9.0pt;
+      font-family: 等线;
+    }
+
+    p.MsoFooter,
+    li.MsoFooter,
+    div.MsoFooter {
+      mso-style-link: "页脚 字符";
+      margin: 0cm;
+      margin-bottom: .0001pt;
+      layout-grid-mode: char;
+      font-size: 9.0pt;
+      font-family: 等线;
+    }
+
+    span.a {
+      mso-style-name: "页眉 字符";
+      mso-style-link: 页眉;
+    }
+
+    span.a0 {
+      mso-style-name: "页脚 字符";
+      mso-style-link: 页脚;
+    }
+
+    .MsoChpDefault {
+      font-family: 等线;
+    }
+
+    /* Page Definitions */
+    @page WordSection1 {
+      size: 595.3pt 841.9pt;
+      margin: 72.0pt 90.0pt 72.0pt 90.0pt;
+      layout-grid: 15.6pt;
+    }
+
   .fenye {
     text-align: center
   }
