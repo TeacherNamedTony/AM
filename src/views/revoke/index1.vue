@@ -26,7 +26,7 @@
           </template>
         </el-table-column>
         <el-table-column prop="address" label=" " width="200">
-          <el-button type="warning" round @click="passnow">重新申请三个月</el-button>
+          <el-button type="danger" round @click="passnow">请求恢复</el-button>
         </el-table-column>
       </el-table>
     </el-main>
@@ -554,7 +554,7 @@
         this.$confirm('确认下载授权文件。此文件请妥善保管', '提示', {})
       },
       loadAll() {
-        axios.get('http://192.168.17.73:8088/getAllEndState', {
+        axios.get('http://192.168.17.73:8088/getRevoke', {
           "pagenum": "ddfdf"
         }).then((data) => {
           this.tableData = data.data.data;

@@ -8,7 +8,7 @@
         </el-table-column>
         <el-table-column prop="applyDetail.applyername" label="申请人员" width="90">
         </el-table-column>
-        <el-table-column prop="applyDetail.project" label="项目名称" width="110">
+        <el-table-column prop="applyDetail.project" label="项目名称" width="90">
         </el-table-column>
         <el-table-column prop="applyDetail.grantbegindate" label="开始时间" width="95">
         </el-table-column>
@@ -26,7 +26,7 @@
           </template>
         </el-table-column>
         <el-table-column prop="address" label=" " width="200">
-          <el-button type="warning" round @click="passnow">重新申请三个月</el-button>
+          <el-button type="success" round @click="reApply">重新申请三个月</el-button>
         </el-table-column>
       </el-table>
     </el-main>
@@ -550,11 +550,11 @@
       }
     },
     methods: {
-      passnow() {
-        this.$confirm('确认下载授权文件。此文件请妥善保管', '提示', {})
-      },
+      // passnow() {
+      //   this.$confirm('确认下载授权文件。此文件请妥善保管', '提示', {})
+      // },
       loadAll() {
-        axios.get('http://192.168.17.73:8088/getAllEndState', {
+        axios.get('http://192.168.17.73:8088/', {
           "pagenum": "ddfdf"
         }).then((data) => {
           this.tableData = data.data.data;

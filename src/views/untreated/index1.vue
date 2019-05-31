@@ -13,16 +13,16 @@
           </el-table-column>
           <el-table-column prop="applyDetail.grantbegindate" label="开始时间" width="120">
           </el-table-column>
-          <el-table-column prop="applyDetail.grantenddate" label="结束时间" width="150">
+          <el-table-column prop="applyDetail.grantenddate" label="结束时间" width="120">
           </el-table-column>
           <el-table-column prop="" label="审核人" width="">
             <el-tag type="info">尚未通过审核，请您耐心等待</el-tag>
           </el-table-column>
           <el-table-column prop="look" label=" " width="180">
             <template slot-scope="scope">
-              <div>
-                <el-button type="primary" @click="changeDialog(scope.row)">查看申请</el-button>
-              </div>
+
+              <el-button type="primary" round @click="changeDialog(scope.row)">查看申请</el-button>
+
             </template>
           </el-table-column>
         </el-table>
@@ -512,14 +512,11 @@
   </template>
 
 
-
   <script>
     import axios from 'axios';
 
     export default {
-      components: {
-      },
-
+      // components: {},
       data() {
         return {
           dialogTableVisible: false,
@@ -556,12 +553,7 @@
       },
 
       methods: {
-        toggleSelection() {
-          this.$refs.multipleTable.clearSelection();
-        },
-        handleSelectionChange(val) {
-          this.multipleSelection = val;
-        },
+
         loadAll() {
           axios.get('http://192.168.17.73:8088/getUntreatedState?id=3', {
             "pagenum": "ddfdf"
@@ -569,6 +561,7 @@
             this.tableData = data.data.data;
           })
         },
+
         changeDialog(params) {
           window.console.log(params);
           this.dialogData.project = params.applyDetail.project;
@@ -596,17 +589,12 @@
           this.dialogData.shopappnum = params.applyDetail.shopappnum;
           this.dialogData.desktopinstancenum = params.applyDetail.desktopinstancenum;
           this.dialogData.desktopcon = params.applyDetail.desktopcon;
-
-
           this.dialogTableVisible = true;
         }
-
       },
       mounted() {
         this.loadAll();
-
       },
-
     };
   </script>
 

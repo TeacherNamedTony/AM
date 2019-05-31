@@ -28,12 +28,11 @@
           </el-table-column>
           <el-table-column prop="look" label=" " width="180">
             <template slot-scope="scope">
-              <el-button type="primary" round @click="changeDialog(scope.row)">查看申请</el-button>
+              <el-button type="danger" round @click="changeDialog(scope.row)">查看申请</el-button>
             </template>
-
           </el-table-column>
           <el-table-column prop="address" label=" " width="180">
-            <el-button slot-scope="scope" type="danger" round @click="nopass(scope.row.sid)">撤销授权</el-button>
+            <!-- <el-button type="success" round @click="passnow">备用按钮</el-button> -->
           </el-table-column>
         </el-table>
       </el-main>
@@ -514,7 +513,10 @@
           </div>
           <p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
         </div>
+
       </el-dialog>
+
+
     </el-container>
   </template>
 
@@ -558,17 +560,10 @@
       },
       methods: {
         loadAll() {
-          axios.get('http://192.168.17.73:8088/getAllPassState', {
+          axios.get('http://192.168.17.73:8088/getRevoke', {
             "pagenum": "123"
           }).then((data) => {
             this.tableData = data.data.data;
-          })
-        },
-        nopass(sid) {
-          // alert(sid)
-          axios.get('http://192.168.17.73:8088/unratify?sid=' + sid).then(() => {
-            // alert(sid)
-            location.reload()
           })
         },
         changeDialog(params) {
@@ -608,7 +603,9 @@
         // handleSelectionChange(val) {
         //   this.multipleSelection = val;
         // },
-
+        passnow() {
+          this.$confirm('授权成功', '提示', {})
+        },
 
       },
       mounted() {

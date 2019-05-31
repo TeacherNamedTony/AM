@@ -9,140 +9,130 @@
     <br>
     <div style="text-align: center;">
       <span style='font-size:20.0pt;font-family:黑体;color:black'><i class="el-icon-document"></i>授权审批单</span>
-      <el-divider content-position="center"></el-divider>
     </div>
     <br>
 
 
+    <el-divider content-position="center">基本信息</el-divider>
+    <br>
     <el-form-item label="项目名称/标识" prop="project">
-      <el-input v-model="applyForm.project" style="width: 90%;border-color: #394956;}" placeholder="项目名称/标识">
+      <el-input v-model="applyForm.project" style="width: 100%;border-color: #394956;}" placeholder="项目名称/标识">
       </el-input>
     </el-form-item>
     <el-form-item label="申请人" prop="applyername">
-      <el-input v-model="applyForm.applyername" style="width: 90%;" placeholder="申请人"></el-input>
+      <el-input v-model="applyForm.applyername" style="width: 100%;" placeholder="申请人"></el-input>
+    </el-form-item>
+    <br>
+    <el-form-item label="授权软件名称" prop="softwwarename">
+      <el-input v-model="applyForm.softwarename" style="width: 100%;" placeholder="授权软件名称"></el-input>
     </el-form-item>
     <el-form-item label="申请时间" required>
       <el-col :span="11">
         <el-form-item prop="applydate">
-          <el-date-picker type="date" placeholder="选择申请时间" v-model="applyForm.applydate" style="width: 180%;">
+          <el-date-picker type="date" format="yyyy 年 MM 月 dd 日" value-format="yyyy-MM-dd" placeholder="选择申请时间"
+            v-model="applyForm.applydate" style="width: 200%;">
           </el-date-picker>
         </el-form-item>
       </el-col>
     </el-form-item>
+
+
+    <el-divider content-position="center">申请及用户信息</el-divider>
     <br>
-
-
-
-    <el-form-item label="授权软件名称" prop="softwwarename">
-      <el-input v-model="applyForm.softwwarename" style="width: 90%;" placeholder="授权软件名称"></el-input>
-    </el-form-item>
     <el-form-item label="授权申请人" prop="applyername">
-      <el-input v-model="applyForm.applyername" style="width: 90%;" placeholder="授权申请人"></el-input>
+      <el-input v-model="applyForm.applyername" style="width: 100%;" placeholder="授权申请人"></el-input>
     </el-form-item>
     <el-form-item label="授权申请人联系方式" prop="applyertel">
-      <el-input v-model="applyForm.applyertel" style="width: 90%;" placeholder="授权申请人联系方式"></el-input>
+      <el-input v-model="applyForm.applyertel" style="width: 100%;" placeholder="授权申请人联系方式"></el-input>
     </el-form-item>
     <br>
-
-
 
     <el-form-item label="授权用户" prop="grantuser">
-      <el-input v-model="applyForm.grantuser" style="width: 90%;" placeholder="授权用户"></el-input>
+      <el-input v-model="applyForm.grantuser" style="width: 100%;" placeholder="授权用户"></el-input>
     </el-form-item>
     <el-form-item label="授权用户联系人" prop="grantuserperson">
-      <el-input v-model="applyForm.grantuserperson" style="width: 90%;" placeholder="授权用户联系人"></el-input>
+      <el-input v-model="applyForm.grantuserperson" style="width: 100%;" placeholder="授权用户联系人"></el-input>
     </el-form-item>
     <el-form-item label="授权用户联系方式" prop="grantuserpersontel">
-      <el-input v-model="applyForm.grantuserpersontel" style="width: 90%;" placeholder="授权用户联系方式"></el-input>
+      <el-input v-model="applyForm.grantuserpersontel" style="width: 100%;" placeholder="授权用户联系方式"></el-input>
+    </el-form-item>
+
+
+
+    <el-divider content-position="center">设备信息</el-divider>
+    <br>
+    <el-form-item label="部署类型" prop="deploymenttype">
+      <el-input v-model="applyForm.deploymenttype" style="width: 100%;" placeholder="物理机/单控云/三控云"></el-input>
+    </el-form-item>
+    <el-form-item label="授权类型" prop="granttype">
+      <el-input v-model="applyForm.granttype" style="width: 100%;" placeholder="开发测试授权/正式运行授权"></el-input>
     </el-form-item>
     <br>
-
-
-
     <el-form-item label="授权服务器型号" prop="servertype">
-      <el-input v-model="applyForm.servertype" style="width: 90%;" placeholder="授权服务器型号"></el-input>
+      <el-input v-model="applyForm.servertype" style="width: 100%;" placeholder="授权服务器型号"></el-input>
     </el-form-item>
     <el-form-item label="授权服务器OS" prop="serveros">
-      <el-input v-model="applyForm.serveros" style="width: 90%;" placeholder="授权服务器OS"></el-input>
+      <el-input v-model="applyForm.serveros" style="width: 100%;" placeholder="授权服务器OS"></el-input>
     </el-form-item>
     <el-form-item label="授权服务器IP" prop="serverip">
-      <el-input v-model="applyForm.serverip" style="width: 90%;" placeholder="授权服务器IP"></el-input>
+      <el-input v-model="applyForm.serverip" style="width: 100%;" placeholder="授权服务器IP"></el-input>
     </el-form-item>
+
+
+    <el-divider content-position="center">版本信息</el-divider>
     <br>
+    <el-form-item label="平台产品版本" prop="productversion">
+      <el-input v-model="applyForm.productversion" style="width: 100%;" placeholder="平台产品版本"></el-input>
+    </el-form-item>
+    <el-form-item label="授权文件版本" prop="grantfiletype">
+      <el-input v-model="applyForm.grantfiletype" style="width: 100%;" placeholder="授权文件版本"></el-input>
+    </el-form-item>
 
 
-
+    <el-divider content-position="center">授权信息</el-divider>
+    <br>
     <el-form-item label="微服务-服务用户量" prop="usernum">
-      <el-input v-model="applyForm.usernum" style="width: 90%;" placeholder="微服务-服务用户量"></el-input>
+      <el-input v-model="applyForm.usernum" style="width: 100%;" placeholder="微服务-服务用户量"></el-input>
     </el-form-item>
     <el-form-item label="容器云-控制节点数量" prop="controlnum">
-      <el-input v-model="applyForm.controlnum" style="width: 90%;" placeholder="容器云-控制节点数量"></el-input>
+      <el-input v-model="applyForm.controlnum" style="width: 100%;" placeholder="容器云-控制节点数量"></el-input>
     </el-form-item>
     <el-form-item label="容器云-计算节点数量" prop="computenum">
-      <el-input v-model="applyForm.computenum" style="width: 90%;" placeholder="容器云-计算节点数量"></el-input>
+      <el-input v-model="applyForm.computenum" style="width: 100%;" placeholder="容器云-计算节点数量"></el-input>
     </el-form-item>
     <br>
 
 
-
-    <el-form-item label="授权文件版本" prop="grantfiletype">
-      <el-input v-model="applyForm.grantfiletype" style="width: 90%;" placeholder="授权文件版本"></el-input>
-    </el-form-item>
-    <el-form-item label="平台产品版本" prop="productversion">
-      <el-input v-model="applyForm.productversion" style="width: 90%;" placeholder="平台产品版本"></el-input>
-    </el-form-item>
-    <el-form-item label="部署类型" prop="deploymenttype">
-      <!-- <el-select v-model="applyForm.deploymenttype" placeholder="物理机">
-        <el-option label="物理机" value="1"></el-option>
-        <el-option label="单控云" value="2"></el-option>
-        <el-option label="三控云" value="3"></el-option>
-      </el-select>  -->
-      <el-input v-model="applyForm.deploymenttype" style="width: 90%;" placeholder="物理机/单控云/三控云"></el-input>
-    </el-form-item>
-    <br>
-
-
-
-    <el-form-item label="应用商店-托管应用数" prop="shopappnum">
-      <el-input v-model="applyForm.shopappnum" style="width: 90%;" placeholder="应用商店-托管应用数"></el-input>
-    </el-form-item>
     <el-form-item label="应用商店-实例数" prop="shopinstancenum">
-      <el-input v-model="applyForm.shopinstancenum" style="width: 90%;" placeholder="应用商店-实例数"></el-input>
+      <el-input v-model="applyForm.shopinstancenum" style="width: 100%;" placeholder="应用商店-实例数"></el-input>
     </el-form-item>
-
-    <el-form-item label="授权类型" prop="granttype">
-      <!-- <el-select v-model="applyForm.granttype" placeholder="开发测试授权">
-        <el-option label="开发测试授权" value="1"></el-option>
-        <el-option label="正式运行授权" value="2"></el-option>
-      </el-select> -->
-      <el-input v-model="applyForm.granttype" style="width: 90%;" placeholder="开发测试授权/正式运行授权"></el-input>
-    </el-form-item>
-    <br>
-
-
-
-    <el-form-item label="桌面-服务端实例数" prop="desktopinstancenum">
-      <el-input v-model="applyForm.desktopinstancenum" style="width: 90%;" placeholder="桌面-服务端实例数"></el-input>
-    </el-form-item>
-    <el-form-item label="桌面-客户端连接数" prop="desktopcon">
-      <el-input v-model="applyForm.desktopcon" style="width: 90%;" placeholder="桌面-客户端连接数"></el-input>
+    <el-form-item label="应用商店-托管应用数" prop="shopappnum">
+      <el-input v-model="applyForm.shopappnum" style="width: 100%;" placeholder="应用商店-托管应用数"></el-input>
     </el-form-item>
     <el-form-item label="授权起始时间" required>
       <el-col :span="11">
         <el-form-item prop="grantbegindate">
-          <el-date-picker type="date" placeholder="选择授权起始时间" v-model="applyForm.grantbegindate" style="width: 180%;">
+          <el-date-picker type="date" format="yyyy 年 MM 月 dd 日" value-format="yyyy-MM-dd" placeholder="选择授权起始时间"
+            v-model="applyForm.grantbegindate" style="width: 200%;">
           </el-date-picker>
         </el-form-item>
       </el-col>
     </el-form-item>
     <br>
 
+    <el-form-item label="桌面-服务端实例数" prop="desktopinstancenum">
+      <el-input v-model="applyForm.desktopinstancenum" style="width: 100%;" placeholder="桌面-服务端实例数"></el-input>
+    </el-form-item>
+    <el-form-item label="桌面-客户端连接数" prop="desktopcon">
+      <el-input v-model="applyForm.desktopcon" style="width: 100%;" placeholder="桌面-客户端连接数"></el-input>
+    </el-form-item>
 
 
     <el-form-item label="授权到期时间" required>
       <el-col :span="11">
         <el-form-item prop="grantenddate">
-          <el-date-picker type="date" placeholder="选择授权起始时间" v-model="applyForm.grantenddate" style="width: 180%;">
+          <el-date-picker type="date" format="yyyy 年 MM 月 dd 日" value-format="yyyy-MM-dd" @change="getTime"
+            placeholder="选择授权到期时间" v-model="applyForm.grantenddate" style="width: 200%;">
           </el-date-picker>
         </el-form-item>
       </el-col>
@@ -162,22 +152,19 @@
         <el-button @click="resetForm('applyForm')">重置</el-button>
       </el-form-item>
     </div>
-
-
-    
-
   </el-form>
 
 </template>
 <script>
+  import axios from 'axios';
   export default {
     data() {
       return {
         applyForm: {
           project: '',
           applyername: '',
-          softwwarename: '',
-          applydate: '',
+          softwarename: '',
+          applydate: new Date(),
           applynote: '',
           applyertel: '',
           grantuser: '',
@@ -199,7 +186,6 @@
           shopappnum: '',
           desktopinstancenum: '',
           desktopcon: '',
-
         },
         rules: {
 
@@ -253,8 +239,6 @@
             trigger: 'blur'
           }, ],
 
-
-
           grantuser: [{
             required: true,
             message: '请输入授权用户',
@@ -270,8 +254,6 @@
             message: '请输入授权用户联系方式',
             trigger: 'blur'
           }, ],
-
-
 
 
 
@@ -356,13 +338,13 @@
 
           ],
           grantbegindate: [{
-            type: 'date',
+            type: 'string',
             required: true,
             message: '选择授权起始时间',
             trigger: 'change'
           }],
           grantenddate: [{
-            type: 'date',
+            type: 'string',
             required: true,
             message: '选择授权起始时间',
             trigger: 'change'
@@ -376,13 +358,15 @@
               trigger: 'blur'
             },
             {
-              min: 15,
+              min: 1,
               max: 100,
               message: '长度在 15 到 100 个字符',
               trigger: 'blur'
             }
           ],
         }
+
+
       };
     },
     methods: {
@@ -391,20 +375,43 @@
           path: '/user'
         });
       },
+      getTime(val) {
+        const d = new Date(val);
+        this.applyForm.applydate = d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate();
+        this.applyForm.grantbegindate = d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate();
+        this.applyForm.grantenddate = d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate();
+
+      },
+
       submitForm(formName) {
         this.$refs[formName].validate((valid) => {
+          alert(valid)
           if (valid) {
-            this.$router.push({
-              path: '/user'
+            alert('校验成功准备提交')
+            let params = this.applyForm;
+            axios.get('http://192.168.17.73:8088/addNewApply', {
+              params
+            }).then(() => {
+              alert('已提交!');
             });
-            alert('submit!');
-
           } else {
-            window.console.log('error submit!!');
+            window.console.log('错误提交');
             return false;
           }
         });
       },
+
+      // submitForm() {
+      //   let params = this.applyForm;
+      //   axios.get('http://192.168.17.73:8088/addNewApply', {
+      //     params
+      //   }).then((response) => {
+      //     let res = response.data;
+      //     console.log(res);
+      //     // this.$router.push('/')
+      //   });
+
+      // },
       resetForm(formName) {
         this.$refs[formName].resetFields();
       }
