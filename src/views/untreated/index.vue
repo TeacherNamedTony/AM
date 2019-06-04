@@ -34,7 +34,6 @@
       </el-main>
       <el-pagination class="fenye" background layout="prev, pager, next" :total="20">
       </el-pagination>
-
       <!-- dialog开始，授权申请单弹窗 -->
       <el-dialog title="#" :visible.sync="dialogTableVisible">
         <div class=WordSection1 style='layout-grid:15.6pt'>

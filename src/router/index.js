@@ -32,8 +32,7 @@ export default new Router({
       component: Container,
       children: [
         {path: 'untreated',isadmin:true, name: '待处理', component: Untreated },
-        {path: 'audited', name: '已审核', component: Audited, },
-
+        {path: 'audited', name: '已授权', component: Audited, },
         {path: 'overdue', name: '授权过期', component: Overdue, },
         {path: 'Revoke', name: '授权异常', component: Revoke, },
         {path: 'nearoverdue', name: '授权即将过期', component: NearOverDue, },

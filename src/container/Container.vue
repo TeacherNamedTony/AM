@@ -5,14 +5,15 @@
                 <div class="app-side-logo">
                     <img src="@/assets/timg.png" :width="isCollapse ? '60' : '60'" height="60" />
                 </div>
-                <div>
+                <div style="margin-top: 3%;">
                     <el-menu :default-active="defaultActive" router class="el-menu-vertical-demo" @open="handleOpen"
                         :collapse="isCollapse">
-                        <template v-for="route in $router.options.routes" v-if="route.children && route.children.length">
+                        <!-- <template v-for="route in $router.options.routes" 
+                        v-if="route.children && route.children.length"> -->
+                        <template v-for="route in $router.options.routes">
                             <template v-for="item in route.children">
                                 <el-menu-item :key="route.path + '/' + item.path" :index="item.path">
-                                    <i class="el-icon-document"></i>
-                                    <span slot="title">{{ item.name }}</span>
+                                    <span slot="title"><i class="el-icon-document"></i>{{ item.name }}</span>
                                 </el-menu-item>
                             </template>
                         </template>
@@ -21,6 +22,7 @@
             </el-aside>
             <el-container>
                 <el-header class="app-header">
+                    
                     <div style="width: 60px; cursor: pointer;" @click.prevent="toggleSideBar">
 
                         <i v-show="!isCollapse" class="el-icon-s-fold"></i>
@@ -50,6 +52,7 @@
 
                 <el-main class="app-body">
                     <template>
+                        
                         <router-view />
                     </template>
                 </el-main>

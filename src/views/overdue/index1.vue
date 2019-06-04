@@ -26,7 +26,7 @@
           </template>
         </el-table-column>
         <el-table-column prop="address" label=" " width="200">
-          <el-button type="warning" round @click="passnow">重新申请三个月</el-button>
+          <el-button type="warning" slot-scope="scope" round @click="reapply((scope.row.sid))">重新申请三个月</el-button>
         </el-table-column>
       </el-table>
     </el-main>
@@ -550,8 +550,15 @@
       }
     },
     methods: {
-      passnow() {
-        this.$confirm('确认下载授权文件。此文件请妥善保管', '提示', {})
+      reapply(sid) {
+        alert(sid)
+        this.$confirm('申请重新授权三个月，需等待管理员同意。', '提示', {})
+        axios.get('http://192.168.17.73:8088/reApply?sid=' + sid).then(() => {
+          // alert(sid)
+          location.reload()
+        })
+
+
       },
       loadAll() {
         axios.get('http://192.168.17.73:8088/getAllEndState', {
