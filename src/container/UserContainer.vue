@@ -51,6 +51,7 @@
                     <div class="app-header-userinfo">
                         <el-dropdown trigger="hover" :hide-on-click="false">
                             <span class="el-dropdown-link">
+                                
 
                                 <img src="@/assets/user.png" :width="isCollapse ? '30' : '30'" height="30" />
                                 {{ username }}
