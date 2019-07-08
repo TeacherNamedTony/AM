@@ -533,34 +533,35 @@
     components: {},
     data() {
       return {
-        dialogTableVisible: false,
-        tableData: [],
-        dialogData: {
-          project: '',
-          applyername: '',
-          softwarename: '',
-          applydate: '',
-          applynote: '',
-          applyertel: '',
-          grantuser: '',
-          grantuserperson: '',
-          grantuserpersontel: '',
-          grantbegindate: '',
-          grantenddate: '',
-          servertype: '',
-          serveros: '',
-          serverip: '',
-          deploymenttype: '',
-          granttype: '',
-          productversion: '',
-          grantfiletype: '',
-          usernum: '',
-          controlnum: '',
-          computenum: '',
-          shopinstancenum: '',
-          shopappnum: '',
-          desktopinstancenum: '',
-          desktopcon: '',
+          dialogTableVisible: false,
+          tableData: [],
+          dialogData: {
+            project: '',
+            applyername: '',
+            softwarename: '',
+            applydate: '',
+            applynote: '',
+            applyertel: '',
+            grantuser: '',
+            grantuserperson: '',
+            grantuserpersontel: '',
+            grantbegindate: '',
+            grantenddate: '',
+            servertype: '',
+            serveros: '',
+            serverip: '',
+            deploymenttype: '',
+            granttype: '',
+            machinenum: '',
+            productversion: '',
+            grantfiletype: '',
+            usernum: '',
+            controlnum: '',
+            computenum: '',
+            shopinstancenum: '',
+            shopappnum: '',
+            desktopinstancenum: '',
+            desktopcon: '',
         }
       }
     },
@@ -583,33 +584,34 @@
         })
       },
       changeDialog(params) {
-        window.console.log(params);
-        this.dialogData.project = params.applyDetail.project;
-        this.dialogData.applyername = params.applyDetail.applyername;
-        this.dialogData.softwarename = params.applyDetail.softwarename;
-        this.dialogData.applydate = params.applyDetail.applydate;
-        this.dialogData.applynote = params.applyDetail.applynote;
-        this.dialogData.applyertel = params.applyDetail.applyertel;
-        this.dialogData.grantuser = params.applyDetail.grantuser;
-        this.dialogData.grantuserperson = params.applyDetail.grantuserperson;
-        this.dialogData.grantuserpersontel = params.applyDetail.grantuserpersontel;
-        this.dialogData.grantbegindate = params.applyDetail.grantbegindate;
-        this.dialogData.grantenddate = params.applyDetail.grantenddate;
-        this.dialogData.servertype = params.applyDetail.servertype;
-        this.dialogData.serveros = params.applyDetail.serveros;
-        this.dialogData.serverip = params.applyDetail.serverip;
-        this.dialogData.deploymenttype = params.applyDetail.deploymenttype;
-        this.dialogData.granttype = params.applyDetail.granttype;
-        this.dialogData.productversion = params.applyDetail.productversion;
-        this.dialogData.grantfiletype = params.applyDetail.grantfiletype;
-        this.dialogData.usernum = params.applyDetail.usernum;
-        this.dialogData.controlnum = params.applyDetail.controlnum;
-        this.dialogData.computenum = params.applyDetail.computenum;
-        this.dialogData.shopinstancenum = params.applyDetail.shopinstancenum;
-        this.dialogData.shopappnum = params.applyDetail.shopappnum;
-        this.dialogData.desktopinstancenum = params.applyDetail.desktopinstancenum;
-        this.dialogData.desktopcon = params.applyDetail.desktopcon;
-        this.dialogTableVisible = true;
+          window.console.log(params);
+          this.dialogData.project = params.applyDetail.project;
+          this.dialogData.applyername = params.applyDetail.applyername;
+          this.dialogData.softwarename = params.applyDetail.softwarename;
+          this.dialogData.applydate = params.applyDetail.applydate;
+          this.dialogData.applynote = params.applyDetail.applynote;
+          this.dialogData.applyertel = params.applyDetail.applyertel;
+          this.dialogData.grantuser = params.applyDetail.grantuser;
+          this.dialogData.grantuserperson = params.applyDetail.grantuserperson;
+          this.dialogData.grantuserpersontel = params.applyDetail.grantuserpersontel;
+          this.dialogData.grantbegindate = params.applyDetail.grantbegindate;
+          this.dialogData.grantenddate = params.applyDetail.grantenddate;
+          this.dialogData.servertype = params.applyDetail.servertype;
+          this.dialogData.serveros = params.applyDetail.serveros;
+          this.dialogData.serverip = params.applyDetail.serverip;
+          this.dialogData.deploymenttype = params.applyDetail.deploymenttype;
+          this.dialogData.granttype = params.applyDetail.granttype;
+          this.dialogData.machinenum = params.applyDetail.machinenum
+          this.dialogData.productversion = params.applyDetail.productversion;
+          this.dialogData.grantfiletype = params.applyDetail.grantfiletype;
+          this.dialogData.usernum = params.applyDetail.usernum;
+          this.dialogData.controlnum = params.applyDetail.controlnum;
+          this.dialogData.computenum = params.applyDetail.computenum;
+          this.dialogData.shopinstancenum = params.applyDetail.shopinstancenum;
+          this.dialogData.shopappnum = params.applyDetail.shopappnum;
+          this.dialogData.desktopinstancenum = params.applyDetail.desktopinstancenum;
+          this.dialogData.desktopcon = params.applyDetail.desktopcon;
+          this.dialogTableVisible = true;
       }
     },
     mounted() {

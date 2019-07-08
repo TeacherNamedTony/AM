@@ -30,7 +30,7 @@
       <el-col :span="11">
         <el-form-item prop="applydate">
           <el-date-picker type="date" format="yyyy 年 MM 月 dd 日" value-format="yyyy-MM-dd" placeholder="选择申请时间"
-            v-model="applyForm.applydate" style="width: 200%;">
+            v-model="applyForm.applydate" default-time="" style="width: 200%;">
           </el-date-picker>
         </el-form-item>
       </el-col>
@@ -58,14 +58,16 @@
     </el-form-item>
 
 
-
     <el-divider content-position="center">设备信息</el-divider>
     <br>
     <el-form-item label="部署类型" prop="deploymenttype">
       <el-input v-model="applyForm.deploymenttype" style="width: 100%;" placeholder="物理机/单控云/三控云"></el-input>
     </el-form-item>
     <el-form-item label="授权类型" prop="granttype">
-      <el-input v-model="applyForm.granttype" style="width: 100%;" placeholder="开发测试授权/正式运行授权"></el-input>
+      <el-input v-model="applyForm.granttype" style="width: 100%;" placeholder="开发测试/正式运行"></el-input>
+    </el-form-item>
+    <el-form-item label="机器设备码" prop="machinenum">
+      <el-input v-model="applyForm.machinenum" style="width: 100%;" placeholder="请输入机器设备码"></el-input>
     </el-form-item>
     <br>
     <el-form-item label="授权服务器型号" prop="servertype">
@@ -82,7 +84,7 @@
     <el-divider content-position="center">版本信息</el-divider>
     <br>
     <el-form-item label="平台产品版本" prop="productversion">
-      <el-input v-model="applyForm.productversion" style="width: 100%;" placeholder="平台产品版本"></el-input>
+      <el-input v-model="applyForm.productversion" style="width: 100%;" placeholder="四位格式：0.0.8.1"></el-input>
     </el-form-item>
     <el-form-item label="授权文件版本" prop="grantfiletype">
       <el-input v-model="applyForm.grantfiletype" style="width: 100%;" placeholder="授权文件版本"></el-input>
@@ -140,12 +142,12 @@
     <br>
 
 
-
     <el-form-item label="授权申请说明" prop="applynote">
       <el-input type="textarea" v-model="applyForm.applynote" style="" cols="140%" rows=' 5%' placeholder="请输入授权申请说明">
       </el-input>
     </el-form-item>
     <br>
+
     <div class="foot-button">
       <el-form-item>
         <el-button type="primary" @click="submitForm('applyForm')">立即创建</el-button>
@@ -161,36 +163,36 @@
     data() {
       return {
         applyForm: {
-          project: '',
-          applyername: '',
-          softwarename: '',
-          applydate: new Date(),
-          applynote: '',
-          applyertel: '',
-          grantuser: '',
-          grantuserperson: '',
-          grantuserpersontel: '',
-          grantbegindate: '',
-          grantenddate: '',
-          servertype: '',
-          serveros: '',
-          serverip: '',
-          deploymenttype: '',
-          granttype: '',
-          productversion: '',
-          grantfiletype: '',
-          usernum: '',
-          controlnum: '',
-          computenum: '',
-          shopinstancenum: '',
-          shopappnum: '',
-          desktopinstancenum: '',
-          desktopcon: '',
+            project: '',
+            applyername: '',
+            softwarename: '',
+            applydate: new Date(),
+            applynote: '',
+            applyertel: '',
+            grantuser: '',
+            grantuserperson: '',
+            grantuserpersontel: '',
+            grantbegindate: '',
+            grantenddate: '',
+            servertype: '',
+            serveros: '',
+            serverip: '',
+            deploymenttype: '',
+            granttype: '',
+            machinenum: '',
+            productversion: '',
+            grantfiletype: '',
+            usernum: '',
+            controlnum: '',
+            computenum: '',
+            shopinstancenum: '',
+            shopappnum: '',
+            desktopinstancenum: '',
+            desktopcon: '',
         },
         rules: {
-
           project: [{
-              required: true,
+              required: false,
               message: '请输入项目名称/标识',
               trigger: 'blur'
             },
@@ -201,9 +203,8 @@
               trigger: 'blur'
             }
           ],
-
           applyername: [{
-              required: true,
+              required: false,
               message: '请输入授权申请人姓名',
               trigger: 'blur'
             },
@@ -214,8 +215,6 @@
               trigger: 'blur'
             }
           ],
-
-
           softwwarename: [{
               required: false,
               message: '请输入授权软件名称',
@@ -229,58 +228,80 @@
           //   message: '请选择日期',
           //   trigger: 'change'
           // }],
+
+
           applyertel: [{
-            required: true,
+            required: false,
             message: '授权申请人联系方式不能为空'
           }, ],
-          grantfiletype: [{
-            required: false,
-            message: '请输入授权文件版本',
-            trigger: 'blur'
-          }, ],
-
           grantuser: [{
-            required: true,
+            required: false,
             message: '请输入授权用户',
             trigger: 'blur'
           }, ],
-          grantuserperson: [{
-            required: true,
+         grantuserperson: [{
+            required: false,
             message: '授权用户联系人',
             trigger: 'blur'
           }, ],
           grantuserpersontel: [{
-            required: true,
+            required: false,
             message: '请输入授权用户联系方式',
             trigger: 'blur'
           }, ],
 
 
-
-          servertype: [{
+          deploymenttype: [{
+            required: false,
+            message: '请输入部署类型',
+            trigger: 'blur'
+          }, ],
+          granttype: [{
+              required: false,
+              message: '请输入授权类型',
+              trigger: 'blur'
+            },
+          ],          
+          machinenum:[{
             required: true,
+            message: '请输入机器设备码',
+            trigger: 'blur'            
+          }],
+          servertype: [{
+            required: false,
             message: '请输入授权服务器型号',
             trigger: 'blur'
           }, ],
           serveros: [{
-              required: true,
+              required: false,
               message: '请输入授权服务器OS',
               trigger: 'blur'
             },
 
           ],
           serverip: [{
-              required: true,
+              required: false,
               message: '请输入授权服务器IP',
               trigger: 'blur'
             },
 
           ],
-
+ 
+ 
+          productversion: [{
+            required: true,
+            message: '请输入平台产品版本',
+            trigger: 'blur'
+          }, ],       
+          grantfiletype: [{
+            required: false,
+            message: '请输入授权文件版本',
+            trigger: 'blur'
+          }, ],
 
 
           usernum: [{
-            required: true,
+            required: false,
             message: '请输入微服务-服务用户量',
             trigger: 'blur'
           }, ],
@@ -295,11 +316,7 @@
             trigger: 'blur'
           }, ],
 
-          productversion: [{
-            required: true,
-            message: '请输入平台产品版本',
-            trigger: 'blur'
-          }, ],
+
           shopinstancenum: [{
             required: false,
             message: '应用商店-实例数',
@@ -310,6 +327,12 @@
             message: '应用商店-托管应用数',
             trigger: 'blur'
           }, ],
+          grantbegindate: [{
+            type: 'string',
+            required: true,
+            message: '选择授权起始时间',
+            trigger: 'change'
+          }],          
 
 
           desktopinstancenum: [{
@@ -322,27 +345,6 @@
             message: '桌面-客户端连接数',
             trigger: 'blur'
           }, ],
-          deploymenttype: [{
-            required: true,
-            message: '请输入部署类型',
-            trigger: 'blur'
-          }, ],
-
-
-
-          granttype: [{
-              required: true,
-              message: '请输入授权类型',
-              trigger: 'blur'
-            },
-
-          ],
-          grantbegindate: [{
-            type: 'string',
-            required: true,
-            message: '选择授权起始时间',
-            trigger: 'change'
-          }],
           grantenddate: [{
             type: 'string',
             required: true,
