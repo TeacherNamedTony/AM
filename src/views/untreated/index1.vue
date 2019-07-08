@@ -18,7 +18,7 @@
           <el-table-column prop="" label="审核人" width="">
             <el-tag type="info">尚未通过审核，请您耐心等待</el-tag>
           </el-table-column>
-          <el-table-column prop="look" label=" " width="180">
+          <el-table-column prop="look" label=" " width="280">
             <template slot-scope="scope">
 
               <el-button type="primary" round @click="changeDialog(scope.row)">查看申请</el-button>

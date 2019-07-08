@@ -10,24 +10,24 @@
           @selection-change="handleSelectionChange">
           <el-table-column type="selection" width="35">
           </el-table-column>
-          <el-table-column prop="applyDetail.applydate" label="申请日期" width="120">
+          <el-table-column prop="applyDetail.applydate" label="申请日期" width="100">
           </el-table-column>
-          <el-table-column prop="applyDetail.applyername" label="申请人员" width="120">
+          <el-table-column prop="applyDetail.applyername" label="申请人员" width="100">
           </el-table-column>
           <el-table-column prop="applyDetail.project" label="项目名称" width="120">
           </el-table-column>
-          <el-table-column prop="applyDetail.grantbegindate" label="开始时间" width="120">
+          <el-table-column prop="applyDetail.grantbegindate" label="开始时间" width="100">
           </el-table-column>
-          <el-table-column prop="applyDetail.grantenddate" label="结束时间" width="120">
+          <el-table-column prop="applyDetail.grantenddate" label="结束时间" width="100">
           </el-table-column>
           <el-table-column prop="userApplyDetail.company" label="所属单位" width="">
           </el-table-column>
-          <el-table-column prop="look" label=" " width="180">
+          <el-table-column prop="look" label=" " width="">
             <template slot-scope="scope">
               <el-button type="primary" round @click="changeDialog(scope.row)">查看申请</el-button>
             </template>
           </el-table-column>
-          <el-table-column prop="address" label=" " width="180">
+          <el-table-column prop="address" label=" " width="300">
             <el-button slot-scope="scope" type="success" round @click="passnow(scope.row.sid)">一键通过</el-button>
           </el-table-column>
         </el-table>
@@ -632,7 +632,6 @@
 
 
   <style scoped>
-    /* Font Definitions */
     @font-face {
       font-family: 宋体;
       panose-1: 2 1 6 0 3 1 1 1 1 1;
@@ -680,6 +679,20 @@
       font-family: 等线;
     }
 
+    h1 {
+      mso-style-link: "标题 1 字符";
+      margin-top: 17.0pt;
+      margin-right: 0cm;
+      margin-bottom: 16.5pt;
+      margin-left: 0cm;
+      text-align: justify;
+      text-justify: inter-ideograph;
+      line-height: 240%;
+      page-break-after: avoid;
+      font-size: 22.0pt;
+      font-family: 等线;
+    }
+
     p.MsoHeader,
     li.MsoHeader,
     div.MsoHeader {
@@ -705,12 +718,39 @@
       font-family: 等线;
     }
 
-    span.a {
+    p.MsoTitle,
+    li.MsoTitle,
+    /* div.MsoTitle {
+      mso-style-link: "标题 字符";
+      margin-top: 12.0pt;
+      margin-right: 0cm;
+      margin-bottom: 3.0pt;
+      margin-left: 0cm;
+      text-align: center;
+      font-size: 16.0pt;
+      font-family: "等线 Light";
+      font-weight: bold;
+    } */
+
+    /* span.1 {
+      mso-style-name: "标题 1 字符";
+      mso-style-link: "标题 1";
+      font-weight: bold;
+    } */
+
+    /* span.a {
+      mso-style-name: "标题 字符";
+      mso-style-link: 标题;
+      font-family: "等线 Light";
+      font-weight: bold;
+    } */
+
+    span.a0 {
       mso-style-name: "页眉 字符";
       mso-style-link: 页眉;
     }
 
-    span.a0 {
+    span.a1 {
       mso-style-name: "页脚 字符";
       mso-style-link: 页脚;
     }
