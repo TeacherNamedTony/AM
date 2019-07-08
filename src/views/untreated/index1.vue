@@ -32,13 +32,9 @@
 
       <!-- dialog开始，授权申请单弹窗 -->
       <el-dialog title="#" :visible.sync="dialogTableVisible">
-
         <body lang=ZH-CN style='text-justify-trim:punctuation'>
-
           <div class=WordSection1 style='layout-grid:15.6pt'>
-
             <div align=center>
-
               <table class=MsoNormalTable border=0 cellspacing=0 cellpadding=0 width=612
                 style='width:459.3pt;border-collapse:collapse'>
                 <tr style='height:31.2pt'>
@@ -125,7 +121,8 @@
                 <tr style='height:20.1pt'>
                   <td width=56 nowrap style='width:42.3pt;border:solid #305496 1.0pt;
   border-top:none;padding:0cm 5.4pt 0cm 5.4pt;height:20.1pt'>
-                    <p class=MsoNormal align=left style='text-align:left'><span style='font-size:11.0pt;font-family:宋体;color:black'></span></p>
+                    <p class=MsoNormal align=left style='text-align:left'><span
+                        style='font-size:11.0pt;font-family:宋体;color:black'></span></p>
                   </td>
                   <td width=85 nowrap style='width:64.05pt;border-top:none;border-left:none;
   border-bottom:solid #305496 1.0pt;border-right:solid #305496 1.0pt;
@@ -184,7 +181,8 @@
                   <td width=301 nowrap colspan=2 style='width:225.4pt;border-top:none;
   border-left:none;border-bottom:solid #305496 1.0pt;border-right:solid #305496 1.0pt;
   padding:0cm 5.4pt 0cm 5.4pt;height:20.1pt'>
-                    <p class=MsoNormal align=center style='text-align:center'><span style='font-size:12.0pt;font-family:宋体;color:black'>{{dialogData.applyertel}}</span></p>
+                    <p class=MsoNormal align=center style='text-align:center'><span
+                        style='font-size:12.0pt;font-family:宋体;color:black'>{{dialogData.applyertel}}</span></p>
                   </td>
                   <td style='height:20.1pt;border:none' width=0 height=27></td>
                 </tr>
@@ -519,18 +517,11 @@
                   <td style='height:20.1pt;border:none' width=0 height=27></td>
                 </tr>
               </table>
-
             </div>
-
             <p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
-
           </div>
-
         </body>
-
-
       </el-dialog>
-
     </el-container>
   </template>
 
@@ -561,7 +552,7 @@
             serverip: '',
             deploymenttype: '',
             granttype: '',
-            machinenum:'',
+            machinenum: '',
             productversion: '',
             grantfiletype: '',
             usernum: '',
@@ -604,7 +595,7 @@
           this.dialogData.serverip = params.applyDetail.serverip;
           this.dialogData.deploymenttype = params.applyDetail.deploymenttype;
           this.dialogData.granttype = params.applyDetail.granttype;
-          this.dialogData.machinenum =params.applyDetail.machinenum 
+          this.dialogData.machinenum = params.applyDetail.machinenum
           this.dialogData.productversion = params.applyDetail.productversion;
           this.dialogData.grantfiletype = params.applyDetail.grantfiletype;
           this.dialogData.usernum = params.applyDetail.usernum;
