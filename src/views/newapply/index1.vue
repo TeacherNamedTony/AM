@@ -179,9 +179,9 @@
             serverip: '',
             deploymenttype: '',
             granttype: '',
-            machinenum: '',
             productversion: '',
             grantfiletype: '',
+            machinenum: '',
             usernum: '',
             controlnum: '',
             computenum: '',
@@ -189,6 +189,7 @@
             shopappnum: '',
             desktopinstancenum: '',
             desktopcon: '',
+            
         },
         rules: {
           project: [{
