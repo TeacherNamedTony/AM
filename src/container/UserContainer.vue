@@ -16,22 +16,22 @@
                         </el-menu-item>
                         <el-menu-item>
                             <li style="list-style-type:none;">
-                                <i class="el-icon-info"></i>单位：中软信息
+                                <i class="el-icon-info"></i>单位：河南大学
                             </li>
                         </el-menu-item>
                         <el-menu-item>
                             <li style="list-style-type:none;">
-                                <i class="el-icon-s-data"></i>授权个数：4
+                                <i class="el-icon-s-claim"></i>授权个数：6
                             </li>
                         </el-menu-item>
                         <el-menu-item>
                             <li style="list-style-type:none;">
-                                <i class="el-icon-warning"></i>即将到期：0
+                                <i class="el-icon-warning"></i>即将到期：1
                             </li>
                         </el-menu-item>
                         <el-menu-item>
                             <li style="list-style-type:none;">
-                                <i class="el-icon-error"></i>注销个数：0
+                                <i class="el-icon-s-release"></i>异常个数：0
                             </li>
                         </el-menu-item>
 
@@ -79,11 +79,11 @@
                             </el-menu-item>
                             <el-menu-item @click='alertFunc(3)' index="3"><i class="el-icon-s-claim"></i>已授权
                             </el-menu-item>
-                            <el-menu-item @click='alertFunc(4)' index="4"><i class="el-icon-s-release"></i>授权过期
+                            <el-menu-item @click='alertFunc(4)' index="4"><i class="el-icon-warning"></i>授权过期
                             </el-menu-item>
                             <el-menu-item @click='alertFunc(5)' index="5"><i class="el-icon-s-release"></i>授权异常(被撤销)
                             </el-menu-item>
-                            <el-menu-item @click='alertFunc(6)' index="6"><i class="el-icon-warning"></i>授权即将过期
+                            <el-menu-item @click='alertFunc(6)' index="6"><i class="el-icon-message-solid"></i>授权即将过期
                             </el-menu-item>
                             <!-- <el-menu-item @click='alertFunc(6)' index="6" disabled><i class="el-icon-s-home"></i>个人中心
                             </el-menu-item> -->

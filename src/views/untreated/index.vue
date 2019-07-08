@@ -556,6 +556,7 @@
             serverip: '',
             deploymenttype: '',
             granttype: '',
+            machinenum: '',
             productversion: '',
             grantfiletype: '',
             usernum: '',
@@ -594,6 +595,7 @@
           this.dialogData.serverip = params.applyDetail.serverip;
           this.dialogData.deploymenttype = params.applyDetail.deploymenttype;
           this.dialogData.granttype = params.applyDetail.granttype;
+          this.dialogData.machinenum = params.applyDetail.machinenum
           this.dialogData.productversion = params.applyDetail.productversion;
           this.dialogData.grantfiletype = params.applyDetail.grantfiletype;
           this.dialogData.usernum = params.applyDetail.usernum;
