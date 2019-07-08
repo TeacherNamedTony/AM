@@ -554,7 +554,7 @@
         this.$confirm('确认下载授权文件。此文件请妥善保管', '提示', {})
       },
       loadAll() {
-        axios.get('http://192.168.17.73:8088/getRevoke', {
+        axios.get('http://192.168.17.73:8088/getRevoke?id=3', {
           "pagenum": "ddfdf"
         }).then((data) => {
           this.tableData = data.data.data;
