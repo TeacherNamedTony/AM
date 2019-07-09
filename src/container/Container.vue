@@ -6,7 +6,7 @@
                     <img src="@/assets/timg.png" :width="isCollapse ? '60' : '60'" height="60" />
                 </div>
                 <div style="margin-top: 10%;">
-                    <el-menu>
+                    <el-menu default-active="1" >
                         <el-menu-item @click='alertFunc(1)' index="1"><i class="el-icon-s-promotion"></i>待授权
                         </el-menu-item>
                         <el-menu-item @click='alertFunc(2)' index="3"><i class="el-icon-s-claim"></i>已授权
@@ -35,7 +35,7 @@
                             </el-menu-item>
                             <el-menu-item>
                                 <li style="list-style-type:none;">
-                                    <i class="el-icon-s-custom"></i>姓名：管理员
+                                    <i class="el-icon-s-custom"></i>用户类型：授权人
                                 </li>
                             </el-menu-item>
                             <el-menu-item>
@@ -45,17 +45,17 @@
                             </el-menu-item>
                             <el-menu-item>
                                 <li style="list-style-type:none;">
-                                    <i class="el-icon-s-claim"></i>授权个数：35
+                                    <i class="el-icon-s-claim"></i>授权个数：*
                                 </li>
                             </el-menu-item>
                             <el-menu-item>
                                 <li style="list-style-type:none;">
-                                    <i class="el-icon-warning"></i>即将到期：2
+                                    <i class="el-icon-warning"></i>即将到期：*
                                 </li>
                             </el-menu-item>
                             <el-menu-item>
                                 <li style="list-style-type:none;">
-                                    <i class="el-icon-s-release"></i>异常个数：1
+                                    <i class="el-icon-s-release"></i>异常个数：*
                                 </li>
                             </el-menu-item>
 

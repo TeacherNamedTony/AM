@@ -14,7 +14,7 @@
           </el-table-column>
           <el-table-column prop="applyDetail.applyername" label="申请人员" width="100">
           </el-table-column>
-          <el-table-column prop="applyDetail.project" label="项目名称" width="110">
+          <el-table-column prop="applyDetail.project" label="项目名称" width="120">
           </el-table-column>
           <el-table-column prop="applyDetail.grantbegindate" label="开始时间" width="100">
           </el-table-column>
@@ -31,7 +31,7 @@
               <el-button type="danger" round @click="changeDialog(scope.row)">查看申请</el-button>
             </template>
           </el-table-column>
-          <el-table-column prop="address" label=" " width="200">
+          <el-table-column prop="address" label=" " width="300">
             <!-- <el-button type="success" round @click="passnow">备用按钮</el-button> -->
           </el-table-column>
         </el-table>

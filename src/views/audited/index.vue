@@ -32,7 +32,7 @@
             </template>
 
           </el-table-column>
-          <el-table-column prop="address" label=" " width="200">
+          <el-table-column prop="address" label=" " width="300">
             <el-button slot-scope="scope" type="danger" round @click="nopass(scope.row.sid)">撤销授权</el-button>
           </el-table-column>
         </el-table>

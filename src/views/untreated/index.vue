@@ -20,7 +20,10 @@
           </el-table-column>
           <el-table-column prop="applyDetail.grantenddate" label="结束时间" width="100">
           </el-table-column>
-          <el-table-column prop="userApplyDetail.company" label="所属单位" width="">
+          <el-table-column prop="userApplyDetail.company" label="所属单位" width="100">
+          </el-table-column>
+          <el-table-column prop="" label="审核人" width="">
+            <el-tag type="info">请尽快审核</el-tag>
           </el-table-column>
           <el-table-column prop="look" label=" " width="">
             <template slot-scope="scope">
@@ -36,6 +39,7 @@
       </el-pagination>
       <!-- dialog开始，授权申请单弹窗 -->
       <el-dialog title="#" :visible.sync="dialogTableVisible">
+
         <body lang=ZH-CN style='text-justify-trim:punctuation'>
           <div class=WordSection1 style='layout-grid:15.6pt'>
             <div align=center>

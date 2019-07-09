@@ -11,27 +11,27 @@
                     <el-menu class="el-menu-vertical-demo" @open="handleOpen" :collapse="isCollapse">
                         <el-menu-item>
                             <li style="list-style-type:none;">
-                                <i class="el-icon-s-custom"></i>姓名：张三
+                                <i class="el-icon-s-custom"></i>用户类型：申请者
                             </li>
                         </el-menu-item>
                         <el-menu-item>
                             <li style="list-style-type:none;">
-                                <i class="el-icon-info"></i>单位：河南大学
+                                <i class="el-icon-info"></i>单位：
                             </li>
                         </el-menu-item>
                         <el-menu-item>
                             <li style="list-style-type:none;">
-                                <i class="el-icon-s-claim"></i>授权个数：6
+                                <i class="el-icon-s-claim"></i>授权个数：
                             </li>
                         </el-menu-item>
                         <el-menu-item>
                             <li style="list-style-type:none;">
-                                <i class="el-icon-warning"></i>即将到期：1
+                                <i class="el-icon-warning"></i>即将到期：
                             </li>
                         </el-menu-item>
                         <el-menu-item>
                             <li style="list-style-type:none;">
-                                <i class="el-icon-s-release"></i>异常个数：0
+                                <i class="el-icon-s-release"></i>异常个数：
                             </li>
                         </el-menu-item>
 
@@ -54,7 +54,7 @@
                                 
 
                                 <img src="@/assets/user.png" :width="isCollapse ? '30' : '30'" height="30" />
-                                {{ username }}
+                                {{username}}
                                 <i class="el-icon-arrow-down el-icon--right"></i>
                             </span>
                             <el-dropdown-menu slot="dropdown">
@@ -169,6 +169,7 @@
             if (user) {
                 this.username = user;
             }
+
         },
     }
 </script>

@@ -5,9 +5,9 @@
       <el-main>
         <el-table ref="multipleTable" :data="tableData" tooltip-effect="dark" style="width: 100%"
           @selection-change="handleSelectionChange">
-          <el-table-column prop="applyDetail.applydate" label="申请日期" width="120">
+          <el-table-column prop="applyDetail.applydate" label="申请日期" width="100">
           </el-table-column>
-          <el-table-column prop="applyDetail.applyername" label="申请人员" width="120">
+          <el-table-column prop="applyDetail.applyername" label="申请人员" width="100">
           </el-table-column>
           <el-table-column prop="applyDetail.project" label="项目名称" width="120">
           </el-table-column>

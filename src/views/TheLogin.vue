@@ -56,8 +56,9 @@
                             window.console.log(data.data.data.isadmin)
 
                             if (data.data.data.isadmin == 1) {
-                            // if (true) {    
+                                // if (true) {    
                                 sessionStorage.setItem('user', this.ruleForm2.username);
+
                                 this.$router.push({
                                     path: '/user'
                                 });
