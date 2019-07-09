@@ -163,33 +163,33 @@
     data() {
       return {
         applyForm: {
-            project: '',
-            applyername: '',
-            softwarename: '',
-            applydate: new Date(),
-            applynote: '',
-            applyertel: '',
-            grantuser: '',
-            grantuserperson: '',
-            grantuserpersontel: '',
-            grantbegindate: '',
-            grantenddate: '',
-            servertype: '',
-            serveros: '',
-            serverip: '',
-            deploymenttype: '',
-            granttype: '',
-            productversion: '',
-            grantfiletype: '',
-            machinenum: '',
-            usernum: '',
-            controlnum: '',
-            computenum: '',
-            shopinstancenum: '',
-            shopappnum: '',
-            desktopinstancenum: '',
-            desktopcon: '',
-            
+          project: '',
+          applyername: '',
+          softwarename: '',
+          applydate: new Date(),
+          applynote: '',
+          applyertel: '',
+          grantuser: '',
+          grantuserperson: '',
+          grantuserpersontel: '',
+          grantbegindate: '',
+          grantenddate: '',
+          servertype: '',
+          serveros: '',
+          serverip: '',
+          deploymenttype: '',
+          granttype: '',
+          productversion: '',
+          grantfiletype: '',
+          machinenum: '',
+          usernum: '',
+          controlnum: '',
+          computenum: '',
+          shopinstancenum: '',
+          shopappnum: '',
+          desktopinstancenum: '',
+          desktopcon: '',
+
         },
         rules: {
           project: [{
@@ -240,7 +240,7 @@
             message: '请输入授权用户',
             trigger: 'blur'
           }, ],
-         grantuserperson: [{
+          grantuserperson: [{
             required: false,
             message: '授权用户联系人',
             trigger: 'blur'
@@ -258,15 +258,14 @@
             trigger: 'blur'
           }, ],
           granttype: [{
-              required: false,
-              message: '请输入授权类型',
-              trigger: 'blur'
-            },
-          ],          
-          machinenum:[{
+            required: false,
+            message: '请输入授权类型',
+            trigger: 'blur'
+          }, ],
+          machinenum: [{
             required: true,
             message: '请输入机器设备码',
-            trigger: 'blur'            
+            trigger: 'blur'
           }],
           servertype: [{
             required: false,
@@ -287,13 +286,13 @@
             },
 
           ],
- 
- 
+
+
           productversion: [{
             required: true,
             message: '请输入平台产品版本',
             trigger: 'blur'
-          }, ],       
+          }, ],
           grantfiletype: [{
             required: false,
             message: '请输入授权文件版本',
@@ -333,7 +332,7 @@
             required: true,
             message: '选择授权起始时间',
             trigger: 'change'
-          }],          
+          }],
 
 
           desktopinstancenum: [{
@@ -388,15 +387,18 @@
 
       submitForm(formName) {
         this.$refs[formName].validate((valid) => {
-          alert(valid)
+          // alert(valid)
           if (valid) {
             alert('校验成功准备提交')
             let params = this.applyForm;
             axios.get('http://192.168.17.73:8088/addNewApply', {
               params
             }).then(() => {
+              location. reload()
               alert('已提交!');
+              
             });
+            
           } else {
             window.console.log('错误提交');
             return false;

@@ -18,7 +18,7 @@
           <el-table-column prop="" label="审核人" width="">
             <el-tag type="info">尚未通过审核，请您耐心等待</el-tag>
           </el-table-column>
-          <el-table-column prop="look" label=" " width="280">
+          <el-table-column prop="look" label=" " width="300">
             <template slot-scope="scope">
 
               <el-button type="primary" round @click="changeDialog(scope.row)">查看申请</el-button>
@@ -530,7 +530,6 @@
     import axios from 'axios';
 
     export default {
-      // components: {},
       data() {
         return {
           dialogTableVisible: false,
@@ -570,10 +569,11 @@
       methods: {
 
         loadAll() {
-          axios.get('http://192.168.17.73:8088/getUntreatedState?id=3', {
-            "pagenum": "ddfdf"
-          }).then((data) => {
+          axios.get('http://192.168.17.73:8088/getUntreatedState?id=3',
+          ).then((data) => {
+            // window.console.log(data.data.data[0].aid)
             this.tableData = data.data.data;
+            window.console.log(data.data.data[0].aid)
           })
         },
 

@@ -1,7 +1,7 @@
   <template>
     <el-container>
       <el-header style="text-align:left; font-size: 12px">
-        <el-autocomplete v-model="state" :fetch-suggestions="querySearchAsync" placeholder="请输入项目名称或者申请人"
+        <el-autocomplete v-model="state" :fetch-suggestions="querySearchAsync" placeholder="请输入项目名称或申请人"
           @select="handleSelect">
         </el-autocomplete>
       </el-header>

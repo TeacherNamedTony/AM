@@ -18,14 +18,14 @@
         </el-table-column>
         <el-table-column prop="userRatifyDetail.company" label="所属单位" width="">
         </el-table-column>
-        <el-table-column prop="look" label=" " width="200">
+        <el-table-column prop="look" label=" " width="180">
           <template slot-scope="scope">
             <div>
               <el-button type="primary" round @click="changeDialog(scope.row)">查看申请</el-button>
             </div>
           </template>
         </el-table-column>
-        <el-table-column prop="address" label=" " width="200">
+        <el-table-column prop="address" label=" " width="300">
           <el-button type="success" round @click="reApply">重新申请三个月</el-button>
         </el-table-column>
       </el-table>
@@ -533,34 +533,35 @@
     components: {},
     data() {
       return {
-        dialogTableVisible: false,
-        tableData: [],
-        dialogData: {
-          project: '',
-          applyername: '',
-          softwarename: '',
-          applydate: '',
-          applynote: '',
-          applyertel: '',
-          grantuser: '',
-          grantuserperson: '',
-          grantuserpersontel: '',
-          grantbegindate: '',
-          grantenddate: '',
-          servertype: '',
-          serveros: '',
-          serverip: '',
-          deploymenttype: '',
-          granttype: '',
-          productversion: '',
-          grantfiletype: '',
-          usernum: '',
-          controlnum: '',
-          computenum: '',
-          shopinstancenum: '',
-          shopappnum: '',
-          desktopinstancenum: '',
-          desktopcon: '',
+          dialogTableVisible: false,
+          tableData: [],
+          dialogData: {
+            project: '',
+            applyername: '',
+            softwarename: '',
+            applydate: '',
+            applynote: '',
+            applyertel: '',
+            grantuser: '',
+            grantuserperson: '',
+            grantuserpersontel: '',
+            grantbegindate: '',
+            grantenddate: '',
+            servertype: '',
+            serveros: '',
+            serverip: '',
+            deploymenttype: '',
+            granttype: '',
+            machinenum: '',
+            productversion: '',
+            grantfiletype: '',
+            usernum: '',
+            controlnum: '',
+            computenum: '',
+            shopinstancenum: '',
+            shopappnum: '',
+            desktopinstancenum: '',
+            desktopcon: '',
         }
       }
     },
@@ -569,40 +570,41 @@
       //   this.$confirm('确认下载授权文件。此文件请妥善保管', '提示', {})
       // },
       loadAll() {
-        axios.get('http://192.168.17.73:8088/', {
+        axios.get('http://192.168.17.73:8088/getNearOverdue?id=3', {
           "pagenum": "ddfdf"
         }).then((data) => {
           this.tableData = data.data.data;
         })
       },
       changeDialog(params) {
-        window.console.log(params);
-        this.dialogData.project = params.applyDetail.project;
-        this.dialogData.applyername = params.applyDetail.applyername;
-        this.dialogData.softwarename = params.applyDetail.softwarename;
-        this.dialogData.applydate = params.applyDetail.applydate;
-        this.dialogData.applynote = params.applyDetail.applynote;
-        this.dialogData.applyertel = params.applyDetail.applyertel;
-        this.dialogData.grantuser = params.applyDetail.grantuser;
-        this.dialogData.grantuserperson = params.applyDetail.grantuserperson;
-        this.dialogData.grantuserpersontel = params.applyDetail.grantuserpersontel;
-        this.dialogData.grantbegindate = params.applyDetail.grantbegindate;
-        this.dialogData.grantenddate = params.applyDetail.grantenddate;
-        this.dialogData.servertype = params.applyDetail.servertype;
-        this.dialogData.serveros = params.applyDetail.serveros;
-        this.dialogData.serverip = params.applyDetail.serverip;
-        this.dialogData.deploymenttype = params.applyDetail.deploymenttype;
-        this.dialogData.granttype = params.applyDetail.granttype;
-        this.dialogData.productversion = params.applyDetail.productversion;
-        this.dialogData.grantfiletype = params.applyDetail.grantfiletype;
-        this.dialogData.usernum = params.applyDetail.usernum;
-        this.dialogData.controlnum = params.applyDetail.controlnum;
-        this.dialogData.computenum = params.applyDetail.computenum;
-        this.dialogData.shopinstancenum = params.applyDetail.shopinstancenum;
-        this.dialogData.shopappnum = params.applyDetail.shopappnum;
-        this.dialogData.desktopinstancenum = params.applyDetail.desktopinstancenum;
-        this.dialogData.desktopcon = params.applyDetail.desktopcon;
-        this.dialogTableVisible = true;
+          window.console.log(params);
+          this.dialogData.project = params.applyDetail.project;
+          this.dialogData.applyername = params.applyDetail.applyername;
+          this.dialogData.softwarename = params.applyDetail.softwarename;
+          this.dialogData.applydate = params.applyDetail.applydate;
+          this.dialogData.applynote = params.applyDetail.applynote;
+          this.dialogData.applyertel = params.applyDetail.applyertel;
+          this.dialogData.grantuser = params.applyDetail.grantuser;
+          this.dialogData.grantuserperson = params.applyDetail.grantuserperson;
+          this.dialogData.grantuserpersontel = params.applyDetail.grantuserpersontel;
+          this.dialogData.grantbegindate = params.applyDetail.grantbegindate;
+          this.dialogData.grantenddate = params.applyDetail.grantenddate;
+          this.dialogData.servertype = params.applyDetail.servertype;
+          this.dialogData.serveros = params.applyDetail.serveros;
+          this.dialogData.serverip = params.applyDetail.serverip;
+          this.dialogData.deploymenttype = params.applyDetail.deploymenttype;
+          this.dialogData.granttype = params.applyDetail.granttype;
+          this.dialogData.machinenum = params.applyDetail.machinenum
+          this.dialogData.productversion = params.applyDetail.productversion;
+          this.dialogData.grantfiletype = params.applyDetail.grantfiletype;
+          this.dialogData.usernum = params.applyDetail.usernum;
+          this.dialogData.controlnum = params.applyDetail.controlnum;
+          this.dialogData.computenum = params.applyDetail.computenum;
+          this.dialogData.shopinstancenum = params.applyDetail.shopinstancenum;
+          this.dialogData.shopappnum = params.applyDetail.shopappnum;
+          this.dialogData.desktopinstancenum = params.applyDetail.desktopinstancenum;
+          this.dialogData.desktopcon = params.applyDetail.desktopcon;
+          this.dialogTableVisible = true;
       }
     },
     mounted() {

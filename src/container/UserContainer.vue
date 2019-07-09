@@ -59,7 +59,7 @@
                             </span>
                             <el-dropdown-menu slot="dropdown">
                                 <el-dropdown-item>我的消息</el-dropdown-item>
-                                <el-dropdown-item>设置</el-dropdown-item>
+                                <el-dropdown-item>修改密码</el-dropdown-item>
                                 <el-dropdown-item divided @click.native="logout">退出登录</el-dropdown-item>
                             </el-dropdown-menu>
                         </el-dropdown>
@@ -68,13 +68,11 @@
                 <el-main class="app-body">
                     <template>
                         <div class="line"></div>
-                        <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal"
+                        <el-menu default-active="1" class="el-menu-demo" mode="horizontal"
                             @select="handleSelect" background-color="#545c64" text-color="#fff"
                             active-text-color="#ffd04b">
                             <el-menu-item @click='alertFunc(1)' index="1"><i class="el-icon-s-promotion"></i>待授权
                             </el-menu-item>
-                            <!-- <el-menu-item @click='alertFunc(2)' index="2"><i class="el-icon-s-order"></i><a>新建申请</a>
-                            </el-menu-item> -->
                             <el-menu-item @click='alertFunc(2)' index="2"><i class="el-icon-s-order"></i><a>新建申请</a>
                             </el-menu-item>
                             <el-menu-item @click='alertFunc(3)' index="3"><i class="el-icon-s-claim"></i>已授权
@@ -107,6 +105,7 @@
 </template>
 
 <script>
+
     import Untreated from '@/views/untreated/index1.vue'
 
     import NewApply from '@/views/newapply/index1.vue'
@@ -165,6 +164,7 @@
             },
         },
         mounted: function () {
+            
             let user = sessionStorage.getItem('user');
             if (user) {
                 this.username = user;

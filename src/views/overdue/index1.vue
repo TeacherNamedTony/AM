@@ -18,14 +18,14 @@
         </el-table-column>
         <el-table-column prop="userRatifyDetail.company" label="所属单位" width="">
         </el-table-column>
-        <el-table-column prop="look" label=" " width="200">
+        <el-table-column prop="look" label=" " width="180">
           <template slot-scope="scope">
             <div>
               <el-button type="primary" round @click="changeDialog(scope.row)">查看申请</el-button>
             </div>
           </template>
         </el-table-column>
-        <el-table-column prop="address" label=" " width="200">
+        <el-table-column prop="address" label=" " width="300">
           <el-button type="warning" slot-scope="scope" round @click="reapply((scope.row.sid))">重新申请三个月</el-button>
         </el-table-column>
       </el-table>

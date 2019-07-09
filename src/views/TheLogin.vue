@@ -9,7 +9,7 @@
             </el-form-item>
             <el-form-item prop="password">
                 <el-input type="password" v-model="ruleForm2.password" auto-complete="off" placeholder="密码"><template
-                        slot="prepend"><span class="fa fa-lock fa-lg" style="width: 13px" ></span></template></el-input>
+                        slot="prepend"><span class="fa fa-lock fa-lg" style="width: 13px"></span></template></el-input>
             </el-form-item>
             <el-checkbox v-model="checked" class="rememberme">记住密码</el-checkbox>
             <el-form-item style="width:100%;">
@@ -20,13 +20,14 @@
 </template>
 
 <script>
+    import axios from 'axios';
     export default {
         data() {
             return {
                 logining: false,
                 ruleForm2: {
-                    username: 'admin',
-                    password: '1',
+                    username: '',
+                    password: '',
                 },
                 rules2: {
                     username: [{
@@ -48,29 +49,42 @@
                 this.$refs.ruleForm2.validate((valid) => {
                     if (valid) {
                         this.logining = true;
-                        if (this.ruleForm2.username === 'admin' &&
-                            this.ruleForm2.password === '1') {
-                            this.logining = false;
-                            sessionStorage.setItem('user', this.ruleForm2.username);
-                            this.$router.push({
-                                path: '/'
-                            });
-                        }
-                        else if (this.ruleForm2.username === 'user' &&
-                            this.ruleForm2.password === '1') {
-                            this.logining = false;
-                            sessionStorage.setItem('user', this.ruleForm2.username);
-                            this.$router.push({
-                                path: '/user'
-                            });
-                        } else {
-                            this.logining = false;
-                            this.$alert('用户名或者密码错误!', 'info', {
-                                confirmButtonText: 'ok'
-                            })
-                        }
+                        axios.get('http://192.168.17.73:8088/login?username=' + this.ruleForm2.username +
+                            '&password=' + this.ruleForm2.password).then((data) => {
+                            window.console.log(typeof data)
+
+                            window.console.log(data.data.data.isadmin)
+
+                            if (data.data.data.isadmin == 1) {
+                            // if (true) {    
+                                sessionStorage.setItem('user', this.ruleForm2.username);
+                                this.$router.push({
+                                    path: '/user'
+                                });
+                            } else if (data.data.data.isadmin == 0) {
+                                sessionStorage.setItem('user', this.ruleForm2.username);
+                                this.$router.push({
+                                    path: '/'
+                                });
+                            }
+                        })
+                        // this.logining = true;
+                        // if (this.ruleForm2.username === 'admin' &&
+                        //     this.ruleForm2.password === '1') {
+                        //     this.logining = false;
+                        //     sessionStorage.setItem('user', this.ruleForm2.username);
+                        //     this.$router.push({
+                        //         path: '/'
+                        //     });
+                        // } else if (this.ruleForm2.username === 'user' &&
+                        //     this.ruleForm2.password === '1') {
+                        //     this.logining = false;
+                        //     sessionStorage.setItem('user', this.ruleForm2.username);
+                        //     this.$router.push({
+                        //         path: '/user'
+                        //     });
                     } else {
-                        window.console.log('提交失败!');
+                        window.console.log('用户名或密码错误!');
                         return false;
                     }
                 })
@@ -80,7 +94,7 @@
 </script>
 
 <style scoped>
-/* .login {
+    /* .login {
   width: 100%;
   padding-bottom: 62.5%;
   height: 0;
@@ -91,12 +105,12 @@
   -moz-background-size: cover;
   -o-background-size: cover;
 } */
-
     .login-container {
         width: 100%;
         height: 100%;
         background: url("../assets/bg.jpg");
     }
+
     .login-page {
         width: 350px;
         float: right;
