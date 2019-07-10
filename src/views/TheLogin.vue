@@ -52,41 +52,28 @@
                         axios.get('http://192.168.17.73:8088/login?username=' + this.ruleForm2.username +
                             '&password=' + this.ruleForm2.password).then((data) => {
                             window.console.log(typeof data)
-
-                            window.console.log(data.data.data.isadmin)
-
-                            if (data.data.data.isadmin == 1) {
-                                // if (true) {    
-                                sessionStorage.setItem('user', this.ruleForm2.username);
-
-                                this.$router.push({
-                                    path: '/user'
-                                });
-                            } else if (data.data.data.isadmin == 0) {
-                                sessionStorage.setItem('user', this.ruleForm2.username);
-                                this.$router.push({
-                                    path: '/'
-                                });
+                            window.console.log(data)
+                            // window.console.log(data.data.data.isadmin)
+                            // alert(data.data.data.isadmin)
+                            // alert(data.data.data.isdel)
+                            if (data.data.data != null) {
+                                if (data.data.data.isadmin == 1) {
+                                    sessionStorage.setItem('user', this.ruleForm2.username);
+                                    this.$router.push({
+                                        path: '/user'
+                                    });
+                                } else if (data.data.data.isadmin == 0) {
+                                    sessionStorage.setItem('user', this.ruleForm2.username);
+                                    this.$router.push({
+                                        path: '/'
+                                    });
+                                }
+                            } else {
+                                location.reload()
+                                alert('用户名或密码错误!请重新登录！');
+                                return false;
                             }
                         })
-                        // this.logining = true;
-                        // if (this.ruleForm2.username === 'admin' &&
-                        //     this.ruleForm2.password === '1') {
-                        //     this.logining = false;
-                        //     sessionStorage.setItem('user', this.ruleForm2.username);
-                        //     this.$router.push({
-                        //         path: '/'
-                        //     });
-                        // } else if (this.ruleForm2.username === 'user' &&
-                        //     this.ruleForm2.password === '1') {
-                        //     this.logining = false;
-                        //     sessionStorage.setItem('user', this.ruleForm2.username);
-                        //     this.$router.push({
-                        //         path: '/user'
-                        //     });
-                    } else {
-                        window.console.log('用户名或密码错误!');
-                        return false;
                     }
                 })
             }
@@ -131,3 +118,20 @@
         text-align: center;
     }
 </style>
+
+// this.logining = true;
+// if (this.ruleForm2.username === 'admin' &&
+// this.ruleForm2.password === '1') {
+// this.logining = false;
+// sessionStorage.setItem('user', this.ruleForm2.username);
+// this.$router.push({
+// path: '/'
+// });
+// } else if (this.ruleForm2.username === 'user' &&
+// this.ruleForm2.password === '1') {
+// this.logining = false;
+// sessionStorage.setItem('user', this.ruleForm2.username);
+// this.$router.push({
+// path: '/user'
+// })
+// }
