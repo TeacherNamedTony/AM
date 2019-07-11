@@ -6,27 +6,27 @@
       <el-table :data="tableData">
         <el-table-column prop="applyDetail.applydate" label="申请日期" width="95">
         </el-table-column>
-        <el-table-column prop="applyDetail.applyername" label="申请人员" width="90">
+        <el-table-column prop="applyDetail.applyername" label="申请人员" width="80">
         </el-table-column>
-        <el-table-column prop="applyDetail.project" label="项目名称" width="110">
+        <el-table-column prop="applyDetail.project" label="项目名称" width="100">
         </el-table-column>
         <el-table-column prop="applyDetail.grantbegindate" label="开始时间" width="95">
         </el-table-column>
         <el-table-column prop="applyDetail.grantenddate" label="结束时间" width="95">
         </el-table-column>
-        <el-table-column prop="userRatifyDetail.realname" label="审核人" width="95">
+        <el-table-column prop="userRatifyDetail.realname" label="审核人" width="80">
         </el-table-column>
         <el-table-column prop="userRatifyDetail.company" label="所属单位" width="">
         </el-table-column>
-        <el-table-column prop="look" label=" " width="180">
+        <el-table-column prop="look" label=" " width="">
           <template slot-scope="scope">
             <div>
               <el-button type="primary" round @click="changeDialog(scope.row)">查看申请</el-button>
             </div>
           </template>
         </el-table-column>
-        <el-table-column prop="address" label=" " width="300">
-          <el-button type="warning" slot-scope="scope" round @click="reapply((scope.row.sid))">重新申请三个月</el-button>
+        <el-table-column prop="address" label=" " width="">
+          <el-button type="warning" slot-scope="scope" round @click="reapply((scope.row.sid))">重新申请90天</el-button>
         </el-table-column>
       </el-table>
     </el-main>
@@ -567,14 +567,12 @@
     },
     methods: {
       reapply(sid) {
-        alert(sid)
+        // alert(sid)
         this.$confirm('申请重新授权三个月，需等待管理员同意。', '提示', {})
         axios.get('http://192.168.17.73:8088/reApply?sid=' + sid).then(() => {
-          // alert(sid)
+          alert(sid)
           location.reload()
         })
-
-
       },
       loadAll() {
         axios.get('http://192.168.17.73:8088/getAllEndState', {

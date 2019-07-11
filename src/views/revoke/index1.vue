@@ -6,27 +6,27 @@
       <el-table :data="tableData">
         <el-table-column prop="applyDetail.applydate" label="申请日期" width="95">
         </el-table-column>
-        <el-table-column prop="applyDetail.applyername" label="申请人员" width="90">
+        <el-table-column prop="applyDetail.applyername" label="申请人员" width="80">
         </el-table-column>
-        <el-table-column prop="applyDetail.project" label="项目名称" width="110">
+        <el-table-column prop="applyDetail.project" label="项目名称" width="100">
         </el-table-column>
         <el-table-column prop="applyDetail.grantbegindate" label="开始时间" width="95">
         </el-table-column>
         <el-table-column prop="applyDetail.grantenddate" label="结束时间" width="95">
         </el-table-column>
-        <el-table-column prop="userRatifyDetail.realname" label="审核人" width="95">
+        <el-table-column prop="userRatifyDetail.realname" label="审核人" width="80">
         </el-table-column>
         <el-table-column prop="userRatifyDetail.company" label="所属单位" width="">
         </el-table-column>
-        <el-table-column prop="look" label=" " width="180">
+        <el-table-column prop="look" label=" " width="">
           <template slot-scope="scope">
             <div>
               <el-button type="primary" round @click="changeDialog(scope.row)">查看申请</el-button>
             </div>
           </template>
         </el-table-column>
-        <el-table-column prop="address" label=" " width="300">
-          <el-button type="danger" round @click="passnow">请求恢复</el-button>
+        <el-table-column prop="address" label=" " width="">
+          <el-button type="danger" slot-scope="scope" round @click="askreaudited(scope.row.sid)">请求恢复授权</el-button>
         </el-table-column>
       </el-table>
     </el-main>
@@ -566,8 +566,12 @@
       }
     },
     methods: {
-      passnow() {
-        this.$confirm('确认下载授权文件。此文件请妥善保管', '提示', {})
+      askreaudited(sid) {
+        // alert(sid)
+        this.$confirm('请求回复授权，需等待管理员同意。', '提示', {})
+        axios.get('http://192.168.17.73:8088/reApply?sid=' + sid).then(() => {
+          location.reload()
+        })
       },
       loadAll() {
         axios.get('http://192.168.17.73:8088/getRevoke?id=3', {

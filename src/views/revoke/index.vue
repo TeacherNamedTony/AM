@@ -1,37 +1,37 @@
   <template>
     <el-container>
-      <el-header style="text-align:left; font-size: 12px">
+      <!-- <el-header style="text-align:left; font-size: 12px">
         <el-autocomplete v-model="state" :fetch-suggestions="querySearchAsync" placeholder="请输入项目名称或者申请人"
           @select="handleSelect">
         </el-autocomplete>
-      </el-header>
+      </el-header> -->
       <el-main>
         <el-table ref="multipleTable" :data="tableData" tooltip-effect="dark" style="width: 100%"
           @selection-change="handleSelectionChange">
           <el-table-column type="selection" width="35">
           </el-table-column>
-          <el-table-column prop="applyDetail.applydate" label="申请日期" width="100">
+          <el-table-column prop="applyDetail.applydate" label="申请日期" width="95">
           </el-table-column>
-          <el-table-column prop="applyDetail.applyername" label="申请人员" width="100">
+          <el-table-column prop="applyDetail.applyername" label="申请人员" width="80">
           </el-table-column>
-          <el-table-column prop="applyDetail.project" label="项目名称" width="120">
+          <el-table-column prop="applyDetail.project" label="项目名称" width="100">
           </el-table-column>
-          <el-table-column prop="applyDetail.grantbegindate" label="开始时间" width="100">
+          <el-table-column prop="applyDetail.grantbegindate" label="开始时间" width="95">
           </el-table-column>
-          <el-table-column prop="applyDetail.grantenddate" label="结束时间" width="100">
+          <el-table-column prop="applyDetail.grantenddate" label="结束时间" width="95">
           </el-table-column>
-          <el-table-column prop="userApplyDetail.company" label="所属单位" width="100">
+          <el-table-column prop="userApplyDetail.company" label="所属单位" width="90">
           </el-table-column>
-          <el-table-column prop="userRatifyDetail.realname" label="审核人" width="100">
+          <el-table-column prop="userRatifyDetail.realname" label="审核人" width="80">
           </el-table-column>
           <el-table-column prop="grantdate" label="审批时间" width="">
           </el-table-column>
           <el-table-column prop="look" label=" " width="">
             <template slot-scope="scope">
-              <el-button type="danger" round @click="changeDialog(scope.row)">查看申请</el-button>
+              <el-button type="info" round @click="changeDialog(scope.row)">查看申请</el-button>
             </template>
           </el-table-column>
-          <el-table-column prop="address" label=" " width="300">
+          <el-table-column prop="address" label=" " width="">
             <!-- <el-button type="success" round @click="passnow">备用按钮</el-button> -->
           </el-table-column>
         </el-table>
@@ -781,4 +781,16 @@
     .el-aside {
       color: #333;
     }
+    .el-button--info {
+      background-color: #33CCCC;
+      border-color: white;
+    }
+    .el-button--info.is-active, .el-button--info:active {
+      background-color: rgb(6, 158, 158);
+      border-color: white;
+    } 
+    .el-button--info:focus, .el-button--info:hover{
+      background-color: rgb(6, 158, 158);
+      border-color: white;
+    }  
   </style>

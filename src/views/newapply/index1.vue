@@ -30,7 +30,7 @@
       <el-col :span="11">
         <el-form-item prop="applydate">
           <el-date-picker type="date" format="yyyy 年 MM 月 dd 日" value-format="yyyy-MM-dd" placeholder="选择申请时间"
-            v-model="applyForm.applydate" default-time="" style="width: 200%;">
+            v-model="applyForm.applydate" default-time=" " style="width: 200%;">
           </el-date-picker>
         </el-form-item>
       </el-col>
@@ -61,17 +61,32 @@
     <el-divider content-position="center">设备信息</el-divider>
     <br>
     <el-form-item label="部署类型" prop="deploymenttype">
+      <el-select v-model="applyForm.deploymenttype" placeholder="请选择部署类型" style="width:93%;">
+        <el-option label="物理机" value="物理机"></el-option>
+        <el-option label="单控云" value="单控云"></el-option>
+        <el-option label="三控云" value="三控云"></el-option>
+      </el-select>
+    </el-form-item>
+    <!-- <el-form-item label="部署类型" prop="deploymenttype">
       <el-input v-model="applyForm.deploymenttype" style="width: 100%;" placeholder="物理机/单控云/三控云"></el-input>
-    </el-form-item>
-    <el-form-item label="授权类型" prop="granttype">
+    </el-form-item> -->
+    <!-- <el-form-item label="授权类型" prop="granttype">
       <el-input v-model="applyForm.granttype" style="width: 100%;" placeholder="开发测试/正式运行"></el-input>
-    </el-form-item>
+    </el-form-item> -->
     <el-form-item label="机器设备码" prop="machinenum">
       <el-input v-model="applyForm.machinenum" style="width: 100%;" placeholder="请输入机器设备码"></el-input>
     </el-form-item>
-    <br>
     <el-form-item label="授权服务器型号" prop="servertype">
       <el-input v-model="applyForm.servertype" style="width: 100%;" placeholder="授权服务器型号"></el-input>
+    </el-form-item>
+    <br>
+
+
+    <el-form-item label="授权类型" prop="granttype">
+      <el-select v-model="applyForm.granttype" placeholder="请选择授权类型" style="width: 93%;">
+        <el-option label="开发测试授权" value="开发测试授权"></el-option>
+        <el-option label="正式运行授权" value="正式运行授权"></el-option>
+      </el-select>
     </el-form-item>
     <el-form-item label="授权服务器OS" prop="serveros">
       <el-input v-model="applyForm.serveros" style="width: 100%;" placeholder="授权服务器OS"></el-input>
@@ -114,7 +129,7 @@
     <el-form-item label="授权起始时间" required>
       <el-col :span="11">
         <el-form-item prop="grantbegindate">
-          <el-date-picker type="date" format="yyyy 年 MM 月 dd 日" value-format="yyyy-MM-dd" placeholder="选择授权起始时间"
+          <el-date-picker type="date" format="yyyy 年 MM 月 dd 日" @change="getTime" value-format="yyyy-MM-dd" placeholder="选择授权起始时间"
             v-model="applyForm.grantbegindate" style="width: 200%;">
           </el-date-picker>
         </el-form-item>
@@ -133,8 +148,9 @@
     <el-form-item label="授权到期时间" required>
       <el-col :span="11">
         <el-form-item prop="grantenddate">
-          <el-date-picker type="date" format="yyyy 年 MM 月 dd 日" value-format="yyyy-MM-dd" @change="getTime"
-            placeholder="选择授权到期时间" v-model="applyForm.grantenddate" style="width: 200%;">
+          <!-- @change="getTime" -->
+          <el-date-picker type="date" format="yyyy 年 MM 月 dd 日" value-format="yyyy-MM-dd" placeholder="选择授权到期时间"
+            v-model="applyForm.grantenddate" style="width: 200%;">
           </el-date-picker>
         </el-form-item>
       </el-col>
@@ -193,7 +209,7 @@
         },
         rules: {
           project: [{
-              required: false,
+              required: true,
               message: '请输入项目名称/标识',
               trigger: 'blur'
             },
@@ -205,7 +221,7 @@
             }
           ],
           applyername: [{
-              required: false,
+              required: true,
               message: '请输入授权申请人姓名',
               trigger: 'blur'
             },
@@ -232,33 +248,33 @@
 
 
           applyertel: [{
-            required: false,
+            required: true,
             message: '授权申请人联系方式不能为空'
           }, ],
           grantuser: [{
-            required: false,
+            required: true,
             message: '请输入授权用户',
             trigger: 'blur'
           }, ],
           grantuserperson: [{
-            required: false,
+            required: true,
             message: '授权用户联系人',
             trigger: 'blur'
           }, ],
           grantuserpersontel: [{
-            required: false,
+            required: true,
             message: '请输入授权用户联系方式',
             trigger: 'blur'
           }, ],
 
 
           deploymenttype: [{
-            required: false,
+            required: true,
             message: '请输入部署类型',
             trigger: 'blur'
           }, ],
           granttype: [{
-            required: false,
+            required: true,
             message: '请输入授权类型',
             trigger: 'blur'
           }, ],
@@ -268,19 +284,19 @@
             trigger: 'blur'
           }],
           servertype: [{
-            required: false,
+            required: true,
             message: '请输入授权服务器型号',
             trigger: 'blur'
           }, ],
           serveros: [{
-              required: false,
+              required: true,
               message: '请输入授权服务器OS',
               trigger: 'blur'
             },
 
           ],
           serverip: [{
-              required: false,
+              required: true,
               message: '请输入授权服务器IP',
               trigger: 'blur'
             },
@@ -353,7 +369,6 @@
           }],
 
 
-
           applynote: [{
               required: true,
               message: '请输入授权申请说明',
@@ -394,11 +409,11 @@
             axios.get('http://192.168.17.73:8088/addNewApply', {
               params
             }).then(() => {
-              location. reload()
+              location.reload()
               alert('已提交!');
-              
+
             });
-            
+
           } else {
             window.console.log('错误提交');
             return false;

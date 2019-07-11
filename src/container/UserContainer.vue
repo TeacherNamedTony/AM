@@ -51,8 +51,6 @@
                     <div class="app-header-userinfo">
                         <el-dropdown trigger="hover" :hide-on-click="false">
                             <span class="el-dropdown-link">
-                                
-
                                 <img src="@/assets/user.png" :width="isCollapse ? '30' : '30'" height="30" />
                                 {{username}}
                                 <i class="el-icon-arrow-down el-icon--right"></i>
@@ -65,29 +63,26 @@
                         </el-dropdown>
                     </div>
                 </el-header>
+
+
                 <el-main class="app-body">
                     <template>
                         <div class="line"></div>
                         <el-menu default-active="1" class="el-menu-demo" mode="horizontal"
                             @select="handleSelect" background-color="#545c64" text-color="#fff"
                             active-text-color="#ffd04b">
-                            <el-menu-item @click='alertFunc(1)' index="1"><i class="el-icon-s-promotion"></i>待授权
+                            <el-menu-item @click='alertFunc(1)' index="1"><i style="color:#fff;" class="el-icon-loading"></i>待授权
                             </el-menu-item>
-                            <el-menu-item @click='alertFunc(2)' index="2"><i class="el-icon-s-order"></i><a>新建申请</a>
+                            <el-menu-item @click='alertFunc(2)' index="2"><i style="color:#fff;" class="el-icon-s-order"></i><a>新建申请</a>
                             </el-menu-item>
-                            <el-menu-item @click='alertFunc(3)' index="3"><i class="el-icon-s-claim"></i>已授权
+                            <el-menu-item @click='alertFunc(3)' index="3"><i style="color:#fff;" class="el-icon-s-claim"></i>已授权
                             </el-menu-item>
-                            <el-menu-item @click='alertFunc(4)' index="4"><i class="el-icon-warning"></i>授权过期
+                            <el-menu-item @click='alertFunc(4)' index="4"><i style="color:#fff;" class="el-icon-warning"></i>授权过期
                             </el-menu-item>
-                            <el-menu-item @click='alertFunc(5)' index="5"><i class="el-icon-s-release"></i>授权异常(被撤销)
+                            <el-menu-item @click='alertFunc(5)' index="5"><i style="color:#fff;" class="el-icon-s-release"></i>授权撤销
                             </el-menu-item>
-                            <el-menu-item @click='alertFunc(6)' index="6"><i class="el-icon-message-solid"></i>授权即将过期
+                            <el-menu-item @click='alertFunc(6)' index="6"><i style="color:red;" class="el-icon-message-solid"></i>授权即将过期
                             </el-menu-item>
-                            <!-- <el-menu-item @click='alertFunc(6)' index="6" disabled><i class="el-icon-s-home"></i>个人中心
-                            </el-menu-item> -->
-                            <!-- <el-menu-item @click='alertFunc(7)' index="7" disabled><i
-                                    class="el-icon-message-solid"></i>消息中心
-                            </el-menu-item> -->
                         </el-menu>
                         <div class="ajaxpage">
                             <Untreated v-if="itemIndex==1"></Untreated>

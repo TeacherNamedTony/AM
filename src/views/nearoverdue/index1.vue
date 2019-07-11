@@ -6,27 +6,27 @@
       <el-table :data="tableData">
         <el-table-column prop="applyDetail.applydate" label="申请日期" width="95">
         </el-table-column>
-        <el-table-column prop="applyDetail.applyername" label="申请人员" width="90">
+        <el-table-column prop="applyDetail.applyername" label="申请人员" width="80">
         </el-table-column>
-        <el-table-column prop="applyDetail.project" label="项目名称" width="90">
+        <el-table-column prop="applyDetail.project" label="项目名称" width="100">
         </el-table-column>
         <el-table-column prop="applyDetail.grantbegindate" label="开始时间" width="95">
         </el-table-column>
         <el-table-column prop="applyDetail.grantenddate" label="结束时间" width="95">
         </el-table-column>
-        <el-table-column prop="userRatifyDetail.realname" label="审核人" width="95">
+        <el-table-column prop="userRatifyDetail.realname" label="审核人" width="80">
         </el-table-column>
         <el-table-column prop="userRatifyDetail.company" label="所属单位" width="">
         </el-table-column>
-        <el-table-column prop="look" label=" " width="180">
+        <el-table-column prop="look" label=" " width="">
           <template slot-scope="scope">
             <div>
               <el-button type="primary" round @click="changeDialog(scope.row)">查看申请</el-button>
             </div>
           </template>
         </el-table-column>
-        <el-table-column prop="address" label=" " width="300">
-          <el-button type="success" round @click="reApply">重新申请三个月</el-button>
+        <el-table-column prop="address" label=" " width="">
+          <el-button type="warning" round @click="reApply">重新申请90天</el-button>
         </el-table-column>
       </el-table>
     </el-main>
