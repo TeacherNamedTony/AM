@@ -24,9 +24,10 @@
             </template>
           </el-table-column>
         </el-table>
-      </el-main>
-      <el-pagination class="fenye" background layout="prev, pager, next" :total="1">
+              <el-pagination class="fenye" background layout="prev, pager, next" :total="1">
       </el-pagination>
+      </el-main>
+
 
       <!-- dialog开始，授权申请单弹窗 -->
       <el-dialog title="#" :visible.sync="dialogTableVisible">
@@ -756,6 +757,7 @@
     }
 
     .fenye {
-      text-align: center
+      text-align: center;
+            margin-top: 3%
     }
   </style>

@@ -10,8 +10,9 @@
                     <el-menu class="el-menu-vertical-demo" @open="handleOpen" :collapse="isCollapse">
                         <el-menu-item>
                             <li style="list-style-type:none;text-align:center ;">
-                                <i class="el-icon-star-on"></i> <i class="el-icon-star-on"></i> <i
-                                    class="el-icon-star-on"></i>
+                                <i class="el-icon-star-on"></i>
+                                <i class="el-icon-star-on"></i> 
+                                <i class="el-icon-star-on"></i>
                             </li>
                         </el-menu-item>
                         <el-menu-item>
@@ -71,22 +72,21 @@
 
                 <el-main class="app-body">
                     <template>
-                        <el-menu :default-active="activeIndex2" class="el-menu-demo" mode="horizontal"
-                            @select="handleSelect" background-color="#009999" text-color="#fff"
-                            active-text-color="#ffd04b">
+                        <el-menu default-active="1" class="el-menu-demo" mode="horizontal" @select="handleSelect"
+                            background-color="#009999" text-color="#fff" active-text-color="#ffd04b">
                             <el-menu-item @click='alertFunc(1)' index="1"><i style="color:#fff;"
                                     class="el-icon-loading"></i>待授权
                             </el-menu-item>
                             <el-menu-item @click='alertFunc(2)' index="2"><i style="color:#fff;"
-                                    class="el-icon-s-claim"></i>已授权
+                                    class="el-icon-circle-check"></i>已授权
                             </el-menu-item>
                             <el-menu-item @click='alertFunc(3)' index="3"><i style="color:#fff;"
-                                    class="el-icon-warning"></i>授权过期
+                                    class="el-icon-warning-outline"></i>授权过期
                             </el-menu-item>
                             <el-menu-item @click='alertFunc(4)' index="4"><i style="color:#fff;"
-                                    class="el-icon-s-release"></i>授权撤销
+                                    class="el-icon-circle-close"></i>授权撤销
                             </el-menu-item>
-                            <el-menu-item @click='alertFunc(5)' index="5"><i style="color:#fff;"
+                            <el-menu-item @click='alertFunc(5)' index="5"><i style="color:red;"
                                     class="el-icon-message-solid"></i>授权即将过期
                             </el-menu-item>
                             <el-menu-item @click='alertFunc(6)' index="6"><i style="color:#fff;"

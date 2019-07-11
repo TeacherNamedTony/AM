@@ -1,10 +1,5 @@
   <template>
     <el-container>
-      <!-- <el-header style="text-align:left; font-size: 12px">
-        <el-autocomplete v-model="state" :fetch-suggestions="querySearchAsync" placeholder="请输入项目名称或申请人"
-          @select="handleSelect">
-        </el-autocomplete>
-      </el-header> -->
       <el-main>
         <el-table ref="multipleTable" :data="tableData" tooltip-effect="dark" style="width: 100%"
           @selection-change="handleSelectionChange">
@@ -22,8 +17,8 @@
           </el-table-column>
           <el-table-column prop="userApplyDetail.company" label="所属单位" width="80">
           </el-table-column>
-          <el-table-column prop="" label="审核人" width="">
-            <el-tag type="info">请尽快审核</el-tag>
+          <el-table-column prop="" label="审核状态" width="">
+            <el-tag type="info">请管理员尽快审核</el-tag>
           </el-table-column>
           <el-table-column prop="look" label=" " width="">
             <template slot-scope="scope">
@@ -34,9 +29,11 @@
             <el-button slot-scope="scope" type="success" round @click="passnow(scope.row.sid)">通过申请</el-button>
           </el-table-column>
         </el-table>
-      </el-main>
-      <el-pagination class="fenye" background layout="prev, pager, next" :total="20">
+              <el-pagination  class="fenye" background layout="prev, pager, next" :total="1">
       </el-pagination>
+      </el-main>
+
+
       <!-- dialog开始，授权申请单弹窗 -->
       <el-dialog title="#" :visible.sync="dialogTableVisible">
 
@@ -772,7 +769,8 @@
     }
 
     .fenye {
-      text-align: center
+      text-align: center;
+      margin-top: 3%
     }
 
     .el-header {
