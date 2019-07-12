@@ -10,13 +10,13 @@
           @selection-change="handleSelectionChange">
           <el-table-column type="selection" width="35">
           </el-table-column>
-          <el-table-column prop="applyDetail.applydate" label="申请日期" width="95">
+          <el-table-column prop="applyDetail.applydate" label="申请日期" width="90">
           </el-table-column>
           <el-table-column prop="applyDetail.applyername" label="申请人员" width="80">
           </el-table-column>
           <el-table-column prop="applyDetail.project" label="项目名称" width="100">
           </el-table-column>
-          <el-table-column prop="applyDetail.grantbegindate" label="开始时间" width="95">
+          <el-table-column prop="applyDetail.grantbegindate" label="开始时间" width="90">
           </el-table-column>
           <el-table-column prop="applyDetail.grantenddate" label="结束时间" width="95">
           </el-table-column>
@@ -30,17 +30,19 @@
             <template slot-scope="scope">
               <el-button type="info" round @click="changeDialog(scope.row)">查看申请</el-button>
             </template>
-
           </el-table-column>
           <el-table-column prop="address" label=" " width="">
             <el-button slot-scope="scope" type="danger" round @click="nopass(scope.row.sid)">撤销授权</el-button>
           </el-table-column>
         </el-table>
+        <el-pagination class="fenye" background layout="prev, pager, next" :total="20">
+        </el-pagination>
       </el-main>
-      <el-pagination class="fenye" background layout="prev, pager, next" :total="20">
-      </el-pagination>
+
+
       <!-- dialog开始，授权申请单弹窗 -->
       <el-dialog title="#" :visible.sync="dialogTableVisible">
+
         <body lang=ZH-CN style='text-justify-trim:punctuation'>
           <div class=WordSection1 style='layout-grid:15.6pt'>
             <div align=center>
@@ -620,7 +622,6 @@
           this.dialogTableVisible = true;
         },
 
-
         // toggleSelection() {
         //   this.$refs.multipleTable.clearSelection();
         // },
@@ -772,8 +773,10 @@
       margin: 72.0pt 90.0pt 72.0pt 90.0pt;
       layout-grid: 15.6pt;
     }
+
     .fenye {
-      text-align: center
+      text-align: center;
+      margin-top: 2%
     }
 
     .el-header {
@@ -785,17 +788,21 @@
     .el-aside {
       color: #333;
     }
+
     .el-button--info {
       background-color: #33CCCC;
       border-color: white;
     }
-    
-    .el-button--info.is-active, .el-button--info:active {
+
+    .el-button--info.is-active,
+    .el-button--info:active {
       background-color: rgb(6, 158, 158);
       border-color: white;
-    } 
-    .el-button--info:focus, .el-button--info:hover{
+    }
+
+    .el-button--info:focus,
+    .el-button--info:hover {
       background-color: rgb(6, 158, 158);
       border-color: white;
-    }  
+    }
   </style>

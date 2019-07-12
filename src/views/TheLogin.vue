@@ -70,15 +70,15 @@
                             // alert(data.data.data.isdel)
                             if (data.data.data != null) {
                                 if (data.data.data.isadmin == 1 && data.data.data.isdel == 0) {
-                                    sessionStorage.setItem('user', this.ruleForm2.username);
+                                    sessionStorage.setItem('user', data.data.data.realname);
                                     sessionStorage.setItem('id', data.data.data.id);
                                     this.$router.push({
                                         path: '/user'
                                     });
                                 } else if (data.data.data.isadmin == 0 && data.data.data.isdel == 0) {
-                                    sessionStorage.setItem('user', this.ruleForm2.username);
+                                    sessionStorage.setItem('user', data.data.data.realname);
                                     this.$router.push({
-                                        path: '/'
+                                        path: '/admin'
                                     });
                                 } else if (data.data.data.isdel == 1) {
                                     location.reload()

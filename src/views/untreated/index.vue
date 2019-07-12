@@ -29,8 +29,8 @@
             <el-button slot-scope="scope" type="success" round @click="passnow(scope.row.sid)">通过申请</el-button>
           </el-table-column>
         </el-table>
-              <el-pagination  class="fenye" background layout="prev, pager, next" :total="1">
-      </el-pagination>
+        <el-pagination class="fenye" background layout="prev, pager, next" :total="1">
+        </el-pagination>
       </el-main>
 
 
@@ -787,12 +787,16 @@
       background-color: #33CCCC;
       border-color: white;
     }
-    .el-button--info.is-active, .el-button--info:active {
+
+    .el-button--info.is-active,
+    .el-button--info:active {
       background-color: rgb(6, 158, 158);
       border-color: white;
-    } 
-    .el-button--info:focus, .el-button--info:hover{
+    }
+
+    .el-button--info:focus,
+    .el-button--info:hover {
       background-color: rgb(6, 158, 158);
       border-color: white;
-    }  
+    }
   </style>

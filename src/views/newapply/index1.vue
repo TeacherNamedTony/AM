@@ -105,26 +105,25 @@
       <el-input v-model="applyForm.grantfiletype" style="width: 100%;" placeholder="授权文件版本"></el-input>
     </el-form-item>
 
-
     <el-divider content-position="center">授权信息</el-divider>
     <br>
     <el-form-item label="微服务-服务用户量" prop="usernum">
-      <el-input v-model="applyForm.usernum" style="width: 100%;" placeholder="微服务-服务用户量"></el-input>
+      <el-input v-model.number="applyForm.usernum" style="width: 100%;" placeholder="微服务-服务用户量"></el-input>
     </el-form-item>
     <el-form-item label="容器云-控制节点数量" prop="controlnum">
-      <el-input v-model="applyForm.controlnum" style="width: 100%;" placeholder="容器云-控制节点数量"></el-input>
+      <el-input v-model.number="applyForm.controlnum" style="width: 100%;" placeholder="容器云-控制节点数量"></el-input>
     </el-form-item>
     <el-form-item label="容器云-计算节点数量" prop="computenum">
-      <el-input v-model="applyForm.computenum" style="width: 100%;" placeholder="容器云-计算节点数量"></el-input>
+      <el-input v-mode.numberl="applyForm.computenum" style="width: 100%;" placeholder="容器云-计算节点数量"></el-input>
     </el-form-item>
     <br>
 
 
     <el-form-item label="应用商店-实例数" prop="shopinstancenum">
-      <el-input v-model="applyForm.shopinstancenum" style="width: 100%;" placeholder="应用商店-实例数"></el-input>
+      <el-input v-model.number="applyForm.shopinstancenum" style="width: 100%;" placeholder="应用商店-实例数"></el-input>
     </el-form-item>
     <el-form-item label="应用商店-托管应用数" prop="shopappnum">
-      <el-input v-model="applyForm.shopappnum" style="width: 100%;" placeholder="应用商店-托管应用数"></el-input>
+      <el-input v-model.number="applyForm.shopappnum" style="width: 100%;" placeholder="应用商店-托管应用数"></el-input>
     </el-form-item>
     <el-form-item label="授权起始时间" required>
       <el-col :span="11">
@@ -138,10 +137,10 @@
     <br>
 
     <el-form-item label="桌面-服务端实例数" prop="desktopinstancenum">
-      <el-input v-model="applyForm.desktopinstancenum" style="width: 100%;" placeholder="桌面-服务端实例数"></el-input>
+      <el-input v-model.number="applyForm.desktopinstancenum" style="width: 100%;" placeholder="桌面-服务端实例数"></el-input>
     </el-form-item>
     <el-form-item label="桌面-客户端连接数" prop="desktopcon">
-      <el-input v-model="applyForm.desktopcon" style="width: 100%;" placeholder="桌面-客户端连接数"></el-input>
+      <el-input v-model.number="applyForm.desktopcon" style="width: 100%;" placeholder="桌面-客户端连接数"></el-input>
     </el-form-item>
 
 

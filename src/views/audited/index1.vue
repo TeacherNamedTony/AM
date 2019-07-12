@@ -30,11 +30,12 @@
           <el-button type="success" round @click="passnow">查看授权码</el-button>
         </el-table-column>
       </el-table>
+      <el-pagination class="fenye" background layout="prev, pager, next" :total="10">
+      </el-pagination>
     </el-main>
-    <el-pagination class="fenye" background layout="prev, pager, next" :total="10">
-    </el-pagination>
-    <el-dialog title="#" :visible.sync="dialogTableVisible">
 
+    <!-- dialog开始，授权申请单弹窗 -->
+    <el-dialog title="#" :visible.sync="dialogTableVisible">
       <body lang=ZH-CN style='text-justify-trim:punctuation'>
         <div class=WordSection1 style='layout-grid:15.6pt'>
           <div align=center>
@@ -772,7 +773,8 @@
   }
 
   .fenye {
-    text-align: center
+    text-align: center;
+    margin-top:2%
   }
 
   .el-header {

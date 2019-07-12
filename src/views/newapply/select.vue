@@ -2,7 +2,6 @@
 
     <el-table :data="tableData.filter(data => !search || data.name.toLowerCase().includes(search.toLowerCase()))"
         style="width: 100%">
-
         <el-table-column label="授权时间" prop="date">
         </el-table-column>
         <el-table-column label="授权码" prop="name">
@@ -25,7 +24,8 @@
     export default {
         data() {
             return {
-                tableData: [{
+                tableData: [
+                    {
                     date: '2016-05-02',
                     code: 'sugoSvig3SYQo5xdrUlyqvAgGLtH9v98wfUSc4vl2BoA',
                     name: 'ZaaL0ReD1ilqCUdMWlBKcMq48me201i6EllABjywhyICzjlV3M3UgoBOYfJ0NP4+fJ8bjQAW8US5XBhWSAuXvnINnLYNxnCMxIGYc2gEivtqpWNjdh4tnhwvZhoyd7PIyfpydDX/fZx/DH0+weEkEW3m0b4ox0tAK1pcEm9VDtI='
@@ -41,11 +41,13 @@
                     date: '2016-05-03',
                     code: '4',
                     name: '321'
-                }],
+                }
+                ],
                 search: ''
             }
         },
         methods: {
+            
             handleEdit(index, row) {
                 window.console.log(index, row);
             },
@@ -56,6 +58,7 @@
     }
 </script>
 <style scoped>
+
     .el-button--info {
       background-color: #33CCCC;
       border-color: white;

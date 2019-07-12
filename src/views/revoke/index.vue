@@ -35,11 +35,13 @@
             <!-- <el-button type="success" round @click="passnow">备用按钮</el-button> -->
           </el-table-column>
         </el-table>
+        <el-pagination class="fenye" background layout="prev, pager, next" :total="20">
+        </el-pagination>
       </el-main>
-      <el-pagination class="fenye" background layout="prev, pager, next" :total="20">
-      </el-pagination>
+
       <!-- dialog开始，授权申请单弹窗 -->
       <el-dialog title="#" :visible.sync="dialogTableVisible">
+
         <body lang=ZH-CN style='text-justify-trim:punctuation'>
           <div class=WordSection1 style='layout-grid:15.6pt'>
             <div align=center>
@@ -769,8 +771,10 @@
     }
 
     .fenye {
-      text-align: center
+      text-align: center;
+      margin-top: 2%
     }
+
 
     .el-header {
       background-color: #B3C0D1;
@@ -781,16 +785,21 @@
     .el-aside {
       color: #333;
     }
+
     .el-button--info {
       background-color: #33CCCC;
       border-color: white;
     }
-    .el-button--info.is-active, .el-button--info:active {
+
+    .el-button--info.is-active,
+    .el-button--info:active {
       background-color: rgb(6, 158, 158);
       border-color: white;
-    } 
-    .el-button--info:focus, .el-button--info:hover{
+    }
+
+    .el-button--info:focus,
+    .el-button--info:hover {
       background-color: rgb(6, 158, 158);
       border-color: white;
-    }  
+    }
   </style>

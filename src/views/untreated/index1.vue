@@ -24,8 +24,8 @@
             </template>
           </el-table-column>
         </el-table>
-              <el-pagination class="fenye" background layout="prev, pager, next" :total="1">
-      </el-pagination>
+        <el-pagination class="fenye" background layout="prev, pager, next" :total="20">
+        </el-pagination>
       </el-main>
 
 
@@ -572,7 +572,7 @@
             this.tableData = data.data.data;
             // window.console.log(id)
             window.console.log(data.data.data[1].sid)
-            
+
           })
         },
 
@@ -758,6 +758,7 @@
 
     .fenye {
       text-align: center;
-            margin-top: 3%
+      margin-top: 2%
     }
+
   </style>
