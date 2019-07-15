@@ -3,8 +3,7 @@
       <el-header style="height:0px">
       </el-header>
       <el-main>
-        <el-table ref="multipleTable" :data="tableData" tooltip-effect="dark" style="width: 100%"
-          @selection-change="handleSelectionChange">
+        <el-table ref="multipleTable" :data="tableData" tooltip-effect="dark" style="width: 100%">
           <el-table-column prop="applyDetail.applydate" label="申请日期" width="95">
           </el-table-column>
           <el-table-column prop="applyDetail.applyername" label="申请人员" width="80">
@@ -27,7 +26,6 @@
         <el-pagination class="fenye" background layout="prev, pager, next" :total="20">
         </el-pagination>
       </el-main>
-
 
       <!-- dialog开始，授权申请单弹窗 -->
       <el-dialog title="#" :visible.sync="dialogTableVisible">
@@ -760,5 +758,4 @@
       text-align: center;
       margin-top: 2%
     }
-
   </style>

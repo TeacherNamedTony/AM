@@ -9,7 +9,7 @@
                 </div>
                 <div>
                     <i class="paper-plane"></i>
-                    <el-menu class="el-menu-vertical-demo" @open="handleOpen" :collapse="isCollapse">
+                    <el-menu class="el-menu-vertical-demo" :collapse="isCollapse">
                         <el-menu-item>
                             <li style="list-style-type:none;text-align:center ;">
                                 <i class="el-icon-star-on"></i>
@@ -50,13 +50,9 @@
             </el-aside>
             <el-container>
                 <el-header class="app-header">
-                    <div style="width: 60px; cursor: pointer;" @click.prevent="toggleSideBar">
-                        <!-- <i v-show="!isCollapse" class="el-icon-s-fold"></i>
-                        <i v-show="isCollapse" class="el-icon-s-unfold"></i> -->
-                    </div>
                     <el-menu default-active="/" router class="el-menu-demo tab-page" mode="horizontal"
-                        @select="handleSelect" active-text-color="#409EFF">
-                        <h1 style=" font-size: large;">授权申请中心</h1>
+                        active-text-color="#409EFF">
+                        <h1 style=" font-size: large;">{{username}}的授权申请中心，用户ID为{{id}}</h1>
                     </el-menu>
                     <div class="app-header-userinfo">
                         <el-dropdown trigger="hover" :hide-on-click="false">
@@ -76,8 +72,8 @@
                 <el-main class="app-body">
                     <template>
                         <div class="line"></div>
-                        <el-menu default-active="1" class="el-menu-demo" mode="horizontal" @select="handleSelect"
-                            background-color="#25567B" text-color="#fff" active-text-color="#ffd04b">
+                        <el-menu default-active="1" class="el-menu-demo" mode="horizontal" background-color="#25567B"
+                            text-color="#fff" active-text-color="#ffd04b">
                             <el-menu-item @click='alertFunc(1)' index="1"><i style="color:#fff;"
                                     class="el-icon-chat-dot-square"></i>待授权
                             </el-menu-item>
@@ -94,7 +90,7 @@
                                     class="el-icon-circle-close"></i>授权撤销
                             </el-menu-item>
                             <el-menu-item @click='alertFunc(6)' index="6"><i style="color:red;"
-                                    class="el-icon-time"></i>授权即将过期
+                                    class="el-icon-s-flag"></i>授权即将过期
                             </el-menu-item>
                         </el-menu>
                         <div class="ajaxpage">
@@ -137,10 +133,10 @@
             'Revoke': Revoke,
         },
         data() {
-
             return {
                 itemIndex: 1,
                 username: '',
+                id: '',
                 isCollapse: false
             }
         },
@@ -148,9 +144,6 @@
             alertFunc(index) {
                 this.itemIndex = index;
                 // alert(index)
-            },
-            toggleSideBar() {
-                this.isCollapse = !this.isCollapse
             },
             logout: function () {
                 this.$confirm('确认退出?', '提示', {})
@@ -160,23 +153,14 @@
                     })
                     .catch(() => {});
             },
-            handleOpen(key, keyPath) {
-                window.console.log(key, keyPath);
-            },
-            handleClose(key, keyPath) {
-                window.console.log(key, keyPath);
-            },
-            handleSelect(key, keyPath) {
-                window.console.log(key, keyPath);
-            },
         },
         mounted: function () {
-
             let user = sessionStorage.getItem('user');
+            let id = sessionStorage.getItem('id');
             if (user) {
                 this.username = user;
+                this.id = id;
             }
-
         },
     }
 </script>
@@ -226,7 +210,7 @@
     /* .app-side-expanded {
         width: 12% !important;
     } */
-    .el-icon-star-on{
+    .el-icon-star-on {
         color: #ffd04b;
-    }    
+    }
 </style>
