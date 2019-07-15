@@ -223,9 +223,9 @@
         background-color: #fff;
     }
 
-    .app-side-expanded {
-        /* width: 12% !important; */
-    }
+    /* .app-side-expanded {
+        width: 12% !important;
+    } */
     .el-icon-star-on{
         color: #ffd04b;
     }    

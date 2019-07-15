@@ -89,7 +89,7 @@
                             <el-menu-item @click='alertFunc(4)' index="4"><i style="color:#fff;"
                                     class="el-icon-circle-close"></i>授权撤销
                             </el-menu-item>
-                            <el-menu-item @click='alertFunc(5)' index="5"><i style="color:#fff;"
+                            <el-menu-item @click='alertFunc(5)' index="5"><i style="color:red;"
                                     class="el-icon-time"></i>授权即将过期
                             </el-menu-item>
                             <el-menu-item @click='alertFunc(6)' index="6"><i style="color:#fff;"

@@ -35,7 +35,7 @@
             <el-button slot-scope="scope" type="danger" round @click="nopass(scope.row.sid)">撤销授权</el-button>
           </el-table-column>
         </el-table>
-        <el-pagination class="fenye" background layout="prev, pager, next" :total="20">
+        <el-pagination class="fenye" background layout="prev, pager, next" :total="10">
         </el-pagination>
       </el-main>
 

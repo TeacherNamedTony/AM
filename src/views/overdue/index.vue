@@ -35,7 +35,7 @@
             <!-- <el-button type="success" round @click="passnow">备用按钮</el-button> -->
           </el-table-column>
         </el-table>
-        <el-pagination class="fenye" background layout="prev, pager, next" :total="20">
+        <el-pagination class="fenye" background layout="prev, pager, next" :total="10">
         </el-pagination>
       </el-main>
 
