@@ -28,8 +28,10 @@
             <el-button type="primary" round @click="changeDialog(scope.row)">查看申请</el-button>
           </template>
         </el-table-column>
-        <el-table-column prop="address" label=" " width="">
-          <el-button type="success" round @click="passnow">查看授权码</el-button>
+        <el-table-column>
+          <template slot-scope="scope">
+            <el-button type="success" round @click="download(scope.row)">下载授权码</el-button>
+          </template>
         </el-table-column>
       </el-table>
       <el-pagination class="fenye" background layout="prev, pager, next" :total="10">
@@ -542,6 +544,12 @@
         search: '',
         username: '',
         id: '',
+        license: '',
+        project:'',
+        company:'',
+        grantbegindate:'',
+        grantenddate:'',
+        productversion:'',
         dialogTableVisible: false,
         tableData: [],
         dialogData: {
@@ -575,8 +583,9 @@
       }
     },
     methods: {
-      passnow() {
-        this.$confirm('授权码为：', '提示', {
+      download(data) {
+        // this.$confirm(data.license, '提示', {
+        this.$confirm("请妥善保管授权码文件", '提示', {
           confirmButtonText: '下载',
           cancelButtonText: '关闭',
           type: 'warning'
@@ -585,12 +594,30 @@
             type: 'success',
             message: '开始下载!'
           });
+          this.loadFile(
+           data.userApplyDetail.company+'_'
+          +data.applyDetail.project+'_'
+          +data.applyDetail.grantbegindate+'_'
+          +data.applyDetail.grantenddate +'_'
+          +data.applyDetail.productversion+'_'
+          +"license.txt", data.license);
         }).catch(() => {
           this.$message({
-            type: 'info',
+            type: 'close',
             message: '已关闭'
           });
         });
+      },
+      loadFile(fileName, content) {
+        var aLink = document.createElement('a');
+        var blob = new Blob([content], {
+          type: 'text/plain'
+        });
+        var evt = new Event('click');
+        aLink.download = fileName;
+        aLink.href = URL.createObjectURL(blob);
+        aLink.click();
+        URL.revokeObjectURL(blob);
       },
       loadAll() {
         axios.get('http://192.168.17.73:8088/getAuditedState?id=' + this.id).then((data) => {
