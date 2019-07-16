@@ -2,26 +2,26 @@
     <el-container>
         <el-main>
             <el-table :data="tableData.filter(data => !search || data.license.toLowerCase().includes(search.toLowerCase()))"
-                style="width: 100%" @selection-change="handleSelectionChange">
-                <el-table-column label="授权时间" prop="grantdate">
+                style="width: 100%">
+                <el-table-column label="授权时间" prop="grantdate" width="95">
                 </el-table-column>
-                <el-table-column label="项目名称" prop="applyDetail.project">
+                <el-table-column label="项目名称" prop="applyDetail.project" width="120">
                 </el-table-column>
-                <el-table-column label="授权状态" prop="isgrant">
+                <el-table-column label="授权状态" prop="isgrant" width="80">
                 </el-table-column>
                 <el-table-column label="授权码" prop="license">
                 </el-table-column>
                 <el-table-column label="机器码" prop="applyDetail.machinenum">
                 </el-table-column>
                 <el-table-column align="center">
-                <template slot="header" slot-scope="scope">
-                    <el-input v-model="search" size="max" placeholder="输入授权码追踪授权信息" />
-                </template>
-                <template slot-scope="scope">
+                    <template slot="header" slot-scope="scope">
+                        <el-input v-model="search" size="max" placeholder="输入授权码追踪授权信息" />
+                    </template>
+                    <template slot-scope="scope">
                     <el-button size="max" type="info" round="" @click="changeDialog(scope.row)">授权信息
-                </el-button>
-                </template>
-            </el-table-column>
+                    </el-button>
+                    </template>
+                </el-table-column>
             </el-table>
         <el-pagination class="fenye" background layout="prev, pager, next" :total="10">
         </el-pagination>
@@ -29,7 +29,6 @@
 
         <!-- dialog开始，授权申请单弹窗 -->
         <el-dialog title="#" :visible.sync="dialogTableVisible">
-
             <body lang=ZH-CN style='text-justify-trim:punctuation'>
                 <div class=WordSection1 style='layout-grid:15.6pt'>
                     <div align=center>

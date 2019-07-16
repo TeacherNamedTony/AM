@@ -1,8 +1,9 @@
   <template>
     <el-container>
       <el-main>
-        <el-table ref="multipleTable" :data="tableData" tooltip-effect="dark" style="width: 100%"
-          @selection-change="handleSelectionChange">
+        <el-table ref="multipleTable"
+          :data="tableData.filter(data => !search || data.applyDetail.project.toLowerCase().includes(search.toLowerCase()))"
+          tooltip-effect="dark" style="width: 100%">
           <el-table-column type="selection" width="35">
           </el-table-column>
           <el-table-column prop="applyDetail.applydate" label="申请日期" width="95">
@@ -20,9 +21,12 @@
           <el-table-column prop="" label="审核状态" width="">
             <el-tag type="info">请审核人{{user}}尽快给予审核</el-tag>
           </el-table-column>
-          <el-table-column prop="look" label=" " width="">
+          <el-table-column prop="look">
+            <template slot="header" slot-scope="scope">
+              <el-input v-model="search" size="max" placeholder="输入项目名称以检索" />
+            </template>
             <template slot-scope="scope">
-              <el-button type="info" round @click="changeDialog(scope.row)">查看申请</el-button>
+              <el-button type="primary" round @click="changeDialog(scope.row)">查看申请</el-button>
             </template>
           </el-table-column>
           <el-table-column prop="address" label=" " width="">
@@ -36,7 +40,6 @@
 
       <!-- dialog开始，授权申请单弹窗 -->
       <el-dialog title="#" :visible.sync="dialogTableVisible">
-
         <body lang=ZH-CN style='text-justify-trim:punctuation'>
           <div class=WordSection1 style='layout-grid:15.6pt'>
             <div align=center>
@@ -538,6 +541,7 @@
       components: {},
       data() {
         return {
+          search: '',
           username: '',
           id: '',
           user: '',
@@ -612,13 +616,6 @@
           this.dialogData.desktopcon = params.applyDetail.desktopcon;
           this.dialogTableVisible = true;
         },
-
-        // toggleSelection() {
-        //   this.$refs.multipleTable.clearSelection();
-        // },
-        // handleSelectionChange(val) {
-        //   this.multipleSelection = val;
-        // },
         passnow(sid) {
           this.$confirm('系统正在授权中，请稍后！', '提示', {})
           axios.get('http://192.168.17.73:8088/ratify?sid=' + sid).then(() => {
@@ -644,8 +641,6 @@
       },
     };
   </script>
-
-
 
   <style scoped>
     @font-face {

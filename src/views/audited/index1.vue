@@ -3,8 +3,9 @@
     <el-header style="height:0px">
     </el-header>
     <el-main>
-      <el-table ref="multipleTable" :data="tableData" tooltip-effect="dark" style="width: 100%"
-        @selection-change="handleSelectionChange">
+      <el-table ref="multipleTable"
+        :data="tableData.filter(data => !search || data.applyDetail.project.toLowerCase().includes(search.toLowerCase()))"
+        tooltip-effect="dark" style="width: 100%">
         <el-table-column prop="applyDetail.applydate" label="申请日期" width="95">
         </el-table-column>
         <el-table-column prop="applyDetail.applyername" label="申请人员" width="80">
@@ -19,11 +20,12 @@
         </el-table-column>
         <el-table-column prop="userRatifyDetail.company" label="所属单位" width="">
         </el-table-column>
-        <el-table-column prop="look" label=" " width="">
+        <el-table-column prop="look">
+          <template slot="header" slot-scope="scope">
+            <el-input v-model="search" size="max" placeholder="输入项目名称以检索" />
+          </template>
           <template slot-scope="scope">
-            <div>
-              <el-button type="primary" round @click="changeDialog(scope.row)">查看申请</el-button>
-            </div>
+            <el-button type="primary" round @click="changeDialog(scope.row)">查看申请</el-button>
           </template>
         </el-table-column>
         <el-table-column prop="address" label=" " width="">
@@ -36,6 +38,7 @@
 
     <!-- dialog开始，授权申请单弹窗 -->
     <el-dialog title="#" :visible.sync="dialogTableVisible">
+
       <body lang=ZH-CN style='text-justify-trim:punctuation'>
         <div class=WordSection1 style='layout-grid:15.6pt'>
           <div align=center>
@@ -536,6 +539,7 @@
     components: {},
     data() {
       return {
+        search: '',
         username: '',
         id: '',
         dialogTableVisible: false,
@@ -589,7 +593,7 @@
         });
       },
       loadAll() {
-        axios.get('http://192.168.17.73:8088/getAuditedState?id='+this.id).then((data) => {
+        axios.get('http://192.168.17.73:8088/getAuditedState?id=' + this.id).then((data) => {
           this.tableData = data.data.data;
         })
       },
@@ -780,7 +784,7 @@
 
   .fenye {
     text-align: center;
-    margin-top:2%
+    margin-top: 2%
   }
 
   .el-header {

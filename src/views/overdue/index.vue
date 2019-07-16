@@ -6,8 +6,9 @@
         </el-autocomplete>
       </el-header> -->
       <el-main>
-        <el-table ref="multipleTable" :data="tableData" tooltip-effect="dark" style="width: 100%"
-          @selection-change="handleSelectionChange">
+        <el-table ref="multipleTable"
+          :data="tableData.filter(data => !search || data.applyDetail.project.toLowerCase().includes(search.toLowerCase()))"
+          tooltip-effect="dark" style="width: 100%">
           <el-table-column type="selection" width="35">
           </el-table-column>
           <el-table-column prop="applyDetail.applydate" label="申请日期" width="95">
@@ -26,14 +27,18 @@
           </el-table-column>
           <el-table-column prop="grantdate" label="审批时间" width="">
           </el-table-column>
-          <el-table-column prop="look" label=" " width="">
+          <el-table-column prop="look" align="center">
+            <template slot="header" slot-scope="scope">
+              <el-input v-model="search" size="max" placeholder="输入项目名称以检索" />
+            </template>
             <template slot-scope="scope">
-              <el-button type="info" round @click="changeDialog(scope.row)">查看申请</el-button>
+              <el-button type="primary" round @click="changeDialog(scope.row)">查看申请</el-button>
             </template>
           </el-table-column>
-          <el-table-column prop="address" label=" " width="">
+          <el-table-column label=" " width="">
             <!-- <el-button type="success" round @click="passnow">备用按钮</el-button> -->
           </el-table-column>
+
         </el-table>
         <el-pagination class="fenye" background layout="prev, pager, next" :total="10">
         </el-pagination>
@@ -545,6 +550,7 @@
       components: {},
       data() {
         return {
+          search: '',
           dialogTableVisible: false,
           tableData: [],
           dialogData: {

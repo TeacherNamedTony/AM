@@ -3,7 +3,9 @@
     <el-header style="height:0px">
     </el-header>
     <el-main>
-      <el-table :data="tableData">
+      <el-table
+        :data="tableData.filter(data => !search || data.applyDetail.project.toLowerCase().includes(search.toLowerCase()))"
+        tooltip-effect="dark" style="width: 100%">
         <el-table-column prop="applyDetail.applydate" label="申请日期" width="95">
         </el-table-column>
         <el-table-column prop="applyDetail.applyername" label="申请人员" width="80">
@@ -18,11 +20,12 @@
         </el-table-column>
         <el-table-column prop="userRatifyDetail.company" label="所属单位" width="">
         </el-table-column>
-        <el-table-column prop="look" label=" " width="">
+        <el-table-column prop="look" align="center">
+          <template slot="header" slot-scope="scope">
+            <el-input v-model="search" size="max" placeholder="输入项目名称以检索" />
+          </template>
           <template slot-scope="scope">
-            <div>
-              <el-button type="primary" round @click="changeDialog(scope.row)">查看申请</el-button>
-            </div>
+            <el-button type="primary" round @click="changeDialog(scope.row)">查看申请</el-button>
           </template>
         </el-table-column>
         <el-table-column prop="address" label=" " width="">
@@ -536,6 +539,7 @@
     components: {},
     data() {
       return {
+        search: '',
         username: '',
         id: '',
         dialogTableVisible: false,

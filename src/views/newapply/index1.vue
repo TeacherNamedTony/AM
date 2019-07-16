@@ -8,7 +8,7 @@
     </el-divider> -->
     <br>
     <div style="text-align: center;">
-      <span style='font-size:20.0pt;font-family:黑体;color:black'><i class="el-icon-document"></i>授权审批单</span>
+      <span style='font-size:20.0pt;font-family:黑体;color:black'><i class="el-icon-edit-outline"></i>授权审批单</span>
     </div>
     <br>
 
@@ -128,8 +128,8 @@
     <el-form-item label="授权起始时间" required>
       <el-col :span="11">
         <el-form-item prop="grantbegindate">
-          <el-date-picker type="date" format="yyyy 年 MM 月 dd 日" @change="getTime" value-format="yyyy-MM-dd" placeholder="选择授权起始时间"
-            v-model="applyForm.grantbegindate" style="width: 200%;">
+          <el-date-picker type="date" format="yyyy 年 MM 月 dd 日" @change="getTime" value-format="yyyy-MM-dd"
+            placeholder="选择授权起始时间" v-model="applyForm.grantbegindate" style="width: 200%;">
           </el-date-picker>
         </el-form-item>
       </el-col>
@@ -381,8 +381,6 @@
             }
           ],
         }
-
-
       };
     },
     methods: {
@@ -396,7 +394,6 @@
         this.applyForm.applydate = d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate();
         this.applyForm.grantbegindate = d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate();
         this.applyForm.grantenddate = d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate();
-
       },
 
       submitForm(formName) {
@@ -410,27 +407,13 @@
             }).then(() => {
               location.reload()
               alert('已提交!');
-
             });
-
           } else {
             window.console.log('错误提交');
             return false;
           }
         });
       },
-
-      // submitForm() {
-      //   let params = this.applyForm;
-      //   axios.get('http://192.168.17.73:8088/addNewApply', {
-      //     params
-      //   }).then((response) => {
-      //     let res = response.data;
-      //     console.log(res);
-      //     // this.$router.push('/')
-      //   });
-
-      // },
       resetForm(formName) {
         this.$refs[formName].resetFields();
       }

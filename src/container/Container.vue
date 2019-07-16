@@ -8,7 +8,7 @@
                 </div>
                 <div>
                     <i class="paper-plane"></i>
-                    <el-menu class="el-menu-vertical-demo" @open="handleOpen" :collapse="isCollapse">
+                    <el-menu class="el-menu-vertical-demo" :collapse="isCollapse">
                         <el-menu-item>
                             <li style="list-style-type:none;text-align:center ;">
                                 <i class="el-icon-star-on" ></i>
@@ -40,12 +40,12 @@
                         </el-menu-item>
                         <el-menu-item>
                             <li style="list-style-type:none;">
-                                <i class="el-icon-s-release"></i>异常个数：1
+                                <i class="el-icon-s-release"></i>异常个数：2
                             </li>
                         </el-menu-item> 
                         <el-menu-item>
                             <li style="list-style-type:none;">
-                                <i class="el-icon-warning"></i>即将到期：8
+                                <i class="el-icon-warning"></i>即将到期：1
                             </li>
                         </el-menu-item>
                     </el-menu>
@@ -53,14 +53,10 @@
             </el-aside>
             <el-container>
                 <el-header class="app-header">
-
-                    <div style="width: 60px; cursor: pointer;" @click.prevent="toggleSideBar">
-                        <!-- <i v-show="!isCollapse" class="el-icon-s-fold"></i>
-                        <i v-show="isCollapse" class="el-icon-s-unfold"></i> -->
-                    </div>
-                    <el-menu default-active="/" router class="el-menu-demo tab-page" mode="horizontal"
-                        @select="handleSelect" active-text-color="#409EFF">
-                        <h1 style=" font-size: large;">授权管理中心</h1>
+                    <el-menu default-active="1" router class="el-menu-demo tab-page" mode="horizontal"
+                         active-text-color="#409EFF">
+                        <h1 style=" font-size: large;">{{user}}的授权管理中心</h1>
+                        
                     </el-menu>
                     <div class="app-header-userinfo">
                         <el-dropdown trigger="hover" :hide-on-click="false">
@@ -77,10 +73,9 @@
                         </el-dropdown>
                     </div>
                 </el-header>
-
                 <el-main class="app-body">
                     <template>
-                        <el-menu default-active="1" class="el-menu-demo" mode="horizontal" @select="handleSelect"
+                        <el-menu default-active="1" class="el-menu-demo" mode="horizontal" 
                             background-color="#009999" text-color="#fff" active-text-color="#ffd04b">
                             <el-menu-item @click='alertFunc(1)' index="1"><i style="color:#fff;"
                                     class="el-icon-chat-dot-square"></i>待授权
@@ -175,6 +170,7 @@
             }
         },
     }
+    
 </script>
 
 <style scoped>

@@ -3,7 +3,9 @@
       <el-header style="height:0px">
       </el-header>
       <el-main>
-        <el-table ref="multipleTable" :data="tableData" tooltip-effect="dark" style="width: 100%">
+        <el-table
+          :data="tableData.filter(data => !search || data.applyDetail.project.toLowerCase().includes(search.toLowerCase()))"
+          tooltip-effect="dark" style="width: 100%">
           <el-table-column prop="applyDetail.applydate" label="申请日期" width="95">
           </el-table-column>
           <el-table-column prop="applyDetail.applyername" label="申请人员" width="80">
@@ -17,10 +19,16 @@
           <el-table-column prop="" label="审核人" width="">
             <el-tag type="info">尚未通过审核，请您耐心等待</el-tag>
           </el-table-column>
-          <el-table-column prop="look" label=" " width="">
+          <el-table-column prop="look" align="center">
+            <template slot="header" slot-scope="scope">
+              <el-input v-model="search" size="max" placeholder="输入项目名称以检索" />
+            </template>
             <template slot-scope="scope">
               <el-button type="primary" round @click="changeDialog(scope.row)">查看申请</el-button>
             </template>
+          </el-table-column>
+          <el-table-column prop="address" label=" " width="">
+            <!-- <el-button type="success" round @click="passnow">备用按钮</el-button> -->
           </el-table-column>
         </el-table>
         <el-pagination class="fenye" background layout="prev, pager, next" :total="10">
@@ -530,6 +538,7 @@
     export default {
       data() {
         return {
+          search: '',
           username: '',
           id: '',
           dialogTableVisible: false,
@@ -571,7 +580,7 @@
           axios.get('http://192.168.17.73:8088/getUntreatedState?id=' + this.id).then((data) => {
             // window.console.log(data.data.data[0].aid)
             this.tableData = data.data.data;
-            window.console.log(this.id)
+            // window.console.log(this.id)
             // window.console.log(data.data.data[1].sid)
           })
         },

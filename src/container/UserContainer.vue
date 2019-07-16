@@ -26,12 +26,12 @@
                         </el-menu-item>
                         <el-menu-item>
                             <li style="list-style-type:none;">
-                                <i class="el-icon-info"></i>用户类型：申请用户
+                                <i class="el-icon-info"></i>用户类型：授权用户
                             </li>
                         </el-menu-item>
                         <el-menu-item>
                             <li style="list-style-type:none;">
-                                <i class="el-icon-info"></i>单位：{{company}}
+                                <i class="el-icon-info"></i>单位所属：{{company}}
                             </li>
                         </el-menu-item>
                         <el-menu-item>
@@ -41,21 +41,22 @@
                         </el-menu-item>
                         <el-menu-item>
                             <li style="list-style-type:none;">
-                                <i class="el-icon-warning"></i>即将到期：8
+                                <i class="el-icon-s-release"></i>异常个数：2
                             </li>
                         </el-menu-item>
                         <el-menu-item>
                             <li style="list-style-type:none;">
-                                <i class="el-icon-s-release"></i>异常个数：7
+                                <i class="el-icon-warning"></i>即将到期：1
                             </li>
                         </el-menu-item>
+
 
                     </el-menu>
                 </div>
             </el-aside>
             <el-container>
                 <el-header class="app-header">
-                    <el-menu default-active="/" router class="el-menu-demo tab-page" mode="horizontal"
+                    <el-menu default-active="1" router class="el-menu-demo tab-page" mode="horizontal"
                         active-text-color="#409EFF">
                         <h1 style=" font-size: large;">{{user}}的授权申请中心</h1>
                     </el-menu>
