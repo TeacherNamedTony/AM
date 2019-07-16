@@ -21,16 +21,21 @@
                         </el-menu-item>
                         <el-menu-item>
                             <li style="list-style-type:none;">
-                                <i class="el-icon-s-custom"></i>用户类型：申请者
+                                <i class="el-icon-s-custom"></i>用户姓名：{{user}}
                             </li>
                         </el-menu-item>
                         <el-menu-item>
                             <li style="list-style-type:none;">
-                                <i class="el-icon-info"></i>单位：中软系统
+                                <i class="el-icon-info"></i>用户类型：申请用户
                             </li>
                         </el-menu-item>
                         <el-menu-item>
                             <li style="list-style-type:none;">
+                                <i class="el-icon-info"></i>单位：{{company}}
+                            </li>
+                        </el-menu-item>
+                        <el-menu-item>
+                            <li style="list-style-type:none;" >
                                 <i class="el-icon-s-claim"></i>授权个数：9
                             </li>
                         </el-menu-item>
@@ -52,7 +57,7 @@
                 <el-header class="app-header">
                     <el-menu default-active="/" router class="el-menu-demo tab-page" mode="horizontal"
                         active-text-color="#409EFF">
-                        <h1 style=" font-size: large;">{{username}}的授权申请中心，用户ID为{{id}}</h1>
+                        <h1 style=" font-size: large;">{{user}}的授权申请中心</h1>
                     </el-menu>
                     <div class="app-header-userinfo">
                         <el-dropdown trigger="hover" :hide-on-click="false">
@@ -137,6 +142,8 @@
                 itemIndex: 1,
                 username: '',
                 id: '',
+                user:'',
+                company:'',
                 isCollapse: false
             }
         },
@@ -155,11 +162,15 @@
             },
         },
         mounted: function () {
-            let user = sessionStorage.getItem('user');
-            let id = sessionStorage.getItem('id');
+            var user = sessionStorage.getItem('user');
+            var id = sessionStorage.getItem('id');
+            var username = sessionStorage.getItem('username');
+            var company = sessionStorage.getItem('company');
             if (user) {
-                this.username = user;
+                this.user = user;
+                this.username = username;
                 this.id = id;
+                this.company = company;
             }
         },
     }

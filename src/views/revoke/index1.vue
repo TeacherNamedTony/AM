@@ -8,7 +8,7 @@
         </el-table-column>
         <el-table-column prop="applyDetail.applyername" label="申请人员" width="80">
         </el-table-column>
-        <el-table-column prop="applyDetail.project" label="项目名称" width="100">
+        <el-table-column prop="applyDetail.project" label="项目名称" width="120">
         </el-table-column>
         <el-table-column prop="applyDetail.grantbegindate" label="开始时间" width="95">
         </el-table-column>
@@ -26,7 +26,7 @@
           </template>
         </el-table-column>
         <el-table-column prop="address" label=" " width="">
-          <el-button type="danger" slot-scope="scope" round @click="askreaudited(scope.row.sid)">请求恢复授权</el-button>
+          <!-- <el-button type="danger" slot-scope="scope" round @click="askreaudited(scope.row.sid)">请求重新授权</el-button> -->
         </el-table-column>
       </el-table>
       <el-pagination class="fenye" background layout="prev, pager, next" :total="10">
@@ -35,6 +35,7 @@
 
     <!-- dialog开始，授权申请单弹窗 -->
     <el-dialog title="#" :visible.sync="dialogTableVisible">
+
       <body lang=ZH-CN style='text-justify-trim:punctuation'>
         <div class=WordSection1 style='layout-grid:15.6pt'>
           <div align=center>
@@ -535,6 +536,8 @@
     components: {},
     data() {
       return {
+        username: '',
+        id: '',
         dialogTableVisible: false,
         tableData: [],
         dialogData: {
@@ -570,15 +573,13 @@
     methods: {
       askreaudited(sid) {
         // alert(sid)
-        this.$confirm('请求回复授权，需等待管理员同意。', '提示', {})
-        axios.get('http://192.168.17.73:8088/reApply?sid=' + sid).then(() => {
-          location.reload()
-        })
+        // this.$confirm('请求重新授权，即将前往填写申请处。', '提示', {})
+        // axios.get('http://192.168.17.73:8088/reApply?sid=' + sid).then(() => {
+        //   location.reload()
+        // })
       },
       loadAll() {
-        axios.get('http://192.168.17.73:8088/getRevoke?id=3', {
-          "pagenum": "ddfdf"
-        }).then((data) => {
+        axios.get('http://192.168.17.73:8088/getRevoke?id=' + this.id).then((data) => {
           this.tableData = data.data.data;
         })
       },
@@ -614,6 +615,12 @@
       }
     },
     mounted() {
+      var user = sessionStorage.getItem('user');
+      var id = sessionStorage.getItem('id');
+      if (user) {
+        this.username = user;
+        this.id = id;
+      }
       this.loadAll();
     },
   };

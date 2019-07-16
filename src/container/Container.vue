@@ -20,12 +20,17 @@
                         </el-menu-item>
                         <el-menu-item>
                             <li style="list-style-type:none;">
-                                  <i class="el-icon-s-custom"></i>用户类型：授权人
+                                  <i class="el-icon-s-custom"></i>用户姓名：{{user}}
                             </li>
                         </el-menu-item>
                         <el-menu-item>
                             <li style="list-style-type:none;">
-                                <i class="el-icon-info"></i>单位：中软系统
+                                <i class="el-icon-info"></i>用户类型：授权管理员
+                            </li>
+                        </el-menu-item>                        
+                        <el-menu-item>
+                            <li style="list-style-type:none;">
+                                <i class="el-icon-info"></i>单位所属：{{company}}
                             </li>
                         </el-menu-item>
                         <el-menu-item>
@@ -35,12 +40,12 @@
                         </el-menu-item>
                         <el-menu-item>
                             <li style="list-style-type:none;">
-                                <i class="el-icon-warning"></i>即将到期：8
+                                <i class="el-icon-s-release"></i>异常个数：1
                             </li>
-                        </el-menu-item>
+                        </el-menu-item> 
                         <el-menu-item>
                             <li style="list-style-type:none;">
-                                <i class="el-icon-s-release"></i>异常个数：1
+                                <i class="el-icon-warning"></i>即将到期：8
                             </li>
                         </el-menu-item>
                     </el-menu>
@@ -134,6 +139,9 @@
             return {
                 itemIndex: 1,
                 username: '',
+                id: '',
+                user:'',
+                company:'',
                 isCollapse: false
             }
         },
@@ -153,20 +161,17 @@
                     })
                     .catch(() => {});
             },
-            handleOpen(key, keyPath) {
-                window.console.log(key, keyPath);
-            },
-            handleClose(key, keyPath) {
-                window.console.log(key, keyPath);
-            },
-            handleSelect(key, keyPath) {
-                window.console.log(key, keyPath);
-            },
         },
         mounted: function () {
-            let user = sessionStorage.getItem('user');
+            var user = sessionStorage.getItem('user');
+            var id = sessionStorage.getItem('id');
+            var username = sessionStorage.getItem('username');
+            var company = sessionStorage.getItem('company');      
             if (user) {
-                this.username = user;
+                this.user = user;
+                this.username = username;
+                this.id = id;
+                this.company = company;
             }
         },
     }

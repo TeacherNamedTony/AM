@@ -8,7 +8,7 @@
           </el-table-column>
           <el-table-column prop="applyDetail.applyername" label="申请人员" width="80">
           </el-table-column>
-          <el-table-column prop="applyDetail.project" label="项目名称" width="100">
+          <el-table-column prop="applyDetail.project" label="项目名称" width="120">
           </el-table-column>
           <el-table-column prop="applyDetail.grantbegindate" label="开始时间" width="95">
           </el-table-column>
@@ -23,12 +23,13 @@
             </template>
           </el-table-column>
         </el-table>
-        <el-pagination class="fenye" background layout="prev, pager, next" :total="20">
+        <el-pagination class="fenye" background layout="prev, pager, next" :total="10">
         </el-pagination>
       </el-main>
 
       <!-- dialog开始，授权申请单弹窗 -->
       <el-dialog title="#" :visible.sync="dialogTableVisible">
+
         <body lang=ZH-CN style='text-justify-trim:punctuation'>
           <div class=WordSection1 style='layout-grid:15.6pt'>
             <div align=center>
@@ -529,6 +530,8 @@
     export default {
       data() {
         return {
+          username: '',
+          id: '',
           dialogTableVisible: false,
           tableData: [],
           dialogData: {
@@ -565,15 +568,13 @@
 
       methods: {
         loadAll() {
-          axios.get('http://192.168.17.73:8088/getUntreatedState?id=3').then((data) => {
+          axios.get('http://192.168.17.73:8088/getUntreatedState?id=' + this.id).then((data) => {
             // window.console.log(data.data.data[0].aid)
             this.tableData = data.data.data;
-            // window.console.log(id)
-            window.console.log(data.data.data[1].sid)
-
+            window.console.log(this.id)
+            // window.console.log(data.data.data[1].sid)
           })
         },
-
         changeDialog(params) {
           window.console.log(params);
           this.dialogData.project = params.applyDetail.project;
@@ -606,6 +607,12 @@
         }
       },
       mounted() {
+        var user = sessionStorage.getItem('user');
+        var id = sessionStorage.getItem('id');
+        if (user) {
+          this.username = user;
+          this.id = id;
+        }
         this.loadAll();
       },
     };

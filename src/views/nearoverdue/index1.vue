@@ -8,7 +8,7 @@
         </el-table-column>
         <el-table-column prop="applyDetail.applyername" label="申请人员" width="80">
         </el-table-column>
-        <el-table-column prop="applyDetail.project" label="项目名称" width="100">
+        <el-table-column prop="applyDetail.project" label="项目名称" width="120">
         </el-table-column>
         <el-table-column prop="applyDetail.grantbegindate" label="开始时间" width="95">
         </el-table-column>
@@ -536,6 +536,8 @@
     components: {},
     data() {
       return {
+        username: '',
+        id: '',
         dialogTableVisible: false,
         tableData: [],
         dialogData: {
@@ -573,9 +575,7 @@
       //   this.$confirm('确认下载授权文件。此文件请妥善保管', '提示', {})
       // },
       loadAll() {
-        axios.get('http://192.168.17.73:8088/getNearOverdue?id=3', {
-          "pagenum": "ddfdf"
-        }).then((data) => {
+        axios.get('http://192.168.17.73:8088/getNearOverdue?id='+this.id).then((data) => {
           this.tableData = data.data.data;
         })
       },
@@ -611,6 +611,12 @@
       }
     },
     mounted() {
+      var user = sessionStorage.getItem('user');
+      var id = sessionStorage.getItem('id');
+      if (user) {
+        this.username = user;
+        this.id = id;
+      }
       this.loadAll();
     },
   };

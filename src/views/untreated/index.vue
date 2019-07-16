@@ -9,7 +9,7 @@
           </el-table-column>
           <el-table-column prop="applyDetail.applyername" label="申请人员" width="80">
           </el-table-column>
-          <el-table-column prop="applyDetail.project" label="项目名称" width="100">
+          <el-table-column prop="applyDetail.project" label="项目名称" width="120">
           </el-table-column>
           <el-table-column prop="applyDetail.grantbegindate" label="开始时间" width="95">
           </el-table-column>
@@ -18,7 +18,7 @@
           <el-table-column prop="userApplyDetail.company" label="所属单位" width="80">
           </el-table-column>
           <el-table-column prop="" label="审核状态" width="">
-            <el-tag type="info">请管理员尽快审核</el-tag>
+            <el-tag type="info">请审核人{{user}}尽快给予审核</el-tag>
           </el-table-column>
           <el-table-column prop="look" label=" " width="">
             <template slot-scope="scope">
@@ -538,6 +538,10 @@
       components: {},
       data() {
         return {
+          username: '',
+          id: '',
+          user: '',
+          company: '',
           dialogTableVisible: false,
           tableData: [],
           dialogData: {
@@ -616,7 +620,7 @@
         //   this.multipleSelection = val;
         // },
         passnow(sid) {
-          this.$confirm('正在授权中', '提示', {})
+          this.$confirm('系统正在授权中，请稍后！', '提示', {})
           axios.get('http://192.168.17.73:8088/ratify?sid=' + sid).then(() => {
             // alert(sid)
             location.reload()
@@ -626,6 +630,16 @@
 
       },
       mounted() {
+        var user = sessionStorage.getItem('user');
+        var id = sessionStorage.getItem('id');
+        var username = sessionStorage.getItem('username');
+        var company = sessionStorage.getItem('company');
+        if (user) {
+          this.user = user;
+          this.username = username;
+          this.id = id;
+          this.company = company;
+        }
         this.loadAll();
       },
     };

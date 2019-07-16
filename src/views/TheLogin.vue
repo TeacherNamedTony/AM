@@ -66,16 +66,20 @@
                             window.console.log(data.data.data.realname)
                             window.console.log(data.data.data.id)
                             // window.console.log(data.data.data.isadmin)
-                            alert(data.data.data.isadmin)
-                            alert(data.data.data.isdel)
+                            // alert(data.data.data.isadmin)
+                            // alert(data.data.data.isdel)
                             if (data.data.data != null) {
                                 if (data.data.data.isadmin == 1 && data.data.data.isdel == 0) {
+                                    sessionStorage.setItem('username', data.data.data.username);
+                                    sessionStorage.setItem('company', data.data.data.company);
                                     sessionStorage.setItem('user', data.data.data.realname);
                                     sessionStorage.setItem('id', data.data.data.id);
                                     this.$router.push({
                                         path: '/user'
                                     });
                                 } else if (data.data.data.isadmin == 0 && data.data.data.isdel == 0) {
+                                    sessionStorage.setItem('username', data.data.data.username);
+                                    sessionStorage.setItem('company', data.data.data.company);
                                     sessionStorage.setItem('user', data.data.data.realname);
                                     sessionStorage.setItem('id', data.data.data.id);
                                     this.$router.push({
