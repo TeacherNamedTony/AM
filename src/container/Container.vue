@@ -11,8 +11,8 @@
                     <el-menu class="el-menu-vertical-demo" :collapse="isCollapse">
                         <el-menu-item>
                             <li style="list-style-type:none;text-align:center ;">
-                                <i class="el-icon-star-on" ></i>
-                                <i class="el-icon-star-on"></i> 
+                                <i class="el-icon-star-on"></i>
+                                <i class="el-icon-star-on"></i>
                                 <i class="el-icon-star-on"></i>
                                 <i class="el-icon-star-on"></i>
                                 <i class="el-icon-star-on"></i>
@@ -20,43 +20,43 @@
                         </el-menu-item>
                         <el-menu-item>
                             <li style="list-style-type:none;">
-                                  <i class="el-icon-s-custom"></i>用户姓名：{{user}}
+                                <i class="el-icon-s-custom"></i>用户姓名：{{user}}
                             </li>
                         </el-menu-item>
                         <el-menu-item>
                             <li style="list-style-type:none;">
                                 <i class="el-icon-info"></i>用户类型：授权管理员
                             </li>
-                        </el-menu-item>                        
+                        </el-menu-item>
                         <el-menu-item>
                             <li style="list-style-type:none;">
                                 <i class="el-icon-info"></i>单位所属：{{company}}
                             </li>
                         </el-menu-item>
-                        <el-menu-item>
+                        <!-- <el-menu-item>
                             <li style="list-style-type:none;">
                                 <i class="el-icon-s-claim"></i>授权个数：9
                             </li>
                         </el-menu-item>
                         <el-menu-item>
                             <li style="list-style-type:none;">
-                                <i class="el-icon-s-release"></i>异常个数：2
-                            </li>
-                        </el-menu-item> 
-                        <el-menu-item>
-                            <li style="list-style-type:none;">
-                                <i class="el-icon-warning"></i>即将到期：1
+                                <i class="el-icon-warning"></i>授权过期：2
                             </li>
                         </el-menu-item>
+                        <el-menu-item>
+                            <li style="list-style-type:none;">
+                                <i class="el-icon-s-release"></i>撤销异常：1
+                            </li>
+                        </el-menu-item> -->
                     </el-menu>
                 </div>
             </el-aside>
             <el-container>
                 <el-header class="app-header">
                     <el-menu default-active="1" router class="el-menu-demo tab-page" mode="horizontal"
-                         active-text-color="#409EFF">
+                        active-text-color="#409EFF">
                         <h1 style=" font-size: large;">{{user}}的授权管理中心</h1>
-                        
+
                     </el-menu>
                     <div class="app-header-userinfo">
                         <el-dropdown trigger="hover" :hide-on-click="false">
@@ -75,8 +75,8 @@
                 </el-header>
                 <el-main class="app-body">
                     <template>
-                        <el-menu default-active="1" class="el-menu-demo" mode="horizontal" 
-                            background-color="#009999" text-color="#fff" active-text-color="#ffd04b">
+                        <el-menu default-active="1" class="el-menu-demo" mode="horizontal" background-color="#009999"
+                            text-color="#fff" active-text-color="#ffd04b">
                             <el-menu-item @click='alertFunc(1)' index="1"><i style="color:#fff;"
                                     class="el-icon-chat-dot-square"></i>待授权
                             </el-menu-item>
@@ -135,8 +135,8 @@
                 itemIndex: 1,
                 username: '',
                 id: '',
-                user:'',
-                company:'',
+                user: '',
+                company: '',
                 isCollapse: false
             }
         },
@@ -161,7 +161,7 @@
             var user = sessionStorage.getItem('user');
             var id = sessionStorage.getItem('id');
             var username = sessionStorage.getItem('username');
-            var company = sessionStorage.getItem('company');      
+            var company = sessionStorage.getItem('company');
             if (user) {
                 this.user = user;
                 this.username = username;
@@ -170,14 +170,14 @@
             }
         },
     }
-    
 </script>
 
 <style scoped>
     .app-side-left {
         background-color: #fff;
     }
-    .el-icon-star-on{
+
+    .el-icon-star-on {
         color: #ffd04b;
-    }   
+    }
 </style>

@@ -34,23 +34,21 @@
                                 <i class="el-icon-info"></i>单位所属：{{company}}
                             </li>
                         </el-menu-item>
-                        <el-menu-item>
+                        <!-- <el-menu-item>
                             <li style="list-style-type:none;" >
                                 <i class="el-icon-s-claim"></i>授权个数：9
                             </li>
                         </el-menu-item>
                         <el-menu-item>
                             <li style="list-style-type:none;">
-                                <i class="el-icon-s-release"></i>异常个数：2
+                                <i class="el-icon-warning"></i>授权过期：2
                             </li>
                         </el-menu-item>
                         <el-menu-item>
                             <li style="list-style-type:none;">
-                                <i class="el-icon-warning"></i>即将到期：1
+                                <i class="el-icon-s-release"></i>撤销异常：1
                             </li>
-                        </el-menu-item>
-
-
+                        </el-menu-item> -->
                     </el-menu>
                 </div>
             </el-aside>
