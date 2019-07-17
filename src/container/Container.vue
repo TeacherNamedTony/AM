@@ -78,10 +78,10 @@
                         <el-menu default-active="1" class="el-menu-demo" mode="horizontal" background-color="#009999"
                             text-color="#fff" active-text-color="#ffd04b">
                             <el-menu-item @click='alertFunc(1)' index="1"><i style="color:#fff;"
-                                    class="el-icon-chat-dot-square"></i>待授权
+                                    class="el-icon-chat-dot-square"></i>待审批
                             </el-menu-item>
                             <el-menu-item @click='alertFunc(2)' index="2"><i style="color:#fff;"
-                                    class="el-icon-circle-check"></i>已授权
+                                    class="el-icon-circle-check"></i>已审批
                             </el-menu-item>
                             <el-menu-item @click='alertFunc(3)' index="3"><i style="color:#fff;"
                                     class="el-icon-warning-outline"></i>授权过期

@@ -17,7 +17,6 @@ export default new Router({
       path: '/admin',
       name: 'Container',
       component: Container,
-
     },
     {
       path: '/user',

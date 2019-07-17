@@ -620,11 +620,10 @@
         },
         passnow(sid) {
           this.$confirm('系统正在授权中，请稍后！', '提示', {})
-          axios.get('http://192.168.17.73:8088/ratify?sid=' + sid).then(() => {
+          axios.get('http://192.168.17.73:8088/ratify/'+this.id+'?sid=' + sid).then(() => {
             // alert(sid)
             location.reload()
           })
-
         },
 
       },

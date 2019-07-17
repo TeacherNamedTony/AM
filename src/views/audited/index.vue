@@ -587,7 +587,7 @@
         },
         nopass(sid) {
           // alert(sid)
-          axios.get('http://192.168.17.73:8088/unratify?sid=' + sid).then(() => {
+          axios.get('http://192.168.17.73:8088/unratify/'+this.id+'?sid=' + sid).then(() => {
             // alert(sid)
             location.reload()
           })
@@ -633,6 +633,16 @@
 
       },
       mounted() {
+        var user = sessionStorage.getItem('user');
+        var id = sessionStorage.getItem('id');
+        var username = sessionStorage.getItem('username');
+        var company = sessionStorage.getItem('company');
+        if (user) {
+          this.user = user;
+          this.username = username;
+          this.id = id;
+          this.company = company;
+        }
         this.loadAll();
       },
     };
