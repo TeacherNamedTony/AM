@@ -17,7 +17,7 @@
                 </el-table-column>
                 <el-table-column align="center">
                     <template slot="header" slot-scope="scope">
-                        <el-input v-model="search" size="max" placeholder="输入授权码追踪授权信息" />
+                        <el-input v-model="search" size="max" placeholder="授权码已追踪授权信息" />
                     </template>
                     <template slot-scope="scope">
                         <el-button size="max" type="info" round="" @click="changeDialog(scope.row)">授权信息

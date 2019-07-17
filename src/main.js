@@ -19,9 +19,8 @@ router.beforeEach((to, from, next) => {
     if(user=="admin"){
       next();
     }else{
-      
+      next();
     }
-    
   }
   if(!user && to.path !== '/login'){
     next({

@@ -95,6 +95,9 @@
                             <el-menu-item @click='alertFunc(6)' index="6"><i style="color:#fff;"
                                     class="el-icon-aim"></i>追中授权情况
                             </el-menu-item>
+                            <el-menu-item @click='alertFunc(7)' index="7"><i style="color:#fff;"
+                                    class="el-icon-user"></i>用户管理
+                            </el-menu-item>
                         </el-menu>
                         <div class="ajaxpage">
                             <Untreated v-if="itemIndex==1"></Untreated>
@@ -103,6 +106,7 @@
                             <Revoke v-if="itemIndex==4"></Revoke>
                             <NearOverdue v-if="itemIndex==5"></NearOverdue>
                             <Select v-if="itemIndex==6"></Select>
+                            <Userpage v-if="itemIndex==7"></Userpage>
                         </div>
                     </template>
                 </el-main>
@@ -118,6 +122,7 @@
     import Revoke from '@/views/revoke/index.vue'
     import NearOverdue from '@/views/nearoverdue/index.vue'
     import Select from '@/views/newapply/select.vue'
+    import Userpage from '@/views/userpage/index.vue'
 
     export default {
         name: 'Container',
@@ -128,6 +133,7 @@
             'Overdue': Overdue,
             'Revoke': Revoke,
             'Select': Select,
+            'Userpage':Userpage,
         },
 
         data() {

@@ -25,7 +25,7 @@
           </el-table-column>
           <el-table-column prop="look" align="center">
             <template slot="header" slot-scope="scope">
-              <el-input v-model="search" size="max" placeholder="输入项目名称以检索" />
+              <el-input v-model="search" size="max" placeholder="项目名称以检索" />
             </template>
             <template slot-scope="scope">
               <el-button type="info" round @click="changeDialog(scope.row)">查看申请</el-button>
