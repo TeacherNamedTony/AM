@@ -3,6 +3,7 @@
     <el-header style="height:0px">
     </el-header>
     <el-main>
+      <el-alert title="授权时长已经过期，如有需要请重新新建申请!" type="error" show-icon close-text="知道了"></el-alert>
       <el-table
         :data="tableData.filter(data => !search || data.applyDetail.project.toLowerCase().includes(search.toLowerCase()))"
         tooltip-effect="dark" style="width: 100%">
@@ -28,9 +29,7 @@
             <el-button type="primary" round @click="changeDialog(scope.row)">查看申请</el-button>
           </template>
         </el-table-column>
-        <el-table-column prop="address" label=" " width="">
-          <!-- <el-button type="warning" slot-scope="scope" round @click="reapply((scope.row.sid))">重新申请90天</el-button> -->
-        </el-table-column>
+
       </el-table>
       <el-pagination class="fenye" background layout="prev, pager, next" :total="20">
       </el-pagination>

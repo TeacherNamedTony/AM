@@ -3,6 +3,7 @@
     <el-header style="height:0px">
     </el-header>
     <el-main>
+      <el-alert title="您的申请已经通过审核，下载授权码后注意妥善保管。" type="success" show-icon close-text="知道了"></el-alert>
       <el-table ref="multipleTable"
         :data="tableData.filter(data => !search || data.applyDetail.project.toLowerCase().includes(search.toLowerCase()))"
         tooltip-effect="dark" style="width: 100%">
@@ -10,7 +11,7 @@
         </el-table-column>
         <el-table-column prop="applyDetail.applyername" label="申请人员" width="80">
         </el-table-column>
-        <el-table-column prop="applyDetail.project" label="项目名称" width="120">
+        <el-table-column prop="applyDetail.project" label="项目名称" width="110">
         </el-table-column>
         <el-table-column prop="applyDetail.grantbegindate" label="开始时间" width="95">
         </el-table-column>
@@ -18,11 +19,11 @@
         </el-table-column>
         <el-table-column prop="userRatifyDetail.realname" label="审核人" width="80">
         </el-table-column>
-        <el-table-column prop="userRatifyDetail.company" label="所属单位" width="">
+        <el-table-column prop="userRatifyDetail.company" label="所属单位" width="90">
         </el-table-column>
-        <el-table-column prop="look">
+        <el-table-column prop="look" align="center">
           <template slot="header" slot-scope="scope">
-            <el-input v-model="search" size="max" placeholder="输入项目名称以检索" />
+            <el-input v-model="search" size="max" placeholder="项目名称以检索" />
           </template>
           <template slot-scope="scope">
             <el-button type="primary" round @click="changeDialog(scope.row)">查看申请</el-button>

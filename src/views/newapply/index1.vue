@@ -2,17 +2,12 @@
 
   <el-form :model="applyForm" :inline="true" :rules="rules" ref="applyForm" label-width="200px" class="applyForm">
     <br>
-
-    <!-- <el-divider content-position="center">
-      <span style='font-size:20.0pt;font-family:黑体;color:black'><i class="el-icon-document"></i>授权审批单</span>
-    </el-divider> -->
+    <el-alert title="请严格按照输入框提示键入内容，否则授权码无效。" type="info" show-icon close-text="知道了"></el-alert>
     <br>
     <div style="text-align: center;">
       <span style='font-size:20.0pt;font-family:黑体;color:black'><i class="el-icon-edit-outline"></i>授权审批单</span>
     </div>
     <br>
-
-
     <el-divider content-position="center">基本信息</el-divider>
     <br>
     <el-form-item label="项目名称/标识" prop="project">

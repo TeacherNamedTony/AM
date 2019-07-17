@@ -1,16 +1,12 @@
   <template>
     <el-container>
-      <!-- <el-header style="text-align:left; font-size: 12px">
-        <el-autocomplete v-model="state" :fetch-suggestions="querySearchAsync" placeholder="请输入项目名称或者申请人"
-          @select="handleSelect">
-        </el-autocomplete>
-      </el-header> -->
       <el-main>
+      <el-alert title="以下授权时长已经过期，如有需要请通知项目负责人重新新建申请！" type="error" show-icon close-text="知道了"></el-alert>
         <el-table ref="multipleTable"
           :data="tableData.filter(data => !search || data.applyDetail.project.toLowerCase().includes(search.toLowerCase()))"
           tooltip-effect="dark" style="width: 100%">
-          <el-table-column type="selection" width="35">
-          </el-table-column>
+          <!-- <el-table-column type="selection" width="35">
+          </el-table-column> -->
           <el-table-column prop="applyDetail.applydate" label="申请日期" width="95">
           </el-table-column>
           <el-table-column prop="applyDetail.applyername" label="申请人员" width="80">
@@ -32,13 +28,9 @@
               <el-input v-model="search" size="max" placeholder="输入项目名称以检索" />
             </template>
             <template slot-scope="scope">
-              <el-button type="primary" round @click="changeDialog(scope.row)">查看申请</el-button>
+              <el-button type="info" round @click="changeDialog(scope.row)">查看申请</el-button>
             </template>
           </el-table-column>
-          <el-table-column label=" " width="">
-            <!-- <el-button type="success" round @click="passnow">备用按钮</el-button> -->
-          </el-table-column>
-
         </el-table>
         <el-pagination class="fenye" background layout="prev, pager, next" :total="10">
         </el-pagination>

@@ -1,7 +1,9 @@
 <template>
     <el-container>
         <el-main>
-            <el-table :data="tableData.filter(data => !search || data.license.toLowerCase().includes(search.toLowerCase()))"
+            <el-alert title="您可以输入授权码信息反向追踪授权情况，搜索模式支持模糊搜索。" type="info" show-icon close-text="知道了"></el-alert>
+            <el-table
+                :data="tableData.filter(data => !search || data.license.toLowerCase().includes(search.toLowerCase()))"
                 style="width: 100%">
                 <el-table-column label="授权时间" prop="grantdate" width="95">
                 </el-table-column>
@@ -18,17 +20,18 @@
                         <el-input v-model="search" size="max" placeholder="输入授权码追踪授权信息" />
                     </template>
                     <template slot-scope="scope">
-                    <el-button size="max" type="info" round="" @click="changeDialog(scope.row)">授权信息
-                    </el-button>
+                        <el-button size="max" type="info" round="" @click="changeDialog(scope.row)">授权信息
+                        </el-button>
                     </template>
                 </el-table-column>
             </el-table>
-        <el-pagination class="fenye" background layout="prev, pager, next" :total="10">
-        </el-pagination>
+            <el-pagination class="fenye" background layout="prev, pager, next" :total="10">
+            </el-pagination>
         </el-main>
 
         <!-- dialog开始，授权申请单弹窗 -->
         <el-dialog title="#" :visible.sync="dialogTableVisible">
+
             <body lang=ZH-CN style='text-justify-trim:punctuation'>
                 <div class=WordSection1 style='layout-grid:15.6pt'>
                     <div align=center>
