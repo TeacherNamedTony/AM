@@ -17,7 +17,7 @@
           </el-table-column>
           <el-table-column prop="applyDetail.grantenddate" label="结束时间" width="95">
           </el-table-column>
-          <el-table-column prop="userApplyDetail.company" label="所属单位" width="100">
+          <el-table-column prop="userApplyDetail.company" label="所属单位" width="120">
           </el-table-column>
           <el-table-column prop="" label="审核状态" width="">
             <!-- <el-tag type="info">请审核人{{user}}尽快给予审核</el-tag> -->

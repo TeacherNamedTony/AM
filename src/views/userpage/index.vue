@@ -60,7 +60,6 @@
       ResetPassword(index, row) {
         window.console.log(index, row.id);
         axios.get('http://192.168.17.73:8088/ResetPassword?id=' + row.id).then(() => {}).then(() => {
-          // window.location.reload()
           alert('已重置用户' + row.realname + '的密码!');
           axios.get('http://192.168.17.73:8088/getAllUser?').then((data) => {
             this.tableData = data.data.data;
@@ -81,7 +80,7 @@
       ReUser(index, row) {
         window.console.log(index, row.id);
         axios.get('http://192.168.17.73:8088/ReUser?id=' + row.id).then(() => {}).then(() => {
-          //alert('已恢复用户' + row.realname + '!');
+          alert('已恢复用户' + row.realname + '!');
           axios.get('http://192.168.17.73:8088/getAllUser?').then((data) => {
             this.tableData = data.data.data;
             this.loadAll();

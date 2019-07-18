@@ -67,7 +67,7 @@
                             </span>
                             <el-dropdown-menu slot="dropdown">
                                 <el-dropdown-item>我的消息</el-dropdown-item>
-                                <el-dropdown-item>修改密码</el-dropdown-item>
+                                <!-- <el-dropdown-item divided @click='alertFunc(7)'>修改密码</el-dropdown-item> -->
                                 <el-dropdown-item divided @click.native="logout">退出登录</el-dropdown-item>
                             </el-dropdown-menu>
                         </el-dropdown>
@@ -96,6 +96,9 @@
                             <el-menu-item @click='alertFunc(6)' index="6"><i style="color:red;"
                                     class="el-icon-s-flag"></i>授权即将过期
                             </el-menu-item>
+                            <el-menu-item @click='alertFunc(7)' index="7"><i style="color:#fff;"
+                                    class="el-icon-user"></i>个人中心
+                            </el-menu-item>
                         </el-menu>
                         <div class="ajaxpage">
                             <Untreated v-if="itemIndex==1"></Untreated>
@@ -104,6 +107,7 @@
                             <Overdue v-if="itemIndex==4"></Overdue>
                             <Revoke v-if="itemIndex==5"></Revoke>
                             <NearOverdue v-if="itemIndex==6"></NearOverdue>
+                            <Password v-if="itemIndex==7"></Password>
                         </div>
                     </template>
                 </el-main>
@@ -125,6 +129,8 @@
 
     import Revoke from '@/views/revoke/index1.vue'
 
+    import Password from '@/views/userpage/password.vue'
+
 
     export default {
         name: 'UserContainer',
@@ -135,6 +141,7 @@
             'NearOverdue': NearOverdue,
             'Overdue': Overdue,
             'Revoke': Revoke,
+            'Password':Password,
         },
         data() {
             return {
