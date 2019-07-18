@@ -9,7 +9,13 @@
                 </el-table-column>
                 <el-table-column label="项目名称" prop="applyDetail.project" width="120">
                 </el-table-column>
-                <el-table-column label="授权状态" prop="isgrant" width="80">
+                <el-table-column label="授权状态" width="100">
+                    <template slot-scope="scope">
+                        <p v-if="scope.row.isgrant==0">未审批</p>
+                        <p v-if="scope.row.isgrant==1">已审批</p>
+                        <p v-if="scope.row.isgrant==2">授权到期</p>
+                        <p v-if="scope.row.isgrant==3">授权撤销</p>
+                    </template>
                 </el-table-column>
                 <el-table-column label="授权码" prop="license">
                 </el-table-column>
@@ -17,7 +23,7 @@
                 </el-table-column>
                 <el-table-column align="center">
                     <template slot="header" slot-scope="scope">
-                        <el-input v-model="search" size="max" placeholder="授权码已追踪授权信息" />
+                        <el-input v-model="search" size="max" placeholder="授权码以追踪授权信息" />
                     </template>
                     <template slot-scope="scope">
                         <el-button size="max" type="info" round="" @click="changeDialog(scope.row)">授权信息
