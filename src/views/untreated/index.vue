@@ -11,13 +11,13 @@
           </el-table-column>
           <el-table-column prop="applyDetail.applyername" label="申请人员" width="80">
           </el-table-column>
-          <el-table-column prop="applyDetail.project" label="项目名称" width="120">
+          <el-table-column prop="applyDetail.project" label="项目名称" width="100">
           </el-table-column>
           <el-table-column prop="applyDetail.grantbegindate" label="开始时间" width="95">
           </el-table-column>
           <el-table-column prop="applyDetail.grantenddate" label="结束时间" width="95">
           </el-table-column>
-          <el-table-column prop="userApplyDetail.company" label="所属单位" width="80">
+          <el-table-column prop="userApplyDetail.company" label="所属单位" width="100">
           </el-table-column>
           <el-table-column prop="" label="审核状态" width="">
             <!-- <el-tag type="info">请审核人{{user}}尽快给予审核</el-tag> -->
@@ -42,6 +42,7 @@
 
       <!-- dialog开始，授权申请单弹窗 -->
       <el-dialog title="#" :visible.sync="dialogTableVisible">
+
         <body lang=ZH-CN style='text-justify-trim:punctuation'>
           <div class=WordSection1 style='layout-grid:15.6pt'>
             <div align=center>
@@ -582,9 +583,7 @@
       },
       methods: {
         loadAll() {
-          axios.get('http://192.168.17.73:8088/getAllStateNotPass', {
-            "pagenum": "123"
-          }).then((data) => {
+          axios.get('http://192.168.17.73:8088/getAllStateNotPass', {}).then((data) => {
             this.tableData = data.data.data;
           })
         },
@@ -619,13 +618,13 @@
           this.dialogTableVisible = true;
         },
         passnow(sid) {
-          this.$confirm('系统正在授权中，请稍后！', '提示', {})
-          axios.get('http://192.168.17.73:8088/ratify/'+this.id+'?sid=' + sid).then(() => {
-            // alert(sid)
-            location.reload()
+          axios.get('http://192.168.17.73:8088/ratify/' + this.id + '?sid=' + sid).then(() => {
+            axios.get('http://192.168.17.73:8088/getAllStateNotPass', {}).then((data) => {
+              this.tableData = data.data.data;
+              this.loadAll();
+            })
           })
         },
-
       },
       mounted() {
         var user = sessionStorage.getItem('user');

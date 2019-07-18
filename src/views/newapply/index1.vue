@@ -169,7 +169,6 @@
 </template>
 <script>
   import axios from 'axios';
-import { all } from 'q';
   export default {
     data() {
       return {

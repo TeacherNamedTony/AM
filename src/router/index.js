@@ -17,11 +17,13 @@ export default new Router({
       path: '/admin',
       name: 'Container',
       component: Container,
+      // isadmin:true
     },
     {
       path: '/user',
       name: 'UserContainer',
-      component: UserContainer
+      component: UserContainer,
+      // isadmin:false
     },
 
   ],

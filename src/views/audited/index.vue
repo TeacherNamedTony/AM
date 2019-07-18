@@ -1,7 +1,7 @@
   <template>
     <el-container>
       <el-main>
-      <el-alert title="您的申请已经通过审核，如有需要可撤销授权。" type="success" show-icon close-text="知道了"></el-alert>
+        <el-alert title="您的申请已经通过审核，如有需要可撤销授权。" type="success" show-icon close-text="知道了"></el-alert>
         <el-table ref="multipleTable"
           :data="tableData.filter(data => !search || data.applyDetail.project.toLowerCase().includes(search.toLowerCase()))"
           tooltip-effect="dark" style="width: 100%">
@@ -579,17 +579,18 @@
       },
       methods: {
         loadAll() {
-          axios.get('http://192.168.17.73:8088/getAllPassState', {
-            "pagenum": "123"
-          }).then((data) => {
+          axios.get('http://192.168.17.73:8088/getAllPassState', {}).then((data) => {
             this.tableData = data.data.data;
           })
         },
         nopass(sid) {
           // alert(sid)
-          axios.get('http://192.168.17.73:8088/unratify/'+this.id+'?sid=' + sid).then(() => {
+          axios.get('http://192.168.17.73:8088/unratify/' + this.id + '?sid=' + sid).then(() => {
             // alert(sid)
-            location.reload()
+            axios.get('http://192.168.17.73:8088/getAllPassState', {}).then((data) => {
+              this.tableData = data.data.data;
+              this.loadAll();
+            })
           })
         },
         changeDialog(params) {

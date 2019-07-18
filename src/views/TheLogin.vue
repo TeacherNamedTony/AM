@@ -59,15 +59,10 @@
             handleSubmit() {
                 this.$refs.ruleForm2.validate((valid) => {
                     if (valid) {
-
                         this.logining = true;
                         axios.get('http://192.168.17.73:8088/login?username=' + this.ruleForm2.username +
                             '&password=' + this.ruleForm2.password).then((data) => {
-                            window.console.log(data.data.data.realname)
-                            window.console.log(data.data.data.id)
-                            // window.console.log(data.data.data.isadmin)
-                            // alert(data.data.data.isadmin)
-                            // alert(data.data.data.isdel)
+                            window.console.log(data.data.data)
                             if (data.data.data != null) {
                                 if (data.data.data.isadmin == 1 && data.data.data.isdel == 0) {
                                     sessionStorage.setItem('username', data.data.data.username);
@@ -85,10 +80,10 @@
                                     this.$router.push({
                                         path: '/admin'
                                     });
-                                } else if (data.data.data.isdel == 1) {
-                                    location.reload()
-                                    alert('该账户已被冻结！请联系授权方');
-                                    return false;
+                                }else if (data.data.data.isdel == 1) {
+                                location.reload()
+                                alert('您的账户以及被冻结，请联系管理员恢复！');
+                                return false;
                                 }
                             } else {
                                 location.reload()
