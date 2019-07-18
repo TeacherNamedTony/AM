@@ -1,31 +1,31 @@
 <template>
-    <div class="main">
-        <el-alert title="修改密码后请牢记密码，需要重置密码请联络管理员。" type="success" :closable="false" show-icon close-text="知道了">
-        </el-alert>
-        <div class="body">
-            <el-form :model="ruleForm" status-icon :rules="rules" ref="ruleForm" label-width="100px"
-                class="demo-ruleForm">
-<!-- 
-                <el-form-item label="旧密码" prop="oldpass">
-                    <el-input v-model.number="ruleForm.oldpass"></el-input>
-                </el-form-item> -->
+    <el-container>
 
-                <el-form-item label="密码" prop="pass">
-                    <el-input type="password" v-model="ruleForm.pass" autocomplete="off"></el-input>
-                </el-form-item>
+        <el-main>
+            <el-alert title="修改密码后请牢记密码，需要重置密码请联络管理员。" type="success" :closable="false" show-icon close-text="知道了">
+            </el-alert>
+            <div class="body">
+                <el-form :model="ruleForm" status-icon :rules="rules" ref="ruleForm" label-width="100px"
+                    class="demo-ruleForm">
 
-                <el-form-item label="确认密码" prop="checkPass">
-                    <el-input type="password" v-model="ruleForm.checkPass" autocomplete="off"></el-input>
-                </el-form-item>
+                    <el-form-item label="密码" prop="pass">
+                        <el-input type="password" v-model="ruleForm.pass" autocomplete="off"></el-input>
+                    </el-form-item>
 
-                <el-form-item>
-                    <el-button type="primary" round @click="submitForm('ruleForm')">提交</el-button>
-                    <el-button type="primary" round @click="resetForm('ruleForm')">重置</el-button>
-                </el-form-item>
-            </el-form>
-        </div>
+                    <el-form-item label="确认密码" prop="checkPass">
+                        <el-input type="password" v-model="ruleForm.checkPass" autocomplete="off"></el-input>
+                    </el-form-item>
 
-    </div>
+                    <el-form-item>
+                        <el-button type="primary" round @click="submitForm('ruleForm')">提交</el-button>
+                        <el-button type="primary" round @click="resetForm('ruleForm')">重置</el-button>
+                    </el-form-item>
+                </el-form>
+            </div>
+        </el-main>
+    </el-container>
+
+
 </template>
 
 <script>
@@ -95,13 +95,7 @@
     }
 </script>
 <style scoped>
-    .main {
-        width: 100%;
-    }
-
-    .body {
-        width: 30%;
-        margin-top: 2%;
-        text-align: center;
-    }
+.body{
+    width: 30%
+}
 </style>
