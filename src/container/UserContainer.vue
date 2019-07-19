@@ -97,7 +97,7 @@
                                     class="el-icon-s-flag"></i>授权即将过期
                             </el-menu-item>
                             <el-menu-item @click='alertFunc(7)' index="7"><i style="color:#fff;"
-                                    class="el-icon-user"></i>个人中心
+                                    class="el-icon-house"></i>个人中心
                             </el-menu-item>
                         </el-menu>
                         <div class="ajaxpage">
@@ -117,21 +117,14 @@
 </template>
 
 <script>
-    import Untreated from '@/views/untreated/index1.vue'
-
-    import NewApply from '@/views/newapply/index1.vue'
-
-    import Audited from '@/views/audited/index1.vue'
-
-    import NearOverdue from '@/views/nearoverdue/index1.vue'
-
-    import Overdue from '@/views/overdue/index1.vue'
-
-    import Revoke from '@/views/revoke/index1.vue'
-
+    import Untreated from '@/views/untreated/untreated_user.vue'
+    import NewApply from '@/views/newapply/newapply_user.vue'
+    import Audited from '@/views/audited/audited_user'
+    import NearOverdue from '@/views/nearoverdue/nearoverdue_user.vue'
+    import Overdue from '@/views/overdue/overdue-user.vue'
+    import Revoke from '@/views/revoke/revoke_user.vue'
     import Password from '@/views/userpage/password.vue'
-
-
+    
     export default {
         name: 'UserContainer',
         components: {

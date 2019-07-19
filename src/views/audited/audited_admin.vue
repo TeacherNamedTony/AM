@@ -5,8 +5,6 @@
         <el-table ref="multipleTable"
           :data="tableData.filter(data => !search || data.applyDetail.project.toLowerCase().includes(search.toLowerCase()))"
           tooltip-effect="dark" style="width: 100%">
-          <!-- <el-table-column type="selection" width="35">
-          </el-table-column> -->
           <el-table-column prop="applyDetail.applydate" label="申请日期" width="95">
           </el-table-column>
           <el-table-column prop="applyDetail.applyername" label="申请人员" width="80">
@@ -23,21 +21,20 @@
           </el-table-column>
           <el-table-column prop="grantdate" label="审批时间" width="">
           </el-table-column>
-          <el-table-column prop="look" align="center">
+          <el-table-column>
             <template slot="header" slot-scope="scope">
               <el-input v-model="search" size="max" placeholder="项目名称以检索" />
             </template>
             <template slot-scope="scope">
-              <el-button type="info" round @click="changeDialog(scope.row)">查看申请</el-button>
+              <el-button size="max" type="info" round @click="changeDialog(scope.row)">查看申请</el-button>
+              <el-button class="button-pass" size="max" type="danger" round @click="nopass(scope.row.sid)">撤销授权</el-button>
             </template>
-          </el-table-column>
-          <el-table-column prop="address" label=" " width="">
-            <el-button slot-scope="scope" type="danger" round @click="nopass(scope.row.sid)">撤销授权</el-button>
           </el-table-column>
         </el-table>
         <el-pagination class="fenye" background layout="prev, pager, next" :total="10">
         </el-pagination>
       </el-main>
+
 
 
       <!-- dialog开始，授权申请单弹窗 -->
@@ -796,6 +793,15 @@
       color: #333;
       line-height: 60px;
     }
+
+    .button-pass {
+      float: right;
+    }
+
+    .button-pass {
+      float: right;
+    }
+
 
     .el-aside {
       color: #333;

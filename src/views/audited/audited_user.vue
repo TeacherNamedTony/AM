@@ -19,19 +19,15 @@
         </el-table-column>
         <el-table-column prop="userRatifyDetail.realname" label="审核人" width="80">
         </el-table-column>
-        <el-table-column prop="userRatifyDetail.company" label="所属单位" width="90">
+        <el-table-column prop="userRatifyDetail.company" label="所属单位" width="">
         </el-table-column>
-        <el-table-column prop="look" align="center">
+        <el-table-column prop="look">
           <template slot="header" slot-scope="scope">
             <el-input v-model="search" size="max" placeholder="项目名称以检索" />
           </template>
           <template slot-scope="scope">
             <el-button type="primary" round @click="changeDialog(scope.row)">查看申请</el-button>
-          </template>
-        </el-table-column>
-        <el-table-column>
-          <template slot-scope="scope">
-            <el-button type="success" round @click="download(scope.row)">下载授权码</el-button>
+            <el-button class="button-pass" size="max" type="success"  round @click="download(scope.row)">下载授权码</el-button>
           </template>
         </el-table-column>
       </el-table>
@@ -546,11 +542,11 @@
         username: '',
         id: '',
         license: '',
-        project:'',
-        company:'',
-        grantbegindate:'',
-        grantenddate:'',
-        productversion:'',
+        project: '',
+        company: '',
+        grantbegindate: '',
+        grantenddate: '',
+        productversion: '',
         dialogTableVisible: false,
         tableData: [],
         dialogData: {
@@ -596,12 +592,12 @@
             message: '开始下载!'
           });
           this.loadFile(
-           data.userApplyDetail.company+'_'
-          +data.applyDetail.project+'_'
-          +data.applyDetail.grantbegindate+'_'
-          +data.applyDetail.grantenddate +'_'
-          +data.applyDetail.productversion+'_'
-          +"license.txt", data.license);
+            data.userApplyDetail.company + '_' +
+            data.applyDetail.project + '_' +
+            data.applyDetail.grantbegindate + '_' +
+            data.applyDetail.grantenddate + '_' +
+            data.applyDetail.productversion + '_' +
+            "license.txt", data.license);
         }).catch(() => {
           this.$message({
             type: 'close',
@@ -813,6 +809,9 @@
   .fenye {
     text-align: center;
     margin-top: 2%
+  }
+  .button-pass{
+    float: right;
   }
 
   .el-header {

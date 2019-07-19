@@ -1,7 +1,7 @@
   <template>
     <el-container>
       <el-main>
-      <el-alert title="以下授权时长已经过期，如有需要请通知项目负责人重新新建申请！" type="error" show-icon close-text="知道了"></el-alert>
+      <el-alert title="授权时长即将过期，如有需要请通知项目负责人重新新建申请。" type="warning" show-icon close-text="知道了"></el-alert>
         <el-table ref="multipleTable"
           :data="tableData.filter(data => !search || data.applyDetail.project.toLowerCase().includes(search.toLowerCase()))"
           tooltip-effect="dark" style="width: 100%">
@@ -23,7 +23,7 @@
           </el-table-column>
           <el-table-column prop="grantdate" label="审批时间" width="">
           </el-table-column>
-          <el-table-column prop="look" align="center">
+          <el-table-column prop="look">
             <template slot="header" slot-scope="scope">
               <el-input v-model="search" size="max" placeholder="项目名称以检索" />
             </template>
@@ -35,7 +35,6 @@
         <el-pagination class="fenye" background layout="prev, pager, next" :total="10">
         </el-pagination>
       </el-main>
-
 
       <!-- dialog开始，授权申请单弹窗 -->
       <el-dialog title="#" :visible.sync="dialogTableVisible">
@@ -577,7 +576,7 @@
       },
       methods: {
         loadAll() {
-          axios.get('http://192.168.17.73:8088/getAllEndState', {
+          axios.get('http://192.168.17.73:8088/getAllNearOverdue', {
             "pagenum": "123"
           }).then((data) => {
             this.tableData = data.data.data;
@@ -773,6 +772,7 @@
       text-align: center;
       margin-top: 2%
     }
+
 
     .el-header {
       background-color: #B3C0D1;

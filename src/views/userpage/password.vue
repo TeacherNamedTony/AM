@@ -1,8 +1,7 @@
 <template>
     <el-container>
-
         <el-main>
-            <el-alert title="修改密码后请牢记密码，需要重置密码请联络管理员。" type="success" :closable="false" show-icon close-text="知道了">
+            <el-alert title="温馨提示：修改密码后请牢记，如需重置密码请联络系统管理员。" type="success" :closable="false" show-icon close-text="知道了">
             </el-alert>
             <div class="body">
                 <el-form :model="ruleForm" status-icon :rules="rules" ref="ruleForm" label-width="100px"
@@ -17,8 +16,8 @@
                     </el-form-item>
 
                     <el-form-item>
-                        <el-button type="primary" round @click="submitForm('ruleForm')">提交</el-button>
-                        <el-button type="primary" round @click="resetForm('ruleForm')">重置</el-button>
+                        <el-button type="primary" round @click="submitForm('ruleForm')">重置密码</el-button>
+                        <el-button type="primary" round @click="resetForm('ruleForm')">清空表格</el-button>
                     </el-form-item>
                 </el-form>
             </div>
@@ -29,18 +28,10 @@
 </template>
 
 <script>
+    import axios from 'axios';
     export default {
         data() {
-            // var checkoldpass = (rule, value, callback) => {
-            //     if (!value) {
-            //         return callback(new Error('旧密码不能为空'));
-            //     }
-            //     setTimeout(() => {
-            //         if (false) {
-            //             callback(new Error('请输入正确旧密码'));
-            //         } 
-            //     }, 1000);
-            // };
+
             var validatePass = (rule, value, callback) => {
                 if (value === '') {
                     callback(new Error('请输入密码'));
@@ -81,9 +72,18 @@
             submitForm(formName) {
                 this.$refs[formName].validate((valid) => {
                     if (valid) {
-                        alert('submit!');
+                        this.$confirm('密码修改成功!', '提示', {})
+                        axios.get('http://192.168.17.73:8088/changePassword/' + this.ruleForm.pass + '?id=' +
+                            this.id).then(() => {
+                            this.$confirm('您的密码已修改，请重新登录', '提示', {})
+                                .then(() => {
+                                    sessionStorage.removeItem('user');
+                                    this.$router.push('/login');
+                                })
+                                .catch(() => {});
+                        })
                     } else {
-                        window.console.log('error submit!!');
+                        window.console.log('错误的提交!!');
                         return false;
                     }
                 });
@@ -91,11 +91,21 @@
             resetForm(formName) {
                 this.$refs[formName].resetFields();
             }
-        }
+        },
+        mounted() {
+            var user = sessionStorage.getItem('user');
+            var id = sessionStorage.getItem('id');
+            if (user) {
+                this.username = user;
+                this.id = id;
+            }
+        },
+
     }
 </script>
 <style scoped>
-.body{
-    width: 30%
-}
+    .body {
+        text-align: center;
+        width: 30%
+    }
 </style>

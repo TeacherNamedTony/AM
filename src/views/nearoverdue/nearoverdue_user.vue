@@ -3,7 +3,7 @@
     <el-header style="height:0px">
     </el-header>
     <el-main>
-      <el-alert title="授权时长已经过期，如有需要请重新新建申请!" type="error" show-icon close-text="知道了"></el-alert>
+      <el-alert title="授权时长即将过期，如有需要请重新新建申请" type="warning" show-icon close-text="知道了"></el-alert>
       <el-table
         :data="tableData.filter(data => !search || data.applyDetail.project.toLowerCase().includes(search.toLowerCase()))"
         tooltip-effect="dark" style="width: 100%">
@@ -21,7 +21,7 @@
         </el-table-column>
         <el-table-column prop="userRatifyDetail.company" label="所属单位" width="">
         </el-table-column>
-        <el-table-column prop="look" align="center">
+        <el-table-column prop="look" >
           <template slot="header" slot-scope="scope">
             <el-input v-model="search" size="max" placeholder="输入项目名称以检索" />
           </template>
@@ -29,7 +29,6 @@
             <el-button type="primary" round @click="changeDialog(scope.row)">查看申请</el-button>
           </template>
         </el-table-column>
-
       </el-table>
       <el-pagination class="fenye" background layout="prev, pager, next" :total="20">
       </el-pagination>
@@ -574,16 +573,11 @@
       }
     },
     methods: {
-      reapply(sid) {
-        // alert(sid)
-        this.$confirm('申请重新授权三个月，需等待管理员同意。', '提示', {})
-        axios.get('http://192.168.17.73:8088/reApply?sid=' + sid).then(() => {
-          alert(sid)
-          location.reload()
-        })
-      },
+      // passnow() {
+      //   this.$confirm('确认下载授权文件。此文件请妥善保管', '提示', {})
+      // },
       loadAll() {
-        axios.get('http://192.168.17.73:8088/getEndState?id=' + this.id).then((data) => {
+        axios.get('http://192.168.17.73:8088/getNearOverdue?id=' + this.id).then((data) => {
           this.tableData = data.data.data;
         })
       },

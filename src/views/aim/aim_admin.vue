@@ -21,7 +21,7 @@
                 </el-table-column>
                 <el-table-column label="机器码" prop="applyDetail.machinenum">
                 </el-table-column>
-                <el-table-column align="center">
+                <el-table-column >
                     <template slot="header" slot-scope="scope">
                         <el-input v-model="search" size="max" placeholder="授权码以追踪授权信息" />
                     </template>

@@ -67,7 +67,6 @@
                             </span>
                             <el-dropdown-menu slot="dropdown">
                                 <el-dropdown-item>我的消息</el-dropdown-item>
-                                <el-dropdown-item>修改密码</el-dropdown-item>
                                 <el-dropdown-item divided @click.native="logout">退出登录</el-dropdown-item>
                             </el-dropdown-menu>
                         </el-dropdown>
@@ -95,8 +94,13 @@
                             <el-menu-item @click='alertFunc(6)' index="6"><i style="color:#fff;"
                                     class="el-icon-aim"></i>追中授权情况
                             </el-menu-item>
-                            <el-menu-item @click='alertFunc(7)' index="7"><i style="color:#fff;"
-                                    class="el-icon-user"></i>用户管理
+                            <el-submenu index="7">
+                                <template slot="title"><i class="el-icon-user" style="color:#fff;"></i>用户中心</template>
+                                <el-menu-item @click='alertFunc(7.1)' index="7.1">新增用户</el-menu-item>
+                                <el-menu-item @click='alertFunc(7.2)' index="7.2">用户管理</el-menu-item>
+                            </el-submenu>
+                            <el-menu-item @click='alertFunc(8)' index="8"><i style="color:#fff;"
+                                    class="el-icon-house"></i>个人中心
                             </el-menu-item>
                         </el-menu>
                         <div class="ajaxpage">
@@ -106,7 +110,9 @@
                             <Revoke v-if="itemIndex==4"></Revoke>
                             <NearOverdue v-if="itemIndex==5"></NearOverdue>
                             <Select v-if="itemIndex==6"></Select>
-                            <Userpage v-if="itemIndex==7"></Userpage>
+                            <AddUser v-if="itemIndex==7.1"></AddUser>
+                            <Userpage v-if="itemIndex==7.2"></Userpage>
+                            <Password v-if="itemIndex==8"></Password>
                         </div>
                     </template>
                 </el-main>
@@ -116,13 +122,16 @@
 </template>
 
 <script>
-    import Untreated from '@/views/untreated/index.vue'
-    import Audited from '@/views/audited/index.vue'
-    import Overdue from '@/views/overdue/index.vue'
-    import Revoke from '@/views/revoke/index.vue'
-    import NearOverdue from '@/views/nearoverdue/index.vue'
-    import Select from '@/views/newapply/select.vue'
-    import Userpage from '@/views/userpage/index.vue'
+    import Untreated from '@/views/untreated/untreated_admin.vue'
+    import Audited from '@/views/audited/audited_admin.vue'
+    import Overdue from '@/views/overdue/overdue_admin.vue'
+    import Revoke from '@/views/revoke/revoke_admin.vue'
+    import NearOverdue from '@/views/nearoverdue/nearoverdue_admin.vue'
+    import Select from '@/views/aim/aim_admin.vue'
+    import Userpage from '@/views/userpage/userpage_admin.vue'
+    import AddUser from '@/views/userpage/adduser_admin.vue'
+    import Password from '@/views/userpage/password.vue'
+
 
     export default {
         name: 'Container',
@@ -133,7 +142,9 @@
             'Overdue': Overdue,
             'Revoke': Revoke,
             'Select': Select,
-            'Userpage':Userpage,
+            'Userpage': Userpage,
+            'Password': Password,
+            'AddUser':AddUser,
         },
 
         data() {

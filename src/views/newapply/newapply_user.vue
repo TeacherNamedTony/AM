@@ -395,15 +395,13 @@
 
       submitForm(formName) {
         this.$refs[formName].validate((valid) => {
-          // alert(valid)
           if (valid) {
-            alert('校验成功准备提交')
+            this.$confirm('校验成功,正在火速为您加速提交!', '提示', {})
             let params = this.applyForm;
-            axios.get('http://192.168.17.73:8088/addNewApply/'+this.id, {
+            axios.get('http://192.168.17.73:8088/addNewApply/' + this.id, {
               params
             }).then(() => {
               location.reload()
-              alert('已提交!');
             });
           } else {
             window.console.log('错误提交');
@@ -422,7 +420,6 @@
         this.username = user;
         this.id = id;
       }
-      this.loadAll();
     },
 
   }
