@@ -34,6 +34,8 @@
           <template slot-scope="scope">
             <p>真实姓名：{{ scope.row.realname }}</p>
             <p>单位所属：{{ scope.row.company }}</p>
+            <p>联系方式：{{ scope.row.tel }}</p>
+            <p>创建时间：{{ scope.row.more }}</p>
           </template>
         </el-table-column>
 
@@ -48,7 +50,7 @@
             <el-button size="max" round type="info" @click="ReUser(scope.$index, scope.row)">恢复账户</el-button>.
             <!-- <el-button size="max" round type="warning" @click="DeleteUser(scope.$index, scope.row)">删除账户</el-button> -->
           </template>
-          
+
         </el-table-column>
       </el-table>
     </el-main>

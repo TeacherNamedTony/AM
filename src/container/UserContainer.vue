@@ -34,6 +34,18 @@
                                 <i class="el-icon-info"></i>单位所属：{{company}}
                             </li>
                         </el-menu-item>
+
+                        <!-- <div class="block">
+                            <el-timeline>
+                                <el-timeline-item v-for="(activity, index) in activities" :key="index"
+                                    :icon="activity.icon" :type="activity.type" :color="activity.color"
+                                    :size="activity.size" :timestamp="activity.timestamp">
+                                    {{activity.content}}
+                                </el-timeline-item>
+                            </el-timeline>
+                        </div> -->
+
+
                         <!-- <el-menu-item>
                             <li style="list-style-type:none;" >
                                 <i class="el-icon-s-claim"></i>授权个数：9
@@ -124,7 +136,7 @@
     import Overdue from '@/views/overdue/overdue-user.vue'
     import Revoke from '@/views/revoke/revoke_user.vue'
     import Password from '@/views/userpage/password.vue'
-    
+
     export default {
         name: 'UserContainer',
         components: {
@@ -134,16 +146,30 @@
             'NearOverdue': NearOverdue,
             'Overdue': Overdue,
             'Revoke': Revoke,
-            'Password':Password,
+            'Password': Password,
         },
         data() {
             return {
                 itemIndex: 1,
                 username: '',
                 id: '',
-                user:'',
-                company:'',
-                isCollapse: false
+                user: '',
+                company: '',
+                isCollapse: false,
+                // activities: [{
+                //     content: '新建申请单',
+                //     size: 'large',
+                //     type: 'primary',
+                //     icon: 'el-icon-more'
+                // }, {
+                //     content: '管理员批准',
+                //     size:'large',
+                //     color: '#0bbd87'
+                // }, {
+                //     content: '下载授权码文件',
+                //     size: 'large',
+                //     color: '#0bbd87'
+                // }, ]
             }
         },
         methods: {

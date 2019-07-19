@@ -17,6 +17,10 @@
             <el-input v-model="ruleForm.company"></el-input>
           </el-form-item>
 
+          <el-form-item label="电话" prop="tel">
+            <el-input v-model="ruleForm.tel"></el-input>
+          </el-form-item>
+
           <el-form-item>
             <el-button type="primary" round @click="submitForm('ruleForm')">添加</el-button>
             <el-button type="primary" round @click="resetForm('ruleForm')">重置</el-button>
@@ -36,6 +40,7 @@
           username: '',
           realname: '',
           company: '',
+          tel: '',
         },
         rules: {
           username: [{
@@ -74,34 +79,46 @@
               trigger: 'blur'
             }
           ],
-        }
-      };
-    },
-    methods: {
-      submitForm(formName) {
-        this.$refs[formName].validate((valid) => {
-          if (valid) {
-            this.$confirm('正在创建用户' + this.ruleForm.realname + '!', '提示', {})
-            axios.get('http://192.168.17.73:8088/addUser?' +
-              'username=' + this.ruleForm.username +
-              '&realname=' + this.ruleForm.realname +
-              '&company=' + this.ruleForm.company).then(() => {
-              this.$confirm('创建用户' + this.ruleForm.realname + '成功', '提示', {})
-                .then(() => {
-                  this.$refs[formName].resetFields();
-                })
-                .catch(() => {});
-            })
-          } else {
-            window.console.log('错误的提交!!');
-            return false;
-          }
-        });
-      },
-      resetForm(formName) {
-        this.$refs[formName].resetFields();
+          tel: [{
+              required: true,
+              message: '请输入用户联系电话',
+              trigger: 'blur'
+            },
+            {
+              min: 2,
+              max: 15,
+              message: '长度在 2 到 11 个字符',
+              trigger: 'blur'
+          }]
       }
+    };
+  },
+  methods: {
+    submitForm(formName) {
+      this.$refs[formName].validate((valid) => {
+        if (valid) {
+          this.$confirm('正在创建用户' + this.ruleForm.realname + '!', '提示', {})
+          axios.get('http://192.168.17.73:8088/addUser?' +
+            'username=' + this.ruleForm.username +
+            '&realname=' + this.ruleForm.realname +
+            '&company=' + this.ruleForm.company+
+            '&tel='+this.ruleForm.tel).then(() => {
+            this.$confirm('创建用户' + this.ruleForm.realname + '成功', '提示', {})
+              .then(() => {
+                this.$refs[formName].resetFields();
+              })
+              .catch(() => {});
+          })
+        } else {
+          window.console.log('错误的提交!!');
+          return false;
+        }
+      });
     },
+    resetForm(formName) {
+      this.$refs[formName].resetFields();
+    }
+  },
   }
 </script>
 <style scoped>

@@ -4,9 +4,18 @@
     <br>
     <el-alert title="请严格按照输入框提示键入内容，否则授权码无效。" type="info" show-icon close-text="知道了"></el-alert>
     <br>
+    
+    <el-steps :active="4" align-center>
+      <el-step title="提出授权申请" description=""></el-step>
+      <el-step title="等待管理员审批" description=""></el-step>
+      <el-step title="管理员审批完成" description=""></el-step>
+      <el-step title="下载授权码文件" description=""></el-step>
+    </el-steps>
+    <br>
     <div style="text-align: center;">
       <span style='font-size:20.0pt;font-family:黑体;color:black'><i class="el-icon-edit-outline"></i>授权审批单</span>
     </div>
+
     <br>
     <el-divider content-position="center">基本信息</el-divider>
     <br>
