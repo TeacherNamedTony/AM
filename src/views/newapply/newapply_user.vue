@@ -109,7 +109,7 @@
       <el-input v-model.number="applyForm.controlnum" style="width: 100%;" placeholder="容器云-控制节点数量"></el-input>
     </el-form-item>
     <el-form-item label="容器云-计算节点数量" prop="computenum">
-      <el-input v-mode.numberl="applyForm.computenum" style="width: 100%;" placeholder="容器云-计算节点数量"></el-input>
+      <el-input v-model.numberl="applyForm.computenum" style="width: 100%;" placeholder="容器云-计算节点数量"></el-input>
     </el-form-item>
     <br>
 

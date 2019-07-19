@@ -62,7 +62,6 @@
                         this.logining = true;
                         axios.get('http://192.168.17.73:8088/login?username=' + this.ruleForm2.username +
                             '&password=' + this.ruleForm2.password).then((data) => {
-                            window.console.log(data.data.data)
                             if (data.data.data != null) {
                                 if (data.data.data.isadmin == 1 && data.data.data.isdel == 0) {
                                     sessionStorage.setItem('username', data.data.data.username);
@@ -80,14 +79,16 @@
                                     this.$router.push({
                                         path: '/admin'
                                     });
-                                }else if (data.data.data.isdel == 1) {
-                                location.reload()
-                                alert('您的账户以及被冻结，请联系管理员恢复！');
-                                return false;
+                                } else if (data.data.data.isdel == 1) {
+                                    location.reload()
+                                    alert('您的账户以及被冻结，请联系管理员恢复！')
+                                    // this.$confirm('您的账户以及被冻结，请联系管理员恢复！', '提示', {})
+                                    return false;
                                 }
                             } else {
                                 location.reload()
-                                alert('用户名或密码错误!请重新登录！');
+                                alert('用户名或密码错误!请重新登录！')
+                                // this.$confirm('用户名或密码错误!请重新登录！', '提示', {})
                                 return false;
                             }
                         })

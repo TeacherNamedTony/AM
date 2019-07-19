@@ -587,7 +587,7 @@
         })
       },
       changeDialog(params) {
-        window.console.log(params);
+        // window.console.log(params);
         this.dialogData.project = params.applyDetail.project;
         this.dialogData.applyername = params.applyDetail.applyername;
         this.dialogData.softwarename = params.applyDetail.softwarename;

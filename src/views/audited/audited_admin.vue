@@ -15,7 +15,7 @@
           </el-table-column>
           <el-table-column prop="applyDetail.grantenddate" label="结束时间" width="95">
           </el-table-column>
-          <el-table-column prop="userApplyDetail.company" label="所属单位" width="90">
+          <el-table-column prop="userApplyDetail.company" label="所属单位" width="120">
           </el-table-column>
           <el-table-column prop="userRatifyDetail.realname" label="审核人" width="80">
           </el-table-column>
@@ -591,7 +591,7 @@
           })
         },
         changeDialog(params) {
-          window.console.log(params);
+          // window.console.log(params);
           this.dialogData.project = params.applyDetail.project;
           this.dialogData.applyername = params.applyDetail.applyername;
           this.dialogData.softwarename = params.applyDetail.softwarename;

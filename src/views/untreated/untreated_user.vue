@@ -20,7 +20,7 @@
           <el-table-column prop="" label="审核人" width="">
             <el-tag type="info">尚未通过审核</el-tag>
           </el-table-column>
-          <el-table-column >
+          <el-table-column>
             <template slot="header" slot-scope="scope">
               <el-input v-model="search" size="max" placeholder="项目名称以检索" />
             </template>
@@ -573,7 +573,6 @@
           }
         }
       },
-
       methods: {
         loadAll() {
           axios.get('http://192.168.17.73:8088/getUntreatedState?id=' + this.id).then((data) => {
@@ -584,7 +583,7 @@
           })
         },
         changeDialog(params) {
-          window.console.log(params);
+          // window.console.log(params);
           this.dialogData.project = params.applyDetail.project;
           this.dialogData.applyername = params.applyDetail.applyername;
           this.dialogData.softwarename = params.applyDetail.softwarename;
