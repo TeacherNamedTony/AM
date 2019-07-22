@@ -70,9 +70,9 @@
     methods: {
       ResetPassword(index, row) {
         // window.console.log(index, row.id);
-        axios.get('http://192.168.17.55:8088/ResetPassword?id=' + row.id).then(() => {}).then(() => {
+        axios.get('http://192.168.17.73:8088/ResetPassword?id=' + row.id).then(() => {}).then(() => {
           this.$confirm('已重置用户' + row.realname + '的密码!', '提示', {})
-          axios.get('http://192.168.17.55:8088/getAllUser?').then((data) => {
+          axios.get('http://192.168.17.73:8088/getAllUser?').then((data) => {
             this.tableData = data.data.data;
             this.loadAll();
           })
@@ -80,9 +80,9 @@
       },
       FrozenUser(index, row) {
         // window.console.log(index, row.id);
-        axios.get('http://192.168.17.55:8088/FrozenUser?id=' + row.id).then(() => {}).then(() => {
+        axios.get('http://192.168.17.73:8088/FrozenUser?id=' + row.id).then(() => {}).then(() => {
           this.$confirm('已冻结用户' + row.realname + '!', '提示', {})
-          axios.get('http://192.168.17.55:8088/getAllUser?').then((data) => {
+          axios.get('http://192.168.17.73:8088/getAllUser?').then((data) => {
             this.tableData = data.data.data;
             this.loadAll();
           })
@@ -90,9 +90,9 @@
       },
       ReUser(index, row) {
         // window.console.log(index, row.id);
-        axios.get('http://192.168.17.55:8088/ReUser?id=' + row.id).then(() => {}).then(() => {
+        axios.get('http://192.168.17.73:8088/ReUser?id=' + row.id).then(() => {}).then(() => {
           this.$confirm('已恢复用户' + row.realname + '!', '提示', {})
-          axios.get('http://192.168.17.55:8088/getAllUser?').then((data) => {
+          axios.get('http://192.168.17.73:8088/getAllUser?').then((data) => {
             this.tableData = data.data.data;
             this.loadAll();
           })
@@ -101,9 +101,9 @@
       // DeleteUser(index, row) {
       //   window.console.log(index, row.id);
       //   alert("冻结账户即可")
-      //   axios.get('http://192.168.17.55:8088/DeleteUser?id=' + row.id).then(() => {}).then(() => {
+      //   axios.get('http://192.168.17.73:8088/DeleteUser?id=' + row.id).then(() => {}).then(() => {
       //     alert('已重置用户' + row.realname + '的密码!');
-      //     axios.get('http://192.168.17.55:8088/getAllUser?').then((data) => {
+      //     axios.get('http://192.168.17.73:8088/getAllUser?').then((data) => {
       //       this.tableData = data.data.data;
       //       this.loadAll();
       //     })
@@ -111,7 +111,7 @@
       // },
 
       loadAll() {
-        axios.get('http://192.168.17.55:8088/getAllUser?').then((data) => {
+        axios.get('http://192.168.17.73:8088/getAllUser?').then((data) => {
           this.tableData = data.data.data;
         })
       },

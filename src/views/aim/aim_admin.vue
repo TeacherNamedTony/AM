@@ -617,7 +617,7 @@
         },
         methods: {
             loadAll() {
-                axios.get('http://192.168.17.55:8088/getAllState?').then((data) => {
+                axios.get('http://192.168.17.73:8088/getAllState?').then((data) => {
                     // window.console.log(data.data)
                     // alert(data.data.data[0].aid)
                     this.tableData = data.data.data;

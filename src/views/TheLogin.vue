@@ -60,7 +60,7 @@
                 this.$refs.ruleForm2.validate((valid) => {
                     if (valid) {
                         this.logining = true;
-                        axios.get('http://192.168.17.55:8088/login?username=' + this.ruleForm2.username +
+                        axios.get('http://192.168.17.73:8088/login?username=' + this.ruleForm2.username +
                             '&password=' + this.ruleForm2.password).then((data) => {
                             if (data.data.data != null) {
                                 if (data.data.data.isadmin == 1 && data.data.data.isdel == 0) {

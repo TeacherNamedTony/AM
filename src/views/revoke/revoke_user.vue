@@ -576,12 +576,12 @@
       askreaudited(sid) {
         // alert(sid)
         // this.$confirm('请求重新授权，即将前往填写申请处。', '提示', {})
-        // axios.get('http://192.168.17.55:8088/reApply?sid=' + sid).then(() => {
+        // axios.get('http://192.168.17.73:8088/reApply?sid=' + sid).then(() => {
         //   location.reload()
         // })
       },
       loadAll() {
-        axios.get('http://192.168.17.55:8088/getRevoke?id=' + this.id).then((data) => {
+        axios.get('http://192.168.17.73:8088/getRevoke?id=' + this.id).then((data) => {
           this.tableData = data.data.data;
         })
       },
