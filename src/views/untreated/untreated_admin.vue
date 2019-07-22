@@ -616,14 +616,13 @@
         },
         passnow(params) {
           window.console.log(params.sid)
-          axios.get('http://192.168.17.73:8088/ratify/' +
-            this.id + '/' +
-            params.applyDetail.machinenum + '/' +
-            params.applyDetail.productversion + '/' +
-            params.applyDetail.desktopcon + '/' +
-            params.applyDetail.grantbegindate + '/' +
-            params.applyDetail.grantenddate +
-            '?sid=' + params.sid).then(() => {
+          axios.get('http://192.168.17.73:8088/ratify/' +this.id 
+          +'?sid=' + params.sid
+          +'&machinenum='+params.applyDetail.machinenum
+          +'&productversion='+params.applyDetail.productversion
+          +'&desktopcon='+params.applyDetail.desktopcon
+          +'&grantbegindate='+params.applyDetail.grantbegindate
+          +'&grantenddate='+params.applyDetail.grantenddate).then(() => {
             this.$confirm('授权成功！', '提示', {})
             axios.get('http://192.168.17.73:8088/getAllStateNotPass', {}).then((data) => {
               this.tableData = data.data.data;

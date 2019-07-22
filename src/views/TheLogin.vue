@@ -100,31 +100,20 @@
 </script>
 
 <style scoped>
-    /* .login {
-  width: 100%;
-  padding-bottom: 62.5%;
-  height: 0;
-  background: url('../../images/login.jpg') no-repeat center center fixed;
-  background-size: cover;
-  background-color: #0C1424;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-} */
     .login-container {
         width: 100%;
         height: 100%;
-        background: url("../assets/bg.jpg");
+        background: url("../assets/bg.jpg") repeat;
     }
 
     .login-page {
-        width: 350px;
-        float: right;
-        margin-top: 10%;
-        margin-right: 35%;
+        width: 20%;
+        margin: -200px 0 0 -250px;
+        position: absolute;
+        top: 40%;
+        left: 50%;
         -webkit-border-radius: 5px;
         border-radius: 5px;
-        /* margin: 180px auto; */
         padding: 35px 35px 15px;
         background: #ffffff;
         border: 1px solid #eaeaea;
