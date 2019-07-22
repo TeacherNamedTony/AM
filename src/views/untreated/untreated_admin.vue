@@ -26,7 +26,7 @@
             </template>
             <template slot-scope="scope">
               <el-button size="max" round type="info" @click="changeDialog(scope.row)">查看详情</el-button>
-              <el-button class="button-pass" size="max" round type="success" @click="passnow(scope.row.sid)">通过审批
+              <el-button class="button-pass" size="max" round type="success" @click="passnow(scope.row)">通过审批
               </el-button>
             </template>
           </el-table-column>
@@ -545,6 +545,7 @@
           id: '',
           user: '',
           company: '',
+          machinenum: '',
           dialogTableVisible: false,
           tableData: [],
           dialogData: {
@@ -579,7 +580,7 @@
       },
       methods: {
         loadAll() {
-          axios.get('http://192.168.17.73:8088/getAllStateNotPass', {}).then((data) => {
+          axios.get('http://192.168.17.55:8088/getAllStateNotPass', {}).then((data) => {
             this.tableData = data.data.data;
           })
         },
@@ -613,9 +614,18 @@
           this.dialogData.desktopcon = params.applyDetail.desktopcon;
           this.dialogTableVisible = true;
         },
-        passnow(sid) {
-          axios.get('http://192.168.17.73:8088/ratify/' + this.id + '?sid=' + sid).then(() => {
-            axios.get('http://192.168.17.73:8088/getAllStateNotPass', {}).then((data) => {
+        passnow(params) {
+          window.console.log(params.sid)
+          axios.get('http://192.168.17.55:8088/ratify/' +
+            this.id + '/' +
+            params.applyDetail.machinenum + '/' +
+            params.applyDetail.productversion + '/' +
+            params.applyDetail.desktopcon + '/' +
+            params.applyDetail.grantbegindate + '/' +
+            params.applyDetail.grantenddate +
+            '?sid=' + params.sid).then(() => {
+            this.$confirm('授权成功！', '提示', {})
+            axios.get('http://192.168.17.55:8088/getAllStateNotPass', {}).then((data) => {
               this.tableData = data.data.data;
               this.loadAll();
             })
