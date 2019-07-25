@@ -576,15 +576,15 @@
       },
       methods: {
         loadAll() {
-          axios.get('http://192.168.17.73:8088/getAllPassState', {}).then((data) => {
+          axios.get('http://192.168.40.205:13998/getAllPassState', {}).then((data) => {
             this.tableData = data.data.data;
           })
         },
         nopass(sid) {
           // alert(sid)
-          axios.get('http://192.168.17.73:8088/unratify/' + this.id + '?sid=' + sid).then(() => {
+          axios.get('http://192.168.40.205:13998/unratify/' + this.id + '?sid=' + sid).then(() => {
             // alert(sid)
-            axios.get('http://192.168.17.73:8088/getAllPassState', {}).then((data) => {
+            axios.get('http://192.168.40.205:13998/getAllPassState', {}).then((data) => {
               this.tableData = data.data.data;
               this.loadAll();
             })

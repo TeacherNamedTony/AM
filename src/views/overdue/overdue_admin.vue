@@ -577,7 +577,7 @@
       },
       methods: {
         loadAll() {
-          axios.get('http://192.168.17.73:8088/getAllEndState', {
+          axios.get('http://192.168.40.205:13998/getAllEndState', {
             "pagenum": "123"
           }).then((data) => {
             this.tableData = data.data.data;

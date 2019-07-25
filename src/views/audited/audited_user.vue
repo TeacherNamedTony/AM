@@ -617,7 +617,7 @@
         URL.revokeObjectURL(blob);
       },
       loadAll() {
-        axios.get('http://192.168.17.73:8088/getAuditedState?id=' + this.id).then((data) => {
+        axios.get('http://192.168.40.205:13998/getAuditedState?id=' + this.id).then((data) => {
           this.tableData = data.data.data;
         })
       },
