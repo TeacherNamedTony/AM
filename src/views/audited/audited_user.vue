@@ -27,7 +27,8 @@
           </template>
           <template slot-scope="scope">
             <el-button type="primary" round @click="changeDialog(scope.row)">查看申请</el-button>
-            <el-button class="button-pass" size="max" type="success"  round @click="download(scope.row)">下载授权码</el-button>
+            <el-button class="button-pass" size="max" type="success" round @click="download(scope.row)">下载授权码
+            </el-button>
           </template>
         </el-table-column>
       </el-table>
@@ -582,18 +583,23 @@
     methods: {
       download(data) {
         // this.$confirm(data.license, '提示', {
-        this.$confirm("请妥善保管授权码文件", '提示', {
-          confirmButtonText: '下载',
-          cancelButtonText: '关闭',
-          type: 'warning'
-        }).then(() => {
+        this.$confirm("请妥善保管授权码文件------" +
+          data.applyDetail.project + '_' +
+          data.applyDetail.softwarename + '_' +
+          data.applyDetail.grantbegindate + '_' +
+          data.applyDetail.grantenddate + '_' +
+          data.applyDetail.productversion + '_', '提示', {
+            confirmButtonText: '下载',
+            cancelButtonText: '关闭',
+            type: 'warning'
+          }).then(() => {
           this.$message({
             type: 'success',
             message: '开始下载!'
           });
           this.loadFile(
-            data.userApplyDetail.company + '_' +
             data.applyDetail.project + '_' +
+            data.applyDetail.softwarename + '_' +
             data.applyDetail.grantbegindate + '_' +
             data.applyDetail.grantenddate + '_' +
             data.applyDetail.productversion + '_' +
@@ -810,7 +816,8 @@
     text-align: center;
     margin-top: 2%
   }
-  .button-pass{
+
+  .button-pass {
     float: right;
   }
 
