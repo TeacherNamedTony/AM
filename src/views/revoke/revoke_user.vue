@@ -576,17 +576,16 @@
       askreaudited(sid) {
         // alert(sid)
         // this.$confirm('请求重新授权，即将前往填写申请处。', '提示', {})
-        // axios.get('http://192.168.40.205:13998/reApply?sid=' + sid).then(() => {
+        // axios.get(g.apiUrl+'/reApply?sid=' + sid).then(() => {
         //   location.reload()
         // })
       },
       loadAll() {
-        axios.get('http://192.168.40.205:13998/getRevoke?id=' + this.id).then((data) => {
+        axios.get(g.apiUrl+'/getRevoke?id=' + this.id).then((data) => {
           this.tableData = data.data.data;
         })
       },
       changeDialog(params) {
-        // window.console.log(params);
         this.dialogData.project = params.applyDetail.project;
         this.dialogData.applyername = params.applyDetail.applyername;
         this.dialogData.softwarename = params.applyDetail.softwarename;

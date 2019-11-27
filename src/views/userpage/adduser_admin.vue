@@ -98,7 +98,7 @@
       this.$refs[formName].validate((valid) => {
         if (valid) {
           this.$confirm('正在创建用户' + this.ruleForm.realname + '!', '提示', {})
-          axios.get('http://192.168.40.205:13998/addUser?' +
+          axios.get(g.apiUrl+'/addUser?' +
             'username=' + this.ruleForm.username +
             '&realname=' + this.ruleForm.realname +
             '&company=' + this.ruleForm.company+

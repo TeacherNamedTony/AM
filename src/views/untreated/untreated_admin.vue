@@ -580,7 +580,7 @@
       },
       methods: {
         loadAll() {
-          axios.get('http://192.168.40.205:13998/getAllStateNotPass', {}).then((data) => {
+          axios.get(g.apiUrl+'/getAllStateNotPass', {}).then((data) => {
             this.tableData = data.data.data;
           })
         },
@@ -616,7 +616,7 @@
         },
         passnow(params) {
           window.console.log(params.sid)
-          axios.get('http://192.168.40.205:13998/ratify/' +this.id 
+          axios.get(g.apiUrl+'/ratify/' +this.id 
           +'?sid=' + params.sid
           +'&machinenum='+params.applyDetail.machinenum
           +'&productversion='+params.applyDetail.productversion
@@ -624,7 +624,7 @@
           +'&grantbegindate='+params.applyDetail.grantbegindate
           +'&grantenddate='+params.applyDetail.grantenddate).then(() => {
             this.$confirm('授权成功！', '提示', {})
-            axios.get('http://192.168.40.205:13998/getAllStateNotPass', {}).then((data) => {
+            axios.get(g.apiUrl+'/getAllStateNotPass', {}).then((data) => {
               this.tableData = data.data.data;
               this.loadAll();
             })

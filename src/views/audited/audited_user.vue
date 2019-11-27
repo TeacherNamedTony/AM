@@ -582,7 +582,6 @@
     },
     methods: {
       download(data) {
-        // this.$confirm(data.license, '提示', {
         this.$confirm("请妥善保管授权码文件------" +
           data.applyDetail.project + '_' +
           data.applyDetail.softwarename + '_' +
@@ -623,7 +622,7 @@
         URL.revokeObjectURL(blob);
       },
       loadAll() {
-        axios.get('http://192.168.40.205:13998/getAuditedState?id=' + this.id).then((data) => {
+        axios.get(g.apiUrl+'/getAuditedState?id=' + this.id).then((data) => {
           this.tableData = data.data.data;
         })
       },

@@ -575,7 +575,7 @@
       },
       methods: {
         loadAll() {
-          axios.get('http://192.168.40.205:13998/getUntreatedState?id=' + this.id).then((data) => {
+          axios.get(g.apiUrl+'/getUntreatedState?id=' + this.id).then((data) => {
             // window.console.log(data.data.data[0].aid)
             this.tableData = data.data.data;
             // window.console.log(this.id)

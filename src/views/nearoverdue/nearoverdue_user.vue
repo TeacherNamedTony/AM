@@ -577,7 +577,7 @@
       //   this.$confirm('确认下载授权文件。此文件请妥善保管', '提示', {})
       // },
       loadAll() {
-        axios.get('http://192.168.40.205:13998/getNearOverdue?id=' + this.id).then((data) => {
+        axios.get(g.apiUrl+'/getNearOverdue?id=' + this.id).then((data) => {
           this.tableData = data.data.data;
         })
       },

@@ -10,6 +10,8 @@ import 'element-ui/lib/theme-chalk/index.css'
 import '@/styles/index.scss'
 // 引入图标字库
 import 'font-awesome/scss/font-awesome.scss'
+import '../static/urlConfig'
+
 router.beforeEach((to, from, next) => {
   if(to.path === '/login'){
     sessionStorage.removeItem('user');

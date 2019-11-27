@@ -407,7 +407,7 @@
           if (valid) {
             this.$confirm('校验成功,正在火速为您加速提交!', '提示', {})
             let params = this.applyForm;
-            axios.get('http://192.168.40.205:13998/addNewApply/' + this.id, {
+            axios.get(g.apiUrl+'/addNewApply/' + this.id, {
               params
             }).then(() => {
               location.reload()

@@ -73,7 +73,7 @@
                 this.$refs[formName].validate((valid) => {
                     if (valid) {
                         this.$confirm('密码修改成功!', '提示', {})
-                        axios.get('http://192.168.40.205:13998/changePassword/' + this.ruleForm.pass + '?id=' +
+                        axios.get(g.apiUrl+'/changePassword/' + this.ruleForm.pass + '?id=' +
                             this.id).then(() => {
                             this.$confirm('您的密码已修改，请重新登录', '提示', {})
                                 .then(() => {

@@ -576,8 +576,7 @@
       },
       methods: {
         loadAll() {
-          axios.get('http://192.168.40.205:13998/getAllRevoke', {
-            "pagenum": "123"
+          axios.get(g.apiUrl+'/getAllRevoke', {
           }).then((data) => {
             this.tableData = data.data.data;
           })

@@ -576,8 +576,7 @@
       },
       methods: {
         loadAll() {
-          axios.get('http://192.168.40.205:13998/getAllNearOverdue', {
-            "pagenum": "123"
+          axios.get(g.apiUrl+'/getAllNearOverdue', {
           }).then((data) => {
             this.tableData = data.data.data;
           })

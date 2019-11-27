@@ -577,12 +577,12 @@
       reapply(sid) {
         // alert(sid)
         this.$confirm('申请重新授权三个月，需等待管理员同意。', '提示', {})
-        axios.get('http://192.168.40.205:13998/reApply?sid=' + sid).then(() => {
+        axios.get(g.apiUrl+'/reApply?sid=' + sid).then(() => {
           location.reload()
         })
       },
       loadAll() {
-        axios.get('http://192.168.40.205:13998/getEndState?id=' + this.id).then((data) => {
+        axios.get(g.apiUrl+'/getEndState?id=' + this.id).then((data) => {
           this.tableData = data.data.data;
         })
       },

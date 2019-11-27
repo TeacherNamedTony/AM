@@ -576,22 +576,19 @@
       },
       methods: {
         loadAll() {
-          axios.get('http://192.168.40.205:13998/getAllPassState', {}).then((data) => {
+          axios.get(g.apiUrl+'/getAllPassState', {}).then((data) => {
             this.tableData = data.data.data;
           })
         },
         nopass(sid) {
-          // alert(sid)
-          axios.get('http://192.168.40.205:13998/unratify/' + this.id + '?sid=' + sid).then(() => {
-            // alert(sid)
-            axios.get('http://192.168.40.205:13998/getAllPassState', {}).then((data) => {
+          axios.get(g.apiUrl+'/unratify/' + this.id + '?sid=' + sid).then(() => {
+            axios.get(g.apiUrl+'/getAllPassState', {}).then((data) => {
               this.tableData = data.data.data;
               this.loadAll();
             })
           })
         },
         changeDialog(params) {
-          // window.console.log(params);
           this.dialogData.project = params.applyDetail.project;
           this.dialogData.applyername = params.applyDetail.applyername;
           this.dialogData.softwarename = params.applyDetail.softwarename;
@@ -620,15 +617,6 @@
           this.dialogData.desktopcon = params.applyDetail.desktopcon;
           this.dialogTableVisible = true;
         },
-
-        // toggleSelection() {
-        //   this.$refs.multipleTable.clearSelection();
-        // },
-        // handleSelectionChange(val) {
-        //   this.multipleSelection = val;
-        // },
-
-
       },
       mounted() {
         var user = sessionStorage.getItem('user');

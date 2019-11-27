@@ -563,25 +563,6 @@
     export default {
         data() {
             return {
-                // tableData: [
-                //         {
-                //         date: '2016-05-02',
-                //         code: 'sugoSvig3SYQo5xdrUlyqvAgGLtH9v98wfUSc4vl2BoA',
-                //         name: 'ZaaL0ReD1ilqCUdMWlBKcMq48me201i6EllABjywhyICzjlV3M3UgoBOYfJ0NP4+fJ8bjQAW8US5XBhWSAuXvnINnLYNxnCMxIGYc2gEivtqpWNjdh4tnhwvZhoyd7PIyfpydDX/fZx/DH0+weEkEW3m0b4ox0tAK1pcEm9VDtI='
-                //     }, {
-                //         date: '2016-05-04',
-                //         code: '2',
-                //         name: 'ZEaL0ReD1ilqCUdMWlBKcMq48me201i6EllABjywhyICzjlV3M3UgoBOYfJ0NP4+fJ8bjQAW8US5XBhWSAuXvnINnLYNxnCMxIGYc2gEivtqpWNjdh4tnhwvZhoyd7PIyfpydDX/fZx/DH0+weEkEW3m0b4ox0tAK1pcEm9VDtI='
-                //     }, {
-                //         date: '2016-05-01',
-                //         code: '3',
-                //         name: '123'
-                //     }, {
-                //         date: '2016-05-03',
-                //         code: '4',
-                //         name: '321'
-                //     }
-                // ],
                 search: '',
                 dialogTableVisible: false,
                 tableData: [],
@@ -617,14 +598,11 @@
         },
         methods: {
             loadAll() {
-                axios.get('http://192.168.40.205:13998/getAllState?').then((data) => {
-                    // window.console.log(data.data)
-                    // alert(data.data.data[0].aid)
+                axios.get(g.apiUrl+'/getAllState?').then((data) => {
                     this.tableData = data.data.data;
                 })
             },
             changeDialog(params) {
-                // window.console.log(params);
                 this.dialogData.project = params.applyDetail.project;
                 this.dialogData.applyername = params.applyDetail.applyername;
                 this.dialogData.softwarename = params.applyDetail.softwarename;
