@@ -5,7 +5,7 @@
             <el-table
                 :data="tableData.filter(data => !search || data.license.toLowerCase().includes(search.toLowerCase()))"
                 style="width: 100%">
-                <el-table-column label="授权时间" prop="grantdate" width="95">
+                <el-table-column label="授权时间" prop="grantdate" width="100">
                 </el-table-column>
                 <el-table-column label="项目名称" prop="applyDetail.project" width="120">
                 </el-table-column>

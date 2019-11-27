@@ -7,15 +7,15 @@
         <el-table
           :data="tableData.filter(data => !search || data.applyDetail.project.toLowerCase().includes(search.toLowerCase()))"
           tooltip-effect="dark" style="width: 100%">
-          <el-table-column prop="applyDetail.applydate" label="申请日期" width="95">
+          <el-table-column prop="applyDetail.applydate" label="申请日期" width="100">
           </el-table-column>
           <el-table-column prop="applyDetail.applyername" label="申请人员" width="80">
           </el-table-column>
           <el-table-column prop="applyDetail.project" label="项目名称" width="100">
           </el-table-column>
-          <el-table-column prop="applyDetail.grantbegindate" label="开始时间" width="95">
+          <el-table-column prop="applyDetail.grantbegindate" label="开始时间" width="100">
           </el-table-column>
-          <el-table-column prop="applyDetail.grantenddate" label="结束时间" width="95">
+          <el-table-column prop="applyDetail.grantenddate" label="结束时间" width="100">
           </el-table-column>
           <el-table-column prop="" label="审核人" width="">
             <el-tag type="info">尚未通过审核</el-tag>
