@@ -8,19 +8,15 @@
           <el-form-item label="用户名" prop="username">
             <el-input v-model="ruleForm.username"></el-input>
           </el-form-item>
-
           <el-form-item label="真实姓名" prop="realname">
             <el-input v-model="ruleForm.realname"></el-input>
           </el-form-item>
-
           <el-form-item label="公司" prop="company">
             <el-input v-model="ruleForm.company"></el-input>
           </el-form-item>
-
           <el-form-item label="电话" prop="tel">
             <el-input v-model="ruleForm.tel"></el-input>
           </el-form-item>
-
           <el-form-item>
             <el-button type="primary" round @click="submitForm('ruleForm')">添加</el-button>
             <el-button type="primary" round @click="resetForm('ruleForm')">重置</el-button>

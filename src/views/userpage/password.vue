@@ -6,15 +6,12 @@
             <div class="body">
                 <el-form :model="ruleForm" status-icon :rules="rules" ref="ruleForm" label-width="100px"
                     class="demo-ruleForm">
-
                     <el-form-item label="密码" prop="pass">
                         <el-input type="password" v-model="ruleForm.pass" autocomplete="off"></el-input>
                     </el-form-item>
-
                     <el-form-item label="确认密码" prop="checkPass">
                         <el-input type="password" v-model="ruleForm.checkPass" autocomplete="off"></el-input>
                     </el-form-item>
-
                     <el-form-item>
                         <el-button type="primary" round @click="submitForm('ruleForm')">重置密码</el-button>
                         <el-button type="primary" round @click="resetForm('ruleForm')">清空表格</el-button>
