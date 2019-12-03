@@ -35,7 +35,7 @@
         </el-pagination>
       </el-main>
       <!-- dialog开始，授权申请单弹窗 -->
-      <el-dialog title="#" :visible.sync="dialogTableVisible">
+      <el-dialog top=0hv :visible.sync="dialogTableVisible">
         <applyTable :dialogData='dialogData'></applyTable>
       </el-dialog>
     </el-container>
