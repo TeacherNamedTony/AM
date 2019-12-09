@@ -74,20 +74,15 @@
         },
         passnow(params) {
           window.console.log(params.sid)
-          let data = {
-            sid: params.sid,
-            machinenum: params.applyDetail.machinenum,
-            productversion: params.applyDetail.productversion,
-            desktopcon: params.applyDetail.desktopcon,
-            grantbegindate: params.applyDetail.grantbegindate,
-            grantenddate: params.applyDetail.grantenddate
-          }
-          axios({
-            method: 'get',
-            url: g.apiUrl + '/ratify/' + this.id + '?' + qs.stringify(data),
-          }).then(() => {
+          axios.get(g.apiUrl+'/ratify/' +this.id 
+          +'?sid=' + params.sid
+          +'&machinenum='+params.applyDetail.machinenum
+          +'&productversion='+params.applyDetail.productversion
+          +'&desktopcon='+params.applyDetail.desktopcon
+          +'&grantbegindate='+params.applyDetail.grantbegindate
+          +'&grantenddate='+params.applyDetail.grantenddate).then(() => {
             this.$confirm('授权成功！', '提示', {})
-            axios.get(g.apiUrl + '/getAllStateNotPass', {}).then((data) => {
+            axios.get(g.apiUrl+'/getAllStateNotPass', {}).then((data) => {
               this.tableData = data.data.data;
               this.loadAll();
             })
